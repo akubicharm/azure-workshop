@@ -1,0 +1,26 @@
+:suffixdate: 201808
+:suffixseq: 001
+:ubuntu-version: Ubuntu LTS 18.04
+:rg-name: iothandson
+:iothub-name: iothub-xx
+:iothub-sample-device-name: sampledevice
+:iothub-endointname-tsi: timeseriesinsights
+:iothub-endpointname-asa: streamanalytics
+:tsi-tsiname: timeseriesinsights001
+:tsi-eventsource-name: eventsource001
+:asa-job-name: asajob001
+:asa-input-alias-name-iothub: IoTHubStream
+:asa-output-alias-name-sqldb: sqldatabase
+:asa-storage-name: iothandsonstorage
+:asa-blob-name: blobstorage
+:asa-blog-container-name: telemetry
+:sqldb-db-name: sqldb2018001
+:sqldb-server-name: sqlsv2018001
+:sqldb-admin-username: dbadmin
+:sqldb-admin-password: @dmin123
+:sqldb-average-tablename: tbl_averagedata
+:iotedge-device-name: edgeDevice
+:vmuser: iotuser
+:vmpassword: !IoTPass1234
+:iothub-docs-url: hogehoge
+:tempsensor-image-url: mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0

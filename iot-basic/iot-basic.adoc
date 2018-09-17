@@ -1,0 +1,9 @@
+include::variables.yaml[]
+
+# IoT Edge ワークショップ
+Global Blackbelt Sales Microsoft Corporation
+Sept-2018
+:toc:
+
+include::azure-cloudshell.adoc[]
+include::azure-iot-edge-deploy.adoc[]
