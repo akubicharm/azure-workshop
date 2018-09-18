@@ -34,20 +34,20 @@ Group workspace
 |データセット名 +
 Dataset name
 |任意の名前 +
-例）iothandsondataset001
+例）{pbi-dataset-name}
 
 |テーブル名 +
 Table name
 |任意の名前 +
-例）iothandsontable001
+例）{pbi-table-name}
 
 |===
 +
 image::images/pbi-asaoutput-configpbi.png[]
 
-. Power BIの認証が完了したら、[作成]をクリックします。
+. Power BIの認証が完了したら、[Save]をクリックします。
 +
-image::images/pbi-asaoutput-create.png[]
+image::images/pbi-asaoutput-create.png[{w50}]
 +
 [TIP]
 ====
@@ -96,35 +96,35 @@ GROUP BY
  
 . クエリを設定後、ジョブを開始します。
 +
-Stream AnalyticsのOvertivewで[Start]をボタンをクリックします。
+Stream AnalyticsのOverviewで[Start]をボタンをクリックします。
 +
-image::images/asa-startjobbutton.png[]
+image::images/asa-startjobbutton.png[{w50}]
 +
 ダイアログで[Start]ボタンをクリックしてJobをスタートします。
 +
-image::images/asa-startjob.png[]
+image::images/asa-startjob.png[{w50}]
 
 . Power BIにログインします。
 +
 https://powerbi.microsoft.com/ にアクセスし、上部の[サインイン]をクリックしてサインインします。
 +
-image::images/pbi-asaoutput-pbiportalsignin.png[]
+image::images/pbi-asaoutput-pbiportalsignin.png[{w50}]
 
 . サイドメニューからマイワークスペースを開き、ウィンドウ右上の[+作成]をクリックします。
 +
-image::images/pbi-asaoutput-createws.png[]
+image::images/pbi-asaoutput-createws.png[{w80}]
 
-. [ダッシュボード]を選択し、任意の名前を設定します。（例：iothandsondashboard001）
+. [ダッシュボード]を選択し、任意の名前を設定します。（例： {pbi-dashboard-name} ）
 +
-image::images/pbi-asaoutput-createdashboard.png[]
+image::images/pbi-asaoutput-createdashboard.png[{w80}]
 
 . ウィンドウ上部の[+タイルの追加]をクリックし、リアルタイムデータ欄の[カスタムストリーミングデータ]を選択し、[次へ]をクリックします。
 +
-image::images/pbi-asaoutput-addtile.png[]
+image::images/pbi-asaoutput-addtile.png[{w50}]
  
-. Stream Analyticsのデータセット名に設定したデータセット（例：iothandsondataset001）が、データセット欄に表示されていることを確認してください。表示されていればこれを選択し、[次へ]をクリックします。
+. Stream Analyticsのデータセット名に設定したデータセット（例：{pbi-dataset-name}）が、データセット欄に表示されていることを確認してください。表示されていればこれを選択し、[次へ]をクリックします。
 +
-image::images/pbi-asaoutput-adddataset.png[]
+image::images/pbi-asaoutput-adddataset.png[{w50}]
 +
 [CAUTION]
 ====
@@ -133,30 +133,30 @@ Stream Analyticsジョブが正常に動作していないと、データセッ�
 
 . 視覚化タイプで[カード]を選択し、フィールドタブの[+値の追加]をクリックします。
 +
-image::images/pbi-asaoutput-addvalue.png[]
+image::images/pbi-asaoutput-addvalue.png[{w50}]
 
 . プルダウンから”temperature”を選択します。
 +
-image::images/pbi-asaoutput-addtemperature.png[]
+image::images/pbi-asaoutput-addtemperature.png[{w50}]
 
 . データラベルのタブを選択し、[小数点以下桁数の値]を設定します。(例: “2”)
 +
-image::images/pbi-asaoutput-adddatalabel.png[]
+image::images/pbi-asaoutput-adddatalabel.png[{w50}]
 
 . ウインドウ下部の[次へ]をクリックします。
 +
-image::images/pbi-asaoutput-adddatasetnext.png[]
+image::images/pbi-asaoutput-adddatasetnext.png[{w50}]
 
 . [タイトル]、[サブタイトル]に任意の文字列をして、[適用]をクリックします。
 +
-image::images/pbi-asaoutput-addtitle.png[]
-
+image::images/pbi-asaoutput-addtitle.png[{w50}]
++
 [CAUTION]
 ====
 ダイアログ表示されますが、少し待っていると表示されなくなります。
 すぐに非表示にしたい場合は、右上の×ボタンをクリックしてください。
 
-image::images/pbi-asaoutput-ignoredialog.png[]
+image::images/pbi-asaoutput-ignoredialog.png[{w50}]
 ====
 
 . 目的に応じて、ダッシュボードを完成させてください。
@@ -168,8 +168,12 @@ https://powerbi.microsoft.com/ja-jp/documentation/powerbi-service-dashboards/
 ====
 
 . タイルの視覚化タイプに”折れ線グラフ” を選択した場合
+
+.. [+タイルの追加]をクリックし、タイルの追加(ソースの選択）画面で[カスタムストリーミングデータ]を選択し、[次へ]をクリックします。
+.. カスタムストリーミングデータタイルの追加（ストリーミングデータセットの選択）画面でデータセットを選択し、[次へ]をクリックします。
+.. カスタムストリーミングデータタイルの追加（ストリーミングデータセットの選択＞視覚化デザイン）画面で、折れ線グラフを選択しパラメータを入力します、
 +
-image::images/pbi-asaoutput-addlinegraph.png[]
+image::images/pbi-asaoutput-addlinegraph.png[{w50}]
 +
 .設定項目と設定値
 [cols="2*", options="header"]

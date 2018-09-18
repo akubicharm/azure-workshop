@@ -1,3 +1,5 @@
+include::variables.yaml[]
+
 ## 演習: Cloud Shell (Bash)の設定
 
 *Cloud Shell (Bash)* 環境を設定します。
@@ -8,16 +10,16 @@
 
 . Azureポータル画面下部のダイアログで [`Bash(Linux)`] を選択します。
 +
-image::images/cloudshell-welcome.png[]
+image::images/cloudshell-welcome.png[{w50}]
 
 . Cloud Shell用のストレージアカウントに利用するサブスクリプションを選択し[`Create storage`]ボタンをクリックします。
 +
-image::images/cloudshell-createstorage.png[]
+image::images/cloudshell-createstorage.png[{w50}]
 
 . ストレージの作成が完了し、Bashが起動されることを確認します。
 +
-image::images/cloudshell-bash.png[]
+image::images/cloudshell-bash.png[{w50}]
 
 . VMにSSHでログインする場合は、接続文字列を入力してログインします。
 +
-image::images/cloudshell-ssh.png[]
+image::images/cloudshell-ssh.png[{w50}]

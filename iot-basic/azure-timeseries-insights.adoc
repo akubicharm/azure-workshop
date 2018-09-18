@@ -29,7 +29,7 @@ image::images/tsi-tsi-filter.png[]
 
 . 表示された詳細ウィンドウ下部の[作成]をクリックします。
 +
-image::images/tsi-tsi-create.png[]
+image::images/tsi-tsi-create.png[{w50}]
 
 . Time Series Insights environmentウィンドウの各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
 +
@@ -60,7 +60,7 @@ image::images/tsi-tsi-create.png[]
 
 |===
 +
-image::images/tsi-tsi-config.png[]
+image::images/tsi-tsi-config.png[{w50}]
 
 . デプロイが開始されると、通知ウィンドウに表示されます。
 
@@ -70,7 +70,7 @@ image::images/tsi-tsi-deployed.png[]
 
 ### タスク2：Time Series Insightsの設定
 
-このタスクでは、作成したTime Series Insightsに、演習２で作成したIoT Hubをイベントソースに設定します。
+このタスクでは、作成したTime Series Insightsに、「演習: IoT Hubとデバイスの接続」で作成したIoT Hubをイベントソースに設定します。
 
 . タスク１で作成したTime Series Insightsの設定ウィンドウを表示します。
 [サイドメニュー] > [リソースグループ] > [作成したリソースグループ] > [作成したTime Series Insights]
@@ -162,9 +162,9 @@ image::images/tsi-policy-addrole.png[]
 
 .	データ保持期間やキャパシティを設定する場合には、[構成]メニューをクリックします。
 +
-Data retention time (in days) やCapacityを必要に応じて設定します。
+容量やデータリテンション期間（日）を必要に応じて設定します。
 +
-image::images/tsi-capacity.png[図 Time Series Insights Capacity]
+image::images/tsi-capacity.png[]
 
 ### タスク3：Time Series Insightsでのデータ表示とカスタマイズ
 
@@ -181,11 +181,11 @@ image::images/tsi-explorer-open.png[]
 
 . 温度データを表示するために、サイドメニューのMEASUREプルダウンを”Events”から”ambient.temperature”に変更します。
 +
-image::images/tsi-explorer-temperature.png[]
+image::images/tsi-explorer-temperature.png[{w50}]
 
 . 湿度データを追加するために、サイドメニューの[Add]をクリックし、MEASUREプルダウンを”Events”から”ambient.humidity”に変更します。
 +
-image::images/tsi-explorer-humidity.png[]
+image::images/tsi-explorer-humidity.png[{w50}]
 
 . より詳細なデータを確認するために、表示期間を調整します。紫色の両端をドラッグアンドドロップし、範囲を調整します。ポータル左上のメニューからも範囲設定ができます。
 +

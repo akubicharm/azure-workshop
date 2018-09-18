@@ -12,7 +12,7 @@ https://portal.azure.com
 
 .	ログイン画面に取得いただいたマイクロソフトアカウントの[メールアドレス]と[パスワード]を入力して、[サインイン]ボタンをクリックします。
 +
-image::images/azure-signin.png[]
+image::images/azure-signin.png[{w50}]
 
 .	管理ポータルにログインできたことを確認してください。
 

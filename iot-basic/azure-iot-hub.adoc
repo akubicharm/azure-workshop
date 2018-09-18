@@ -31,7 +31,7 @@ image::images/iothub-hub-filter.png[]
 
 . IoT Hub の詳細説明ウィンドウが表示されます。ウィンドウ下部の[作成]をクリックします。
 +
-image::images/iothub-hub-create.png[]
+image::images/iothub-hub-create.png[{w50}]
 
 . IoT Hubの作成ウィンドウが表示されます。各設定項目を入力後、ウィンドウ下部にある[Next: Size and scale]をクリックします。
 +
@@ -46,7 +46,7 @@ image::images/iothub-hub-create.png[]
 
 |リソースグループ
 |既存のものを使用
-「演習：Azure環境の準備」で作成したリソースグループ（デフォルトのまま）
+「演習：Azure環境の準備」で作成したリソースグループ。{rg-name}
 
 |場所
 |東日本 （デフォルトのまま）
@@ -57,7 +57,7 @@ image::images/iothub-hub-create.png[]
 ※IoT Hubの名前はサービスURLとして使用されるため、**Microsoft Azure全体で一意**の名前を指定する必要があります
 |===
 +
-image::images/iothub-hub-config-basic.png[]
+image::images/iothub-hub-config-basic.png[{w50}]
 
 . Size and scale ウィンドウで設定を確認して、ウィンドウ下部の[Review + create]をクリックします。
 +
@@ -77,7 +77,7 @@ image::images/iothub-hub-config-basic.png[]
 |4 （デフォルトのまま）
 |===
 +
-image::images/iothub-hub-config-size.png[]
+image::images/iothub-hub-config-size.png[{w50}]
 
 . [Review + create]ウィンドウで[Create]ボタンをクリックしてIoT Hubを作成します。
 
@@ -85,8 +85,6 @@ image::images/iothub-hub-config-size.png[]
 . デプロイが開始されると、通知ウィンドウに表示されます。
 +
 image::images/iothub-hub-deploying.png[]
-+
-image::images/iothub-hub-deployed.png[]
 
 . デプロイが完了すると、通知ウィンドウに完了メッセージが表示されます。[リソースに移動]をクリックし、設定したIoT Hubが作成されていることを確認します。
 +
@@ -94,7 +92,7 @@ image::images/iothub-hub-confirm.png[]
 
 . IoT Hubのメニューから[Endpoints]をクリックします
 +
-image::images/iothub-endpoint-create.png[]
+image::images/iothub-endpoint-create.png[{w80}]
 
 . [エンドポイント]ウィンドウで組み込みエンドポイントの[Events]をクリックしてプロパティを開きます。
 +
@@ -104,7 +102,7 @@ image::images/iothub-endpoint-config.png[]
 +
 消費者グループ(コンシューマグループ)は、以降のステップでIoT Hubに送信されたデバイスデータを取得するサービス(Stream Analytics, Time Series Insights)が使用するものです。
 +
-image::images/iothub-endpoint-properties.png[]
+image::images/iothub-endpoint-properties.png[{w50}]
 
 ### タスク2：IoT Hubへのデバイス登録
 
@@ -116,7 +114,7 @@ image::images/iothub-hub-select.png[]
 
 . IoT HubのメニューのExplorersのセクションから[IoT devices]をクリックします。
 +
-image::images/iothub-device-explorer.png[]
+image::images/iothub-device-explorer.png[{w50}]
 
 . ウィンドウ上部の[+Add]をクリックします。
 +
@@ -124,9 +122,9 @@ image::images/iothub-device-add.png[]
 
 . [デバイスの追加]ウィンドウに{iothub-sample-device-name}と入力し、[Save]をクリックし、デバイスを登録します。ここで登録する文字列がデバイスIDとなります。
 +
-image::images/iothub-device-config.png[]
+image::images/iothub-device-config.png[{w50}]
 
-. [デバイス エクスプローラー]のデバイス一覧に、登録したデバイスが追加されていることを確認します。追加したデバイスをクリックすると、[デバイスの詳細]ウィンドウが表示されます。
+. [デバイスエクスプローラー]のデバイス一覧に、登録したデバイスが追加されていることを確認します。追加したデバイスをクリックすると、[デバイスの詳細]ウィンドウが表示されます。
 +
 image::images/iothub-device-confirm.png[]
 

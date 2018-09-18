@@ -6,12 +6,12 @@
 :iothub-sample-device-name: sampledevice
 :iothub-endointname-tsi: timeseriesinsights
 :iothub-endpointname-asa: streamanalytics
-:tsi-tsiname: timeseriesinsights001
-:tsi-eventsource-name: eventsource001
+:tsi-tsiname: tsi001
+:tsi-eventsource-name: es001
 :asa-job-name: asajob001
 :asa-input-alias-name-iothub: IoTHubStream
 :asa-output-alias-name-sqldb: sqldatabase
-:asa-storage-name: iothandsonstorage
+:asa-storage-name: iotstorage
 :asa-blob-name: blobstorage
 :asa-blog-container-name: telemetry
 :sqldb-db-name: sqldb2018001
@@ -19,8 +19,12 @@
 :sqldb-admin-username: dbadmin
 :sqldb-admin-password: @dmin123
 :sqldb-average-tablename: tbl_averagedata
+:pbi-dataset-name: dataset001
+:pbi-table-name: table001
+:pbi-dashboard-name: dashboard001
 :iotedge-device-name: edgeDevice
 :vmuser: iotuser
-:vmpassword: !IoTPass1234
-:iothub-docs-url: hogehoge
+:vmpassword: @dmin12345678
 :tempsensor-image-url: mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
+:w50: pdfwidth='50%',width='50%'
+:w80: pdfwidth='80%', width='80%'

@@ -13,13 +13,13 @@ include::variables.yaml[]
 
 . リソースグループの[追加]をクリックします。
 
-. "Ubuntu"で検索した結果から"{ubuntu-version}"を選択し、[作成]をクリックします。
-
+. "ubuntu server"で検索した結果から"{ubuntu-version}"を選択し、[作成]をクリックします。
++
 image::images/iotedge-vm-select.png[]
 
-. [基本設定の構成]で各種項目を設定します。
+. [1 基本 基本設定の構成]で各種項目を設定します。
 +
-image::images/iotedge-vm-config.png[]
+image::images/iotedge-vmconfig-basic.png[]
 +
 .設定項目と設定値
 [cols="2*", options="header"]
@@ -57,15 +57,92 @@ image::images/iotedge-vm-config.png[]
 |任意の場所を選択
 |===
 
-. [仮想マシンのサイズの選択]でサイズを選択します。
+. [2 サイズ 仮想マシンのサイズの選択]でサイズを選択します。
 +
 （本ハンズオンでは 8GB 以上のメモリが割り当てられるスペックを選択します）
-
-. [オプション機能の構成]でパブリック受信ポートを選択で"SSH(22)"を選択します。
 +
-image::images/iotedge-vm-port.png[]
+image::images/iotedge-vmconfig-size.png[]
+
+. [3 設定 オプション機能の構成]でパブリック受信ポートを選択で"SSH(22)"を選択します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|設定項目
+|設定値
+
+2+|高可用性
+
+|可用性ゾーン
+|なし（デフォルトのまま）
+
+|可能性セット
+|なし（デフォルトのまま）
+
+2+|Storage
+
+|ディスクの種類
+|任意の種類を選択
+
+|マネージドディスクを使用
+|[はい]を選択
+
+2+|ネットワーク
+
+|Virtual Network
+|デフォルトのまま
+
+|サブネット
+|デフォルトのまま
+
+|パブリックIPアドレス
+|デフォルトのまま
+
+|ネットワークセキュリティグループ
+|Basic（デフォルトのまま）
+
+|パブリック受信ポートを選択
+|SSH(22)を選択
+
+2+|拡張機能
+
+|拡張機能
+|拡張機能なし（デフォルトのまま）
+
+2+|自動シャットダウン
+
+|自動シャットダウンを有効にする
+|オフ（デフォルトのまま）
+
+2+|監視
+
+|ブート診断
+|有効（デフォルトのまま）
+
+|ゲストOSの診断
+|無効（デフォルトのまま）
+
+|診断ストレージアカウント
+|新規作成 or 既存の利用
+
+2+|マネージドサービスID
+
+|Azure Active Directory に登録する
+|いいえ（デフォルトのまま）
+
+2+|バックアップ
+
+|バックアップ
+|無効（デフォルトのまま）
+
+|===
++
+image::images/iotedge-vmconfig-config.png[]
 
 . [概要]で[作成]ボタンをクリックします。
++
+image::images/iotedge-vmconfig-overview.png[]
 
 
 ### タスク2：コンテナランタイムのインストール
@@ -139,7 +216,7 @@ image::images/iotedge-device-add.png[]
 +
 image::images/iotedge-device-save.png[]
 
-. IoT Edge Devideを選択して接続文字列をコピーしておきます
+. IoT Edge Deviceを選択して接続文字列をコピーしておきます
 +
 image::images/iotedge-device-list.png[]
 +
@@ -207,7 +284,7 @@ systemctl status iotedge
 +
 ```
 docker ps
-docker log edgeAgent
+docker logs edgeAgent
 ```
 +
 `watch -n 10 docker ps` とすると、10秒間隔でdocker psコマンドを実行します。
@@ -253,7 +330,7 @@ image::images/iotedge-simdevice-next.png[]
 
 +
 この画面では、メッセージのルーティングを定義します。
-デフォルトの ` "route": "FROM /* INTO $upstream"` では、全てのモジュールの出力メッセージが `$upstream` (IoT Hubを示す予約語）に送信されます。
+デフォルトの `"route": "FROM /messages/* INTO $upstream"` では、全てのモジュールの出力メッセージが `$upstream` (IoT Hubを示す予約語）に送信されます。
 +
 image::images/iotedge-simdevice-routing.png[]
 
