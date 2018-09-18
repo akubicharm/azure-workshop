@@ -13,7 +13,7 @@ https://docs.microsoft.com/ja-jp/azure/time-series-insights/time-series-insights
 
 Time Series Insights は時系列データを念頭に設計されたデータベースです。ほぼリアルタイムでのデータ探索が可能です。またTime Series Insights REST API を使用して新しいカスタム ソリューションを作成することもできます。既定のリテンション期間は31日間となっており、最大400日のデータ リテンション期間を構成できます。
 
-### Time Series Insightsの作成
+### タスク1：Time Series Insightsの作成
 
 このタスクでは、Azure上にTime Series Insightsを作成します。
 
@@ -68,7 +68,7 @@ image::images/tsi-tsi-config.png[]
 +
 image::images/tsi-tsi-deployed.png[]
 
-### Time Series Insightsの設定
+### タスク2：Time Series Insightsの設定
 
 このタスクでは、作成したTime Series Insightsに、演習２で作成したIoT Hubをイベントソースに設定します。
 
@@ -166,7 +166,7 @@ Data retention time (in days) やCapacityを必要に応じて設定します。
 +
 image::images/tsi-capacity.png[図 Time Series Insights Capacity]
 
-### Time Series Insightsでのデータ表示とカスタマイズ
+### タスク3：Time Series Insightsでのデータ表示とカスタマイズ
 
 このタスクでは、作成したTime Series Insightsエクスプローラーへアクセスし、IoT Hubで受信した
 温度データと湿度データを表示します。

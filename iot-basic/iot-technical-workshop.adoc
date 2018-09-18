@@ -8,7 +8,7 @@ Sept-2018
 ## このハンズオンについて
 ### 概要
 このハンズオンでは、Microsoft Azure IoTサービスを使用してIoTアプリケーション（データの収集／加工／視覚化）をチュートリアル形式で構築します。
-Azure IoTアーキテクチャをハンズオン形式で理解し、実現するシステムの構成をイメージできるようにおなることを目的とします。
+Azure IoTアーキテクチャをハンズオン形式で理解し、実現するシステムの構成をイメージできるようになることを目的とします。
 
 ### 必要な準備
 Webブラウザから無線LANで接続可能なPCを必ず準備してください。
@@ -24,14 +24,25 @@ https://powerbi.microsoft.com/ja-jp/documentation/powerbi-service-self-service-s
 https://msjpiot.blob.core.windows.net/docs/Snippet.txt
 
 ### ハンズオンで構築するIoTサービスのついて
-＜図＞
 
+image::images/techws-overview.png[]
+<<<
 include::azure-cloudshell.adoc[]
 include::azure-prepare.adoc[]
+<<<
+image::images/techws-ex-iothub.png[]
 include::azure-iot-hub.adoc[]
+<<<
+image::images/techws-ex-tsi.png[]
 include::azure-timeseries-insights.adoc[]
+<<<
+image::images/techws-ex-asa.png[]
 include::azure-streamanalytics.adoc[]
+<<<
+image::images/techws-ex-pbi.png[]
 include::azure-powerbi.adoc[]
+<<<
+image::images/techws-ex-edge.png[]
 include::azure-iot-edge-deploy.adoc[]
 
 以上で、ハンズオンは終了です。お疲れ様でした！！

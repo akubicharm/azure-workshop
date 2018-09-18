@@ -2,10 +2,10 @@ include::variables.yaml[]
 
 ## 演習：Power BIでのデータ表示
 
-このタスクでは、Stream AnalyticsからのストリーミングデータをPower BIでリアルタイム表示します。
+この演習では、Stream AnalyticsからのストリーミングデータをPower BIでリアルタイム表示します。
 Stream AnalyticsにPower BI用の出力を追加し、Power BI側でストリーミングデータセットとして扱います。
 
-### Stream Analyticsの出力設定（PowerBIへの出力）
+### タスク1：Stream Analyticsの出力設定（PowerBIへの出力）
 
 . Stream Analyticsを停止します。
 

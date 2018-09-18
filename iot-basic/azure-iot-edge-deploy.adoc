@@ -249,7 +249,7 @@ IoT Edge Modulesで項目を入力して[Save(保存)]ボタンをクリック�
 
 . [Set Module]の画面に戻るので[Next]をクリックします
 +
-image::images/iotedge-simdevice-next.png[Click Next]
+image::images/iotedge-simdevice-next.png[]
 
 +
 この画面では、メッセージのルーティングを定義します。

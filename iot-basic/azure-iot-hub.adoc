@@ -1,6 +1,6 @@
 include::variables.yaml[]
 
-## 演習: IoHubとデバイスの接続
+## 演習: IoT Hubとデバイスの接続
 
 この演習では、Azure上にIoT Hubを作成し、デバイスからのメッセージを受信します。
 デバイスとしてRaspberry Pi オンライン シミュレーター(Webアプリケーション)を使用し、作成したIoT Hubに温度データと湿度データを送信します。
@@ -14,7 +14,7 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/
 ====
 
 
-### IoT Hubの作成
+### タスク1：IoT Hubの作成
 このタスクでは、デバイスからのデータを受信するIoT Hub を作成します。
 
 . サイドメニューの[リソースグループ]をクリックし、リソースグループ一覧を表示します。
@@ -46,7 +46,7 @@ image::images/iothub-hub-create.png[]
 
 |リソースグループ
 |既存のものを使用
-演習１で作成したリソースグループ（デフォルトのまま）
+「演習：Azure環境の準備」で作成したリソースグループ（デフォルトのまま）
 
 |場所
 |東日本 （デフォルトのまま）
@@ -106,7 +106,7 @@ image::images/iothub-endpoint-config.png[]
 +
 image::images/iothub-endpoint-properties.png[]
 
-### IoT Hubへのデバイス登録
+### タスク2：IoT Hubへのデバイス登録
 
 このタスクでは、IoT Hubにデータを送信するデバイスを新規登録します。デバイスがIoT Hubにデータを送信するためには、事前にIoT Hubにデバイスを登録しておく必要があります。IoT Hub上でデバイスを新規登録し、デバイスIDとデバイスキー（認証キー）を発行します。
 
@@ -135,7 +135,7 @@ image::images/iothub-device-confirm.png[]
 image::images/iothub-device-details.png[]
 
 
-### IoT Hubデバイスクライアントの開発
+### タスク3：IoT Hubデバイスクライアントの開発
 
 このタスクでは、Raspberry Piオンライン シミュレーターを使ってIoT Hubにデータを送信します。
 本エミュレータはRaspberry PiをシミューレートしたWebアプリケーションで、Node.jsでプログラムコードを記述することでIoT Hubにデータを送信することができます。
@@ -168,7 +168,7 @@ const connectionString = '[Your IoT hub device connection string]';
 const connectionString = ' HostName=iothub0910-001.azure-devices.net;DeviceId=sampledevice;SharedAccessKey=xxxxxxxxxxxxxxxxxxxxx ';
 ```
 
-.. 23行目～37行目にあるfunction getMessage(cb)を下記に書き換えます。シミュレーションデバイスが生成したデータ(機械: 温度/圧力,大気: 温度/湿度)をJSONで返します。
+.. 23行目～37行目にある `function getMessage(cb)` を下記に書き換えます。シミュレーションデバイスが生成したデータ(機械: 温度/圧力,大気: 温度/湿度)をJSONで返します。
 +
 ```
 function getMessage(cb) {
@@ -201,7 +201,7 @@ Message sent to Azure IoT Hub
 >
 ```
 
-### IoT Hubでのデータ受信確認
+### タスク4：IoT Hubでのデータ受信確認
 
 このタスクでは、作成したIoT Hubの[概要]をクリックし、使用状況を表示します。メッセージがカウントアップされていればデバイスからのテレメトリデータが受信できています。
 

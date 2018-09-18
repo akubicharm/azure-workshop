@@ -12,7 +12,7 @@ https://docs.microsoft.com/ja-jp/azure/stream-analytics/
 ====
 
 
-### Stream Analyticsの作成
+### タスク1：Stream Analyticsの作成
 このタスクでは、Azure上にStream Analyticsを作成します。
 
 . 「演習：Azure環境の準備」で作成したリソースグループを表示し、ウィンドウ上部の[+追加]をクリックします。
@@ -66,7 +66,7 @@ image::images/asa-asa-newjob.png[]
 . デプロイが完了すると、通知ウィンドウに完了メッセージが表示されます。[リソースに移動]をクリックし、設定したStream Analyticsが作成されていることを確認します。
 
 
-### Stream Analyticsの入力設定
+### タスク2：Stream Analyticsの入力設定
 
 このタスクでは、作成したStream Analyticsに[入力](Stream Analyticsへの入力データ)を設定します。
 
@@ -143,7 +143,7 @@ image::images/asa-input-config.png[]
 . 通知ウィンドウに「入力のテスト中」と表示されます。「接続テストが成功しました」と表示されれば、入力の追加完了です。
 
 
-### Stream Analyticsの出力設定（ストレージへの出力）
+### タスク3：Stream Analyticsの出力設定（ストレージへの出力）
 
 このタスクでは、作成したStream Analyticsに出力を設定します。デバイスから送信された全データを
 Azure Blobストレージに保存します。
@@ -290,7 +290,7 @@ Format
 +
 image::images/asa-outputstorage-blobconfig.png[]
 
-### Stream Analyticsのクエリ設定（ストレージへの出力）
+### タスク4：Stream Analyticsのクエリ設定（ストレージへの出力）
 
 このタスクでは、Stream Analyticsにストレージ出力するクエリを設定します。
 
@@ -337,7 +337,7 @@ image::images/asa-querystorage-editdata.png[]
 image::images/asa-stopjobbutton.png[]
 
 
-### Stream Analyticsの出力設定（SQLデータベースへの出力）
+### タスク5：Stream Analyticsの出力設定（SQLデータベースへの出力）
 
 このタスクでは、作成したStream Analyticsに出力を追加します。SQLデータベースに1分間の平均値を保存します。
 
@@ -510,8 +510,7 @@ image::images/asa-outputsql-adddb2asa.png[]
 image::images/asa-outputsql-createoutputdb.png[]
 
 
-
-### Stream Analyticsのクエリ設定（SQLデータベースへの出力）
+### タスク6：Stream Analyticsのクエリ設定（SQLデータベースへの出力）
 
 このタスクでは、Stream AnalyticsにSQLデータベースに出力するクエリを追加します。
 

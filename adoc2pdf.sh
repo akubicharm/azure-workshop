@@ -14,9 +14,15 @@ checkFilename() {
     echo $_f
   fi
 }
-  
+
 _dir=""
 _file=""
+
+if [ $# -eq 2 ] ; then
+   _dir=`checkDirname $1`
+   _file=`checkFilename $_dir $2`
+fi
+  
 while [ -z $_dir ] ; do
   echo -n "asciidoc directory[$_dir]> "
   read _d
