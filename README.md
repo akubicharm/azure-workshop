@@ -24,7 +24,7 @@ asciidoctor-pdf deploy-aks.adoc
 
 ## ワークショップコンテンツ
 
-### IoT テクニカルサークショップ
+### IoT テクニカルワークショップ
 IoT HubとTime Series Insights, Stream Analytics, PowerBIとの連携とAzure IoT Edgeのデプロイ
 
 [./pdf/iot-technical-workshop.pdf](./pdf/iot-technical-workshop.pdf)
