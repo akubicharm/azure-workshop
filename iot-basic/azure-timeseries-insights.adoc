@@ -148,7 +148,7 @@ image::images/tsi-policy.png[{w20}]
 
 .. データアクセスポリシーウインドウで、ユーザーが一件も登録されていないことを確認して[追加]をクリックします。
 +
-image::images/tsi-policy-add.png[{w80}]
+image::images/tsi-policy-add.png[{w50}]
 
 .. [ユーザー役割の選択]ウィンドウで[ユーザーの選択]をクリックして、Azure管理ポータルにログインしたご自身のアカウント(Azure管理ポータルの右上に表示)を検索して追加します。
 +

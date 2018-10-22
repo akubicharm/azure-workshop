@@ -155,11 +155,11 @@ image::images/asa-outputstorage-add.png[{w50}]
 
 . Everythingウィンドウの検索ボックスで、”ストレージ”と入力しEnterキーを押します。[ストレージアカウント]をクリックします。
 +
-image::images/asa-outputstorage-filter.png[{w50}]
+image::images/asa-outputstorage-filter.png[{w80}]
 
 . 表示された詳細ウィンドウ下部の[作成]をクリックします。
 +
-image::images/asa-outputstrage-create.png[{w20}]
+image::images/asa-outputstrage-create.png[{w50}]
 
 
 . 下記のとおり、各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
@@ -576,4 +576,4 @@ select * from dbo.tbl_averagedata order by time
 
 . データを確認後、Stream Analyticsジョブを停止しておきます。
 +
-image::images/asa-stopjobbutton.png[{w20}]
+image::images/asa-stopjobbutton.png[{w50}]

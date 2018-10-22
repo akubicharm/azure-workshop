@@ -47,7 +47,7 @@ image::images/pbi-asaoutput-configpbi.png[{w80}]
 
 . Power BIの認証が完了したら、[Save]をクリックします。
 +
-image::images/pbi-asaoutput-create.png[{w20}]
+image::images/pbi-asaoutput-create.png[{w50}]
 +
 [TIP]
 ====
