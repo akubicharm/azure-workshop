@@ -26,5 +26,6 @@
 :vmuser: iotuser
 :vmpassword: @dmin12345678
 :tempsensor-image-url: mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0
+:w20: pdfwidth='20%',width='20%'
 :w50: pdfwidth='50%',width='50%'
 :w80: pdfwidth='80%', width='80%'

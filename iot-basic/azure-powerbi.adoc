@@ -11,7 +11,7 @@ Stream AnalyticsにPower BI用の出力を追加し、Power BI側でストリー
 
 . Stream Analyticsの新規出力設定でpowerbiを追加します。
 +
-image::images/pbi-asaoutput-addpbi.png[]
+image::images/pbi-asaoutput-addpbi.png[{w50}]
 
 . 設定項目を入力後、Power BIの[Authorize]をクリックし、Power BIユーザーでサインインします。別のブラウザウィンドウが起動します。
 +
@@ -43,11 +43,11 @@ Table name
 
 |===
 +
-image::images/pbi-asaoutput-configpbi.png[]
+image::images/pbi-asaoutput-configpbi.png[{w80}]
 
 . Power BIの認証が完了したら、[Save]をクリックします。
 +
-image::images/pbi-asaoutput-create.png[{w50}]
+image::images/pbi-asaoutput-create.png[{w20}]
 +
 [TIP]
 ====
@@ -102,7 +102,7 @@ image::images/asa-startjobbutton.png[{w50}]
 +
 ダイアログで[Start]ボタンをクリックしてJobをスタートします。
 +
-image::images/asa-startjob.png[{w50}]
+image::images/asa-startjob.png[{w20}]
 
 . Power BIにログインします。
 +

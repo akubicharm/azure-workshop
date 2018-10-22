@@ -21,11 +21,11 @@ image::images/asa-asa-add.png[]
 
 . Everythingウィンドウの検索ボックスで、”Stream Analytics”と入力しEnterキーを押します。
 +
-image::images/asa-asa-filter.png[]
+image::images/asa-asa-filter.png[{w80}]
 
 . [Stream Analytics job]をクリックし、表示された詳細ウィンドウ下部の[作成]をクリックします。
 +
-image::images/asa-asa-create.png[{w50}]
+image::images/asa-asa-create.png[{w20}]
 
 . [新しい Stream Analytics ジョブ]ウィンドウの各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
 +
@@ -62,7 +62,7 @@ Streaming units
 
 |===
 +
-image::images/asa-asa-newjob.png[{w50}]
+image::images/asa-asa-newjob.png[{w20}]
 
 . デプロイが完了すると、通知ウィンドウに完了メッセージが表示されます。[リソースに移動]をクリックし、設定したStream Analyticsが作成されていることを確認します。
 
@@ -75,11 +75,11 @@ image::images/asa-asa-newjob.png[{w50}]
 +
 [サイドメニュー] > [リソースグループ] > [作成したリソースグループ] > “作成したStream　Analyticsの名前”
 +
-image::images/asa-input-selectasa.png[]
+image::images/asa-input-selectasa.png[{w80}]
 
 . Stream Analyticsの設定メニューにある[Inputs]をクリックし、ウィンドウ上部の[+Add stream input]-[IoT Hub]をクリックします。
 +
-image::images/asa-input-addstreaminput.png[]
+image::images/asa-input-addstreaminput.png[{w80}]
 
 . [新規入力]ウィンドウの各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
 +
@@ -138,7 +138,7 @@ Event compression type
 
 |===
 +
-image::images/asa-input-config.png[{w50}]
+image::images/asa-input-config.png[{w20}]
 
 
 . 通知ウィンドウに「入力のテスト中」と表示されます。「接続テストが成功しました」と表示されれば、入力の追加完了です。
@@ -151,15 +151,15 @@ Azure Blobストレージに保存します。
 
 . 「演習：Azure環境の準備」作成したリソースグループを表示し、ウィンドウ上部の[+追加]をクリックします。
 +
-image::images/asa-outputstorage-add.png[]
+image::images/asa-outputstorage-add.png[{w50}]
 
 . Everythingウィンドウの検索ボックスで、”ストレージ”と入力しEnterキーを押します。[ストレージアカウント]をクリックします。
 +
-image::images/asa-outputstorage-filter.png[]
+image::images/asa-outputstorage-filter.png[{w50}]
 
 . 表示された詳細ウィンドウ下部の[作成]をクリックします。
 +
-image::images/asa-outputstrage-create.png[{w50}]
+image::images/asa-outputstrage-create.png[{w20}]
 
 
 . 下記のとおり、各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
@@ -171,30 +171,7 @@ image::images/asa-outputstrage-create.png[{w50}]
 |設定項目
 |設定値
 
-|名前
-|任意の名前. Microsoft Azure全体で一意の名前 +
-例) {asa-storage-name}
-
-|デプロイモデル
-|Resource Manager（デフォルトのまま）
-
-|アカウントの種類
-|BLOBストレージ
-
-|場所
-|東日本
-
-|レプリケーション
-|ローカル冗長ストレージ（デフォルトのまま）
-
-|パフォーマンス
-|Standard（デフォルトのまま）
-
-|アクセス層
-|ホット（デフォルトのまま）
-
-|安全な転送が必須
-|無効
+2+|基本タブ
 
 |サブスクリプション
 |ご準備いただいたサブスクリプション
@@ -204,23 +181,49 @@ image::images/asa-outputstrage-create.png[{w50}]
 「演習:Azure環境の準備」で作成したリソースグループ +
 ex) {rg-name}
 
+|名前
+|任意の名前. Microsoft Azure全体で一意の名前 +
+例) {asa-storage-name}
+
+|場所
+|東日本
+
+|パフォーマンス
+|Standard（デフォルトのまま）
+
+|アカウントの種類
+|StorageV2（汎用 v2）
+
+|レプリケーション
+|ローカル冗長ストレージ（デフォルトのまま）
+
+|アクセス層
+|ホット（デフォルトのまま）
+
+2+|詳細タブ
+
+
+|安全な転送が必須
+|無効
+
 |仮想ネットワーク
 |無効
 
 |Data Lake Storage Gen2（プレビュー）
 |何もしない
-
 |===
 +
-image::images/asa-outputstorage-config.png[{w50}]
+image::images/asa-outputstorage-configbasic.png[{w50}]
+image::images/asa-outputstorage-configdetail.png[{w50}]
+image::images/asa-outputstorage-configconfirm.png[{w50}]
 
-. リソースグループ内に作成したストレージアカウントが追加されていることを確認します。
+. リソースの作成が完了したら、[リソースに移動]をクリックします。
 +
-image::images/asa-outputstorage-confirm.png[]
+image::images/asa-outputstorage-confirm.png[{w50}]
 
 . Stream Analyticsの設定メニューにある[出力]をクリックし、ウィンドウ上部の[+Add]-[Blob storage]をクリックします。
 +
-image::images/asa-outputstorage-addblob.png[]
+image::images/asa-outputstorage-addblob.png[{w50}]
 
 . [新規出力]ウィンドウの各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
 +
@@ -290,7 +293,7 @@ Format
 
 |===
 +
-image::images/asa-outputstorage-blobconfig.png[{w50}]
+image::images/asa-outputstorage-blobconfig.png[{w20}]
 
 ### タスク4：Stream Analyticsのクエリ設定（ストレージへの出力）
 
@@ -332,7 +335,7 @@ image::images/asa-querystorage-confirmdata.png[{w50}]
 
 . ファイル名を選択後、ウィンドウ上部の[BLOBの編集]をクリックし、データを確認します。
 +
-image::images/asa-querystorage-editdata.png[]
+image::images/asa-querystorage-editdata.png[{w80}]
 
 . データを確認後、Stream Analyticsジョブを停止しておきます。
 +
@@ -345,13 +348,13 @@ image::images/asa-stopjobbutton.png[{w50}]
 
 . 「演習:Azure環境の準備」で作成したリソースグループを表示し、ウィンドウ上部の[+追加]をクリックします。
 +
-image::images/asa-outputsql-add.png[{w50}]
+image::images/asa-outputsql-add.png[{w20}]
 
 . Everythingウィンドウの検索ボックスで、”SQL”と入力しEnterキーを押します。[SQL Database]をクリックし、表示された詳細ウィンドウ下部の[作成]をクリックします。
 +
-image::images/asa-outputsql-filter.png[]
+image::images/asa-outputsql-filter.png[{w80}]
 +
-image::images/asa-outputsql-createdb.png[{w50}]
+image::images/asa-outputsql-createdb.png[{w20}]
 
 . 下記のとおり、各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
 +
@@ -373,7 +376,7 @@ image::images/asa-outputsql-createdb.png[{w50}]
 |既存のものを使用
 
 |ソースの選択
-|空のデータベース（デフォルトのまま）
+|Blank database（デフォルトのまま）
 
 |サーバー
 |[必要な設定の構成]をクリックし、次の「新しいサーバーの作成」に記載の内容を入力。
@@ -402,7 +405,7 @@ image::images/asa-outputsql-createdb.png[{w50}]
 |チェック（デフォルトのまま）
 
 |Advanced Thread Protection
-|後で（デフォルトのまま）
+|Not now（デフォルトのまま）
 
 2+|〜**新しいサーバーの作成の項目はここまで** 〜
 
@@ -418,13 +421,13 @@ image::images/asa-outputsql-createdb.png[{w50}]
 |===
 
 +
-image::images/asa-outputsql-configdb.png[]
+image::images/asa-outputsql-configdb.png[{w80}]
 +
-image::images/asa-outputsql-createdb.png[{w50}]
+image::images/asa-outputsql-createdb.png[{w20}]
 
 . リソースグループ内に作成したSQLデータベースが表示されていることを確認します。
 +
-image::images/asa-outputsql-confirmdb.png[]
+image::images/asa-outputsql-confirmdb.png[{w80}]
 
 . SQLデータベースのメニューから[クエリエディタ]を選択し, [パスワード]を入力後、[OK]をクリックします。
 +
@@ -448,7 +451,7 @@ image::images/asa-outputsql-confirmdb.png[]
 
 |===
 +
-image::images/asa-outputsql-loginqueryeditor.png[]
+image::images/asa-outputsql-loginqueryeditor.png[{w80}]
 
 . 1分平均値を格納するテーブル”{sqldb-average-tablename}”を作成します。
 +
@@ -464,7 +467,7 @@ create table tbl_averagedata(
 go
 ```
 +
-image::images/asa-outputsql-createtable.png[]
+image::images/asa-outputsql-createtable.png[{w80}]
 
 . Stream Analyticsの設定メニューにある[Output]をクリックし、ウィンドウ上部の[+Add]-[SQL Database]をクリックします。
 +
@@ -509,7 +512,7 @@ image::images/asa-outputsql-adddb2asa.png[{w50}]
 
 |===
 +
-image::images/asa-outputsql-createoutputdb.png[{w50}]
+image::images/asa-outputsql-createoutputdb.png[{w20}]
 
 
 ### タスク6：Stream Analyticsのクエリ設定（SQLデータベースへの出力）
@@ -518,7 +521,7 @@ image::images/asa-outputsql-createoutputdb.png[{w50}]
 
 . Stream Analyticsの設定メニューにある[Query]をクリックします。
 +
-image::images/asa-querysql-createquery.png[]
+image::images/asa-querysql-createquery.png[{w50}]
 
 . 右側のウィンドウ内のクエリを追加し、[保存]をクリックします。
 +
@@ -557,7 +560,7 @@ image::images/asa-startjobbutton.png[{w50}]
 
 . [ジョブの開始]ウィンドウが表示されたら、ウィンドウ下部の[Start]をクリックします。
 +
-image::images/asa-startjob.png[{w50}]
+image::images/asa-startjob.png[{w20}]
 
 . 通知ウィンドウで正常にStream Analyticsジョブが開始されることを確認します(数分かかります)。
  
@@ -573,4 +576,4 @@ select * from dbo.tbl_averagedata order by time
 
 . データを確認後、Stream Analyticsジョブを停止しておきます。
 +
-image::images/asa-stopjobbutton.png[]
+image::images/asa-stopjobbutton.png[{w20}]

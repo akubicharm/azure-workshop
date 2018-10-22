@@ -15,37 +15,15 @@ include::variables.yaml[]
 
 . "ubuntu server"で検索した結果から"{ubuntu-version}"を選択し、[作成]をクリックします。
 +
-image::images/iotedge-vm-select.png[]
+image::images/iotedge-vm-select.png[{w80}]
 
-. [1 基本 基本設定の構成]で各種項目を設定します。
-+
-image::images/iotedge-vmconfig-basic.png[]
+. [基本]で各種項目を設定します。
 +
 .設定項目と設定値
 [cols="2*", options="header"]
 |===
 |設定項目
 |設定値
-
-|名前
-|任意のマシン名
-
-|VMディスクの種類
-|HDDまたはSSD
-
-|ユーザー名
-|任意のユーザー名 （例：{vmuser}）
-
-|認証の種類
-|[パスワード]を選択
-
-|パスワード
-|次の条件を満たす、任意のパスワード （例：{vmpassword}） +
-* 12-72文字 +
-* 1つの小文字、1つの大文字、1つの数字および "¥"または"-"以外の1つの特殊文字
-
-|Azure Active Directoryでログインする（プレビュー）
-|[無効]を選択
 
 |サブスクリプション
 |利用するサブスクリプションを選択
@@ -53,96 +31,97 @@ image::images/iotedge-vmconfig-basic.png[]
 |リソースグループ
 |[既存のものを使用]を選択し、先に作成した {rg-name} を選択
 
+|名前
+|任意のマシン名
+
 |場所
 |任意の場所を選択
+
+|可用性オプション
+|インフラストラクチャ冗長は必要ありません（デフォルトのまま）
+
+|イメージ
+|{ubuntu-version}
+
+|サイズ
+|（デフォルトのまま）
+
+|認証の種類
+|[パスワード]を選択
+
+|ユーザー名
+|任意のユーザー名 （例：{vmuser}）
+
+|パスワード
+|次の条件を満たす、任意のパスワード （例：{vmpassword}） +
+* 12-72文字 +
+* 1つの小文字、1つの大文字、1つの数字および "¥"または"-"以外の1つの特殊文字
+
+|Azure Active Directoryでログインする（プレビュー）
+|オフ
+
+|パブリック受信ポート
+|選択したポートを許可
+
+|受信ポートを選択
+|SSH(22)
+
 |===
-
-. [2 サイズ 仮想マシンのサイズの選択]でサイズを選択します。
 +
-（本ハンズオンでは 8GB 以上のメモリが割り当てられるスペックを選択します）
-+
-image::images/iotedge-vmconfig-size.png[]
+image::images/iotedge-vmconfig-basic.png[{w50}]
 
-. [3 設定 オプション機能の構成]でパブリック受信ポートを選択で"SSH(22)"を選択します。
+. [ディスク]で各種項目を設定します。
 +
 .設定項目と設定値
 [cols="2*", options="header"]
 |===
-
 |設定項目
 |設定値
 
-2+|高可用性
+|OSディスクの種類
+|HDDまたはSSD
 
-|可用性ゾーン
-|なし（デフォルトのまま）
-
-|可能性セット
-|なし（デフォルトのまま）
-
-2+|Storage
-
-|ディスクの種類
-|任意の種類を選択
-
-|マネージドディスクを使用
-|[はい]を選択
-
-2+|ネットワーク
-
-|Virtual Network
-|デフォルトのまま
-
-|サブネット
-|デフォルトのまま
-
-|パブリックIPアドレス
-|デフォルトのまま
-
-|ネットワークセキュリティグループ
-|Basic（デフォルトのまま）
-
-|パブリック受信ポートを選択
-|SSH(22)を選択
-
-2+|拡張機能
-
-|拡張機能
-|拡張機能なし（デフォルトのまま）
-
-2+|自動シャットダウン
-
-|自動シャットダウンを有効にする
-|オフ（デフォルトのまま）
-
-2+|監視
-
-|ブート診断
-|有効（デフォルトのまま）
-
-|ゲストOSの診断
-|無効（デフォルトのまま）
-
-|診断ストレージアカウント
-|新規作成 or 既存の利用
-
-2+|マネージドサービスID
-
-|Azure Active Directory に登録する
-|いいえ（デフォルトのまま）
-
-2+|バックアップ
-
-|バックアップ
-|無効（デフォルトのまま）
+|アンマネージドディスクをしよう
+|いいえ
 
 |===
 +
-image::images/iotedge-vmconfig-config.png[]
+image::images/iotedge-vmconfig-disk.png[]
+
+. [管理]で各種項目を設定します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|ブート診断
+|オン（デフォルトのまま）
+
+|OSのゲスト診断
+|オフ（デフォルトのまま）
+
+|診断ストレージアカウント
+|既存または新規作成
+
+|マネージドIDサービス
+|オフ（デフォルトのまま）
+
+|自動シャットダウンを有効
+|オフ（デフォルトのまま）
+
+|バックアップの有効化
+|オフ（デフォルトのまま）
+
+|===
++
+image::images/iotedge-vmconfig-disk.png[+
+image::images/iotedge-vmconfig-disk.png[{w80}]
 
 . [概要]で[作成]ボタンをクリックします。
 +
-image::images/iotedge-vmconfig-overview.png[]
+image::images/iotedge-vmconfig-overview.png[{w50}]
 
 
 ### タスク2：コンテナランタイムのインストール
@@ -151,7 +130,7 @@ image::images/iotedge-vmconfig-overview.png[]
 
 . 接続文字列を確認します。
 +
-VMのOverviewを開き[CONNECT]をクリックし、右に表示されるダイアログで[SSH]タブを選択します。
+VMのOverviewを開き[接続]をクリックし、右に表示されるダイアログで[SSH]タブを選択します。
 Login using VM local accountに記載されている文字列をコピーします。
 +
 image::images/iotedge-vm-sshstring.png[]
@@ -218,7 +197,7 @@ image::images/iotedge-device-save.png[]
 
 . IoT Edge Deviceを選択して接続文字列をコピーしておきます
 +
-image::images/iotedge-device-list.png[]
+image::images/iotedge-device-list.png[{w80}]
 +
 image::images/iotedge-device-copy-connectionstring.png[]
 

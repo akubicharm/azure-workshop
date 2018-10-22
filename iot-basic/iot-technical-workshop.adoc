@@ -2,7 +2,7 @@ include::variables.yaml[]
 
 # Azure IoT テクニカルワークショップ
 Global Blackbelt Sales Microsoft Corporation
-Sept-2018
+Oct-2018
 :toc:
 
 ## このハンズオンについて

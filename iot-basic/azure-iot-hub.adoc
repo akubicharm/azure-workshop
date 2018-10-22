@@ -61,6 +61,8 @@ image::images/iothub-hub-config-basic.png[{w50}]
 
 . Size and scale ウィンドウで設定を確認して、ウィンドウ下部の[Review + create]をクリックします。
 +
+Device-to-cloudパーティンションは、Advancedの項目の表示で確認できます。
++
 .設定項目と設定値
 [cols="2*", options="header"]
 |===
@@ -82,27 +84,24 @@ image::images/iothub-hub-config-size.png[{w50}]
 . [Review + create]ウィンドウで[Create]ボタンをクリックしてIoT Hubを作成します。
 
 
-. デプロイが開始されると、通知ウィンドウに表示されます。
+. デプロイが開始されると、デプロイの進行状況が表示されます。
 +
-image::images/iothub-hub-deploying.png[]
+image::images/iothub-hub-deploying.png[{w50}]
 
-. デプロイが完了すると、通知ウィンドウに完了メッセージが表示されます。[リソースに移動]をクリックし、設定したIoT Hubが作成されていることを確認します。
+. デプロイが完了すると、デプロイの進捗状況に「デプロイが完了しました」と表示されます。[リソースに移動]をクリックし、設定したIoT Hubが作成されていることを確認します。
 +
-image::images/iothub-hub-confirm.png[]
+image::images/iothub-hub-confirm.png[{w50}]
 
-. IoT Hubのメニューから[Endpoints]をクリックします
+. IoT Hubのメニューから[Built-in endpoints]をクリックします
 +
-image::images/iothub-endpoint-create.png[{w80}]
+image::images/iothub-endpoint-create.png[{w50}]
 
-. [エンドポイント]ウィンドウで組み込みエンドポイントの[Events]をクリックしてプロパティを開きます。
-+
-image::images/iothub-endpoint-config.png[]
-
-. [プロパティ]ウィンドウの[消費者グループ]に、既定の `$Default` に加えて2つの消費者グループを追加します。(消費者グループの名前の例 :  `timeseriesinsights` , `streamanalytics` )
+. [Built-in endpoints]ウィンドウの[CONSUMER GROUPS]に、既定の `$Default` に加えて2つの消費者グループを追加します。(消費者グループの名前の例 :  `timeseriesinsights` , `streamanalytics` )
 +
 消費者グループ(コンシューマグループ)は、以降のステップでIoT Hubに送信されたデバイスデータを取得するサービス(Stream Analytics, Time Series Insights)が使用するものです。
 +
-image::images/iothub-endpoint-properties.png[{w50}]
+image::images/iothub-endpoint-config.png[{w50}]
+
 
 ### タスク2：IoT Hubへのデバイス登録
 
@@ -114,23 +113,23 @@ image::images/iothub-hub-select.png[]
 
 . IoT HubのメニューのExplorersのセクションから[IoT devices]をクリックします。
 +
-image::images/iothub-device-explorer.png[{w50}]
+image::images/iothub-device-explorer.png[{w20}]
 
 . ウィンドウ上部の[+Add]をクリックします。
 +
-image::images/iothub-device-add.png[]
+image::images/iothub-device-add.png[{w80}]
 
-. [デバイスの追加]ウィンドウに{iothub-sample-device-name}と入力し、[Save]をクリックし、デバイスを登録します。ここで登録する文字列がデバイスIDとなります。
+. [デバイスの作成]ウィンドウに{iothub-sample-device-name}と入力し、[Save]をクリックし、デバイスを登録します。ここで登録する文字列がデバイスIDとなります。
 +
 image::images/iothub-device-config.png[{w50}]
 
 . [デバイスエクスプローラー]のデバイス一覧に、登録したデバイスが追加されていることを確認します。追加したデバイスをクリックすると、[デバイスの詳細]ウィンドウが表示されます。
 +
-image::images/iothub-device-confirm.png[]
+image::images/iothub-device-confirm.png[{w50}]
 
 . [デバイスの詳細]ウィンドウで、デバイスキーや接続文字列の確認や、デバイスツインやデバイスへのメッセージ送信、ダイレクトメソッドが利用できます。ここでは”Connection string (primary key)”の値をコピーしておきます。次のタスクで、コピーした接続文字列をデバイスのプログラムコード内に設定します。
 +
-image::images/iothub-device-details.png[]
+image::images/iothub-device-details.png[{w50}]
 
 
 ### タスク3：IoT Hubデバイスクライアントの開発
@@ -142,7 +141,7 @@ image::images/iothub-device-details.png[]
 +
 https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started
 +
-image::images/iothub-pi-gettingstarted.png[]
+image::images/iothub-pi-gettingstarted.png[{w50}]
 
 .. 上記URLをブラウザで開き、[START RAPBERRY PI SIMULATOR]をクリックします。
 
@@ -203,4 +202,4 @@ Message sent to Azure IoT Hub
 
 このタスクでは、作成したIoT Hubの[概要]をクリックし、使用状況を表示します。メッセージがカウントアップされていればデバイスからのテレメトリデータが受信できています。
 
-image::images/iothub-pi-telemetry.png[]
+image::images/iothub-pi-telemetry.png[{w50}]
