@@ -1,0 +1,120 @@
+## 演習: Time Series Insightsによるデータの可視化
+
+この演習では、IoT Hubで受信したデータをTime Series Insightsで表示します。
+
+[NOTE]
+====
+Time Series Insightsの詳細は下記URLに記載があります。
+
+https://docs.microsoft.com/ja-jp/azure/time-series-insights/time-series-insights-overview
+====
+
+Time Series Insights は時系列データを念頭に設計されたデータベースです。ほぼリアルタイムでのデータ探索が可能です。またTime Series Insights REST API を使用して新しいカスタム ソリューションを作成することもできます。既定のリテンション期間は31日間となっており、最大400日のデータ リテンション期間を構成できます。
+
+### タスク1：Time Series Insightsの作成
+
+このタスクでは、Azure上にTime Series Insightsを作成します。
+
+. 本演習で利用するリソースグループ（例. _iotws_）を表示し、ウィンドウ上部の[+追加]をクリックします。
+
+. Everythingウィンドウの検索ボックスで、 `Time Series Insights` と入力しリターンを入力します。
+
+. 検索結果の一覧の[Time Series Insights]をクリックします。
+
+. 表示された詳細ウィンドウ下部の[作成]をクリックします。
+
+. Time Series Insights environmentウィンドウの各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
+
+. 基本設定のパラメータを入力します。
++
+.Basicsの設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|環境名
+|例）_tsi_　（任意の文字列）
+
+|サブスクリプション
+|本演習で利用するAzureサブスクリプション
+
+|リソースグループ
+|例）_iotws_ +
+本演習で利用するリソースグループを選択
+
+|場所
+|米国東部（デフォルトのまま）
+
+|SKU
+|S1（デフォルトのまま）
+
+|Capacity
+|1（デフォルトのまま）
+
+|===
+
+. [Next: Event Source>>]をクリックして、イベントソースのパラメータを入力します。
++
+.Event Sourceの設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|Create an event source?
+|Yes
+
+|Name
+|iothub
+
+|Source type
+|IoT Hub
+
+|Select a Hub
+|Select existing
+
+|Subscription
+|本演習で利用するAzureサブスクリプションを選択
+
+|IoT Hub name
+|本演習で利用するIoT Hubを選択
+
+|Iot Hub access policy name
+|iothubowner
+
+|IoT Hub consumer group
+|tsi +
+※[New]をクリックして入力フィールドを有効にして、コンシューマーグループの名称を入力
+
+|Property Name
+|（空白）
+
+|===
+
+. [Review + create]をクリックして内容を確認し、[Create]をクリックします。
+
+
+### タスク2：Time Series Insightsでのデータ表示とカスタマイズ
+
+このタスクでは、作成したTime Series Insightsエクスプローラーへアクセスし、IoT Hubで受信した
+温度データと湿度データを表示します。
+
+. Azureポータル画面で本演習で利用するTime Series Insightsを選択します。
+
+. [概要]ウィンドウ上部の[環境を開く]をクリックします。 +
+※[Time Series Insights エクスプローラーのURL]がURLです。
+
+. Time Series Insightsのポータル画面が表示されます。
+
+. 温度データを表示するために、サイドメニューのMEASUREプルダウンを[Events]から[temperature]に変更します。
+
+. 湿度データを追加するために、サイドメニューの[Add]をクリックし、MEASUREプルダウンを[Events]から[humidity]に変更します。
+
+. より詳細なデータを確認するために、表示期間を調整します。紫色の両端をドラッグアンドドロップし、範囲を調整します。ポータル左上のメニューからも範囲設定ができます。
+
+. 左サイドメニューの[Interval size]を設定すると、グラフの描画粒度を調整することができます。Interval sizeごと平均の値がグラフに描画されています。
+
+. 表示するプロパティが１つの場合、ヒートマップを表示することができます。humidityのみ表示されるように、左側のPaneで[Only]をクリックして、Humidityのみ表示します。
+
+. 右側のPaneで[HEATMAP]を選択して、ヒートマップを表示します。

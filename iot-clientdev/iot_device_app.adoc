@@ -1,0 +1,389 @@
+## 演習：IoT Device サンプルアプリケーションの実行
+
+### タスク1: IoT Hubの作成
+
+このタスクでは、本演習で利用するリソースグループにIoT Hubを作成します。
+
+. 本演習で利用するリソースグループ（例. _iotws_）を選択します。
+. 画面上部の[+追加]をクリックします。
+
+. 検索フィールドに[IoT Hub]と入力します。
+
+. 検索結果の一覧から[IoT Hub]を選択し、画面右下の[作成]をクリックします。
+
+. 必要なパラメータを入力していきます。
++
+.Basicの設定値と項目
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|Subscription
+|本演習で利用するAzureサブスクリプション
+
+|Resource Group
+|例）_iotws_ +
+本演習で利用するリソースグループを選択します
+
+
+|Region
+|例）東日本 +
+※任意のリージョンを選択します
+
+|IoT Hub Name
+|例）_iothub1234_ +
+任意の名称を設定します。 +
+一意の名称にする必要があります
+
+|===
++
+[Next: Size and scale>>]をクリックします。
++
+.Size and scaleの設定値を項目
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|Price and scale tier
+|F1:Free tier
+
+|Number of S1 IoT units
+|1 （デフォルトのまま）
+
+|Advanced Settings.Device-to-cloud partitions.
+|1 （デフォルトのまま）
+
+|===
+
+. [Review + create]をクリックして内容を確認し、[Create]をクリックします。
+
+
+### タスク2: IoT Hubへのデバイス登録
+
+このタスクでは、IoT Hubにテレメトリデータを送信するデバイスを新規登録します。IoT Hub上でデバイスを新規登録し、デバイスIDとデバイスキー（認証キー）を発行します。
+
+[NOTE]
+====
+デバイスがIoT Hubにデータを送信するためには、事前にIoT Hubにデバイスを登録しておく必要があります。
+====
+
+. Azureポータル画面で本演習で利用するIoT Hubを選択します。
+
+. IoT HubのメニューのExplorerのセクションから[IoT devices]をクリックします。
+
+. ウィンドウ上部の[+Add]をクリックします。
+
+. [デバイスの作成]画面パラメータを入力してデバイスを登録します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|Device ID
+|例）_myiotdevice_ +
+※任意のIdを設定可能
+
+|Authentication type
+|Symmetric key (デフォルトのまま)
+
+|Primary Key, Secondary Key
+|（自動生成）
+
+|Auto-generate keys
+|Yes （デフォルトのまま）
+
+|Connect this device to an IoT Hub
+|Enable （デフォルトのまま）
+
+|Parent device (preview)
+|No parent device　（デフォルトのまま）
+
+|===
+
+. [Save]をクリックします。
+
+. デバイス一覧に追加したデバイスが表示されていることを確認します。
+
+### タスク2: IoT Device用仮想マシンの準備
+
+このタスクでは、IoTデバイスとして利用する仮想マシンを作成します。本演習では、Ubuntu 16.04 を利用します。
+
+. リソースグループの一覧から本演習で利用するリソースグループ （例. _iotws_） を選択します。
+
+. 画面上部の[+Add]をクリックし検索ウィンドウで `ubuntu` と入力しリターンキーを押します
+
+. 検索結果の一覧から[Ubuntu Server 18.04 LTS]を選択して[Create]をクリックします。
++
+image::images/ubuntu_server_18.04_lts.png[]
+
+. 仮想マシン作成のパラメータを設定します。
++
+.Basicの設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|Subscription
+|本演習で利用するサブスクリプションを選択
+
+|Resource Group
+|例）_iotws_ （本演習で利用するリソースグループを選択）
+
+|Virtual machine name
+|例)_myiotdevice_　（任意のマシン名）
+
+|Region
+|東日本
+
+|Availability options
+|No infrastructured redundancy required （デフォルトのまま）
+
+|image
+|Ubuntu Server 16.04 LTS
+
+|Size
+|Standard D2sv3　（デフォルトのまま）
+
+|Authentication type
+|Password
+
+|Username
+|例）_myadmin_ （任意のユーザ名）
+
+|Password
+|例）_#myadmin1234_ （任意の文字列 12文字以上、記号を含む）
+
+|Confirm Password
+|上記と同じ文字列
+
+|Login with Azure Active Directory(preview)
+|Off
+
+|Public inbound ports
+|Allow selected ports
+
+|seleceted inbound ports
+|SSH(22)
+
+|===
++
+[Next: Disks>]をクリックします。
++
+.Disksの設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|OS disk type
+|Standard SSD
+
+|===
++
+[Review + create]をクリックします。
++
+※Networking, Management, Advanced, Tags はデフォルトのまま変更なしなので、設定はスキップします。
++
+レビューが完了したら[Create]をクリックして仮想マシンを作成します。
+
+### タスク3: IoTデバイスの環境設定
+
+このタスクでは作成した仮想マシンに IoT Device SDKなどの設定をします。
+
+[NOTE]
+====
+詳細はマニュアルを参照
+https://docs.microsoft.com/ja-jp/azure/iot-hub/quickstart-send-telemetry-python
+====
+
+. クラウドシェルをBashモードで実行します。
+
+. 作成した仮想マシンを選択し、画面上部の[Connect]をクリックします。
+
+. Login using VM local accountのフィールドに記載されているSSHコマンドの文字列をコピーします。
+
+. コピーした文字列をクラウドシェルのBashターミナルでペースとして、仮想マシンにSSHでログインします。
+
+. "Are you sure you want to continue connecting (yes/no)?" と表示されるたら、`yes` を入力しリターンキーを入力します。
+
+. パスワード（例._#myadmin1234_）を入力します。
+
+. sudo コマンドで root ユーザにスイッチします。
++
+```
+sudo -i
+```
+
+. Azure IoT SDKの準備をします。
++
+```
+apt -y update
+apt -y upgrade
+apt -y install libcurl4-nss-dev libcurl4-openssl-dev
+apt -y install python-pip unzip
+```
+
+. myadminユーザに戻ります。
++
+```
+exit
+```
+
+### タスク4: サンプルアプリケーションの準備
+
+Azure DevOpsのソースコードリポジトリに、IoTデバイスのサンプルアプリケーション用のリポジトリを準備します。
+
+. Azure DevOpsにログインします。
+
+. 本演習で利用するプロジェクト（例. _iotdeviceapp_）を選択します。
+
+. 左側のPaneで[Repos]を選択します。
+
+. 左側のPane上部のプロジェクト名（例. _iotdeviceapp_）の右側の[+]をクリックし、プロダウンメニューから[New Repository]を選択します。
+
+. _iotdeviceapp_ リポジトリを選択します。
+
+.  作成したリポジトリの詳細画面の下にある "or import a repository" セクションにある[import]をクリックします。
+
+. Gitリポジトリのインポートダイアログに必要なパラメータを入力します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|Source Type
+| Git
+
+|Clone URL
+|https://github.com/Azure-Samples/azure-iot-samples-python
+
+|===
+
+. [import]をクリックし、importが完了するまで待ちます。
+
+. Azure DevOpsのポータルで _iotdeviceapp_ 表示し、`iot-hub/Quickstarts/simulated-device-2/SimulatedDevice.py` を開きます。
+
+. 右側のPaneの[Edit]をクリックし、ソースコードの編集を開始します。
+
+. IoTデバイスの接続文字列をコピーします。
++
+image::images/iothub_iotdevice_connstr.png[]
+
+. IoT Hubへに接続できるように、サンプルプログラムの接続文字列の定義（19行目あたり）をコピーした接続文字列で置き換えます。
++
+変更前
++
+```
+CONNECTION_STRING = "{Your IoT hub device connection string}"
+```
++
+変更後の例
++
+```
+CONNECTION_STRING = "HostName=iotwshub1234.azure-devices.net;DeviceId=iotdevice;SharedAccessKey=kbpVCJXfY01hCuJ6HpijkBC6lL+0pi2fa8e0/VXfKLY="
+```
+
+. 温度を乱数で設定している部分(73行目あたり）を編集して、急上昇や急降下が発生するように変更します。
++
+変更前
++
+```
+            temperature = TEMPERATURE + (random.random() * 15)
+```
++
+変更後
++
+```
+# temperature = TEMPERATURE + (random.random() * 15)
+if (random.uniform(-1, 10) < 0):
+  temperature = TEMPERATURE + random.uniform(100, -100)
+else:
+  temperature = TEMPERATURE
+```
+
+. [Commit]をクリックして変更を保存します。
+
+. Azure Portalのクラウドシェルに戻り、IoTデバイスの仮想マシンにSSHでログインします。
+
+. 先ほど編集したサンプルアプリケーションを `git clone` コマンドでIoTデバイスの仮想マシンにクローンします。
++
+```
+git clone https://dev.azure.com/[YOUR_NAME]/iotdemo/_git/iotdevice_python
+```
+
+. サンプルアプリケーションのディレクトリに移動し IoT Hub Device SDKをインストールします。
++
+```
+cd azure-iot-samples-python-master/iot-hub/Quickstarts/simulated-device-2
+pip install azure-iothub-device-client
+```
+
+. サンプルアプリケーションを実行します。
++
+```
+python SimulatedDevice.py
+```
+
+. IoT Hub の概要ページでメッセージ数を受信していることを、メッセージ数をみて確認します。
+
+. ターミナルで `Ctrl-C` を入力し、アプリケーションを停止します。
+
+
+
+
+
+
+---
+*サンプルアプリケーションをそのまま実行する場合*
+
+### タスク5: サンプルアプリケーションの実行
+
+. Azure Portalで本演習で利用するIoT Hubを選択します。
+
+. IoT Hubの概要画面で、タスク1で登録したIoT Deviceを選択して詳細画面を表示します。
++
+image::images/iothub_iotdevice_list.png[]
+
+
+. サンプルアプリケーションをgithubからダウンロードして、展開します。
++
+```
+wget https://github.com/Azure-Samples/azure-iot-samples-python/archive/master.zip
+unzip master.zip
+```
+
+. サンプルアプリケーションのディレクトリに移動し IoT Hub Device SDKをインストールします。
++
+```
+cd azure-iot-samples-python-master/iot-hub/Quickstarts/simulated-device-2
+pip install azure-iothub-device-client
+```
+
+. IoT Deviceの接続文字列をコピーします。
++
+image::images/iothub_iotdevice_connstr.png[]
+
+. IoT Hubへに接続できるように、サンプルプログラムの19行目の接続文字列をコピーした接続文字列で置き換えます。
++
+変更前
++
+```
+CONNECTION_STRING = "{Your IoT hub device connection string}"
+```
++
+_{Your IoT hub device connection string}_ を置き換えます。
+
+. サンプルアプリケーションを実行します。
++
+```
+python SimulatedDevice.py
+```
+
+. IoT Hubの概要ページでメセージが受信されていることを確認します。
+
+. ターミナルで `Ctrl-C` を入力し、SimulatedDevice.pyの実行を停止します。

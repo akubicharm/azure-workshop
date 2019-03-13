@@ -1,0 +1,25 @@
+# Azure IoT Workshop - クラウドで異常検知
+
+## 目的
+Azure IoTと関連するサービスを利用して、テレメトリデータの異常検知と通知を行うアプリケーションの開発を体験していきます。
+
+このワークショップでは、Azure Function を利用した外部サービスとの連携など、現実的な利用に即した仕組みを構築します。
+
+## 対象
+アプリケーション開発経験のある人
+
+## 利用するサービス
+
+* Azure IoT Hub
+* Azure Stream Analytics
+* Azure Function Apps
+* Azure DevOps
+* 仮想マシン(Ubuntu)
+
+## 目次
+
+. file:///./prepare_azure.adoc[Azure環境の準備]
+. file:///./iot_device_app.adoc[IoT Deviceアプリケーションの開発]
+. file:///./timeseries_insights.aodc[Timeseries Insightsでの可視化]
+. file:///./function_send_msg_to_slack.adoc[Function Appの作成]
+. file:///./asa_on_cloud_anomaly_detection.adoc[Azure Stream Analyticsでの異常検知の処理]
