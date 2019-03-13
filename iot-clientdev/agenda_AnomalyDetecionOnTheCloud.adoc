@@ -18,8 +18,8 @@ Azure IoTと関連するサービスを利用して、テレメトリデータ�
 
 ## 目次
 
-. file:///./prepare_azure.adoc[Azure環境の準備]
-. file:///./iot_device_app.adoc[IoT Deviceアプリケーションの開発]
-. file:///./timeseries_insights.aodc[Timeseries Insightsでの可視化]
-. file:///./function_send_msg_to_slack.adoc[Function Appの作成]
-. file:///./asa_on_cloud_anomaly_detection.adoc[Azure Stream Analyticsでの異常検知の処理]
+. Azure環境の準備 <prepare_azure.adoc>
+. IoT Deviceアプリケーションの開発 <iot_device_app.adoc>
+. Timeseries Insightsでの可視化 <timeseries_insights.aodc>
+. Function Appの作成 <function_send_msg_to_slack.adoc>
+. Azure Stream Analyticsでの異常検知の処理 <asa_on_cloud_anomaly_detection.adoc>

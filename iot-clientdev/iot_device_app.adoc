@@ -26,7 +26,6 @@
 |例）_iotws_ +
 本演習で利用するリソースグループを選択します
 
-
 |Region
 |例）東日本 +
 ※任意のリージョンを選択します
@@ -37,8 +36,10 @@
 一意の名称にする必要があります
 
 |===
-+
-[Next: Size and scale>>]をクリックします。
+
+. [Next: Size and scale>>]をクリックします。
+
+. Size and Scaleのパラメータを入力します。
 +
 .Size and scaleの設定値を項目
 [cols="2*", options="header"]
@@ -112,6 +113,8 @@
 
 このタスクでは、IoTデバイスとして利用する仮想マシンを作成します。本演習では、Ubuntu 16.04 を利用します。
 
+※Pythonから利用するライブラリのバージョンの関係で、16.04を利用します。
+
 . リソースグループの一覧から本演習で利用するリソースグループ （例. _iotws_） を選択します。
 
 . 画面上部の[+Add]をクリックし検索ウィンドウで `ubuntu` と入力しリターンキーを押します
@@ -144,7 +147,8 @@ image::images/ubuntu_server_18.04_lts.png[]
 |No infrastructured redundancy required （デフォルトのまま）
 
 |image
-|Ubuntu Server 16.04 LTS
+|*Ubuntu Server 16.04 LTS* +
+※ここで 16.04のイメージを指定します。
 
 |Size
 |Standard D2sv3　（デフォルトのまま）
@@ -171,8 +175,10 @@ image::images/ubuntu_server_18.04_lts.png[]
 |SSH(22)
 
 |===
-+
-[Next: Disks>]をクリックします。
+
+. [Next: Disks>]をクリックします。
+
+. Disksのパラメータを入力します。
 +
 .Disksの設定項目と設定値
 [cols="2*", options="header"]
@@ -184,12 +190,12 @@ image::images/ubuntu_server_18.04_lts.png[]
 |Standard SSD
 
 |===
-+
-[Review + create]をクリックします。
+
+. [Review + create]をクリックします。
 +
 ※Networking, Management, Advanced, Tags はデフォルトのまま変更なしなので、設定はスキップします。
-+
-レビューが完了したら[Create]をクリックして仮想マシンを作成します。
+
+. レビューが完了したら[Create]をクリックして仮想マシンを作成します。
 
 ### タスク3: IoTデバイスの環境設定
 
@@ -207,9 +213,9 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/quickstart-send-telemetry-python
 
 . Login using VM local accountのフィールドに記載されているSSHコマンドの文字列をコピーします。
 
-. コピーした文字列をクラウドシェルのBashターミナルでペースとして、仮想マシンにSSHでログインします。
+. コピーした文字列をクラウドシェルのBashターミナルに貼り付けて、仮想マシンにSSHでログインします。
 
-. "Are you sure you want to continue connecting (yes/no)?" と表示されるたら、`yes` を入力しリターンキーを入力します。
+. "Are you sure you want to continue connecting (yes/no)?" と表示されるたら、`yes` を入力しリターンを入力します。
 
 . パスワード（例._#myadmin1234_）を入力します。
 
@@ -240,15 +246,15 @@ Azure DevOpsのソースコードリポジトリに、IoTデバイスのサン�
 
 . Azure DevOpsにログインします。
 
-. 本演習で利用するプロジェクト（例. _iotdeviceapp_）を選択します。
+. 本演習で利用するプロジェクト（例. _iotws_）を選択します。
++
+image::images/devops_org.png[]
 
-. 左側のPaneで[Repos]を選択します。
+. 左側のメニューで[Repos]をクリックします。
 
-. 左側のPane上部のプロジェクト名（例. _iotdeviceapp_）の右側の[+]をクリックし、プロダウンメニューから[New Repository]を選択します。
-
-. _iotdeviceapp_ リポジトリを選択します。
-
-.  作成したリポジトリの詳細画面の下にある "or import a repository" セクションにある[import]をクリックします。
+. リポジトリのプルダウンメニューから[Import repository]を選択します。
++
+image::images/devops_import.png[]
 
 . Gitリポジトリのインポートダイアログに必要なパラメータを入力します。
 +
@@ -332,10 +338,6 @@ python SimulatedDevice.py
 . IoT Hub の概要ページでメッセージ数を受信していることを、メッセージ数をみて確認します。
 
 . ターミナルで `Ctrl-C` を入力し、アプリケーションを停止します。
-
-
-
-
 
 
 ---
