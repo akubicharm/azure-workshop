@@ -1,9 +1,11 @@
-# Azure IoT Workshop - クラウドで異常検知
+# Azure IoT ハンズオン - クラウドからリアルタイムな異常検知
 
 ## 目的
 Azure IoTと関連するサービスを利用して、テレメトリデータの異常検知と通知を行うアプリケーションの開発を体験していきます。
 
-このワークショップでは、Azure Function を利用した外部サービスとの連携など、現実的な利用に即した仕組みを構築します。
+このワークショップでは、Azure Function Appを利用して外部サービスとの連携など、現実的な利用に即した仕組みを構築します。
+
+image::images/anomaly_detection_on_the_cloud.png[]
 
 ## 対象
 アプリケーション開発経験のある人
@@ -14,7 +16,7 @@ Azure IoTと関連するサービスを利用して、テレメトリデータ�
 * Azure Stream Analytics
 * Azure Function Apps
 * Azure DevOps
-* 仮想マシン(Ubuntu)
+* Linux VM
 
 ## 目次
 
