@@ -23,7 +23,7 @@ Time Series Insights は時系列データを念頭に設計されたデータ�
 
 . 表示された詳細ウィンドウ下部の[作成]をクリックします。
 
-. Time Series Insights environmentウィンドウの各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
+. Time Series Insights環境の作成ウィンドウの各設定値を入力後、ウィンドウ下部にある[作成]をクリックします。
 
 . 基本設定のパラメータを入力します。
 +
@@ -54,45 +54,45 @@ Time Series Insights は時系列データを念頭に設計されたデータ�
 
 |===
 
-. [Next: Event Source>>]をクリックして、イベントソースのパラメータを入力します。
+. [次へ: イベントソース>>]をクリックして、イベントソースのパラメータを入力します。
 +
-.Event Sourceの設定項目と設定値
+.イベントソースの設定項目と設定値
 [cols="2*", options="header"]
 |===
 |設定項目
 |設定値
 
-|Create an event source?
-|Yes
+|イベントソースを作成しますか?
+|はい
 
-|Name
+|名前
 |iothub
 
-|Source type
+|ソースの種類
 |IoT Hub
 
-|Select a Hub
+|ハブを選択
 |Select existing
 
-|Subscription
+|サブスクリプション
 |本演習で利用するAzureサブスクリプションを選択
 
 |IoT Hub name
-|本演習で利用するIoT Hubを選択
+|（本演習で利用するIoT Hubを選択）
 
-|Iot Hub access policy name
+|IoTハブアクセスポリシー名
 |iothubowner
 
-|IoT Hub consumer group
+|IoTハブコンシューマーグループ
 |tsi +
-※[New]をクリックして入力フィールドを有効にして、コンシューマーグループの名称を入力
+※[新規]をクリックして入力フィールドを有効にして、コンシューマーグループの名称を入力
 
-|Property Name
+|プロパティ名
 |（空白）
 
 |===
 
-. [Review + create]をクリックして内容を確認し、[Create]をクリックします。
+. [確認と作成]をクリックして内容を確認し、[Create]をクリックします。
 
 
 ### タスク2：Time Series Insightsでのデータ表示とカスタマイズ

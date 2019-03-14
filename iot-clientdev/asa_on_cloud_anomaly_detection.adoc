@@ -13,34 +13,34 @@
 
 . パラメータを入力して Stream Analyticsを作成します。
 +
-.設定値を項目
+.設定項目と設定値
 [cols="2*", options="header"]
 |===
 |設定項目
 |設定値
 
-|Job name
+|ジョブ名
 |asa
 
-|Subscription
+|サブスクリプション
 |本演習で利用するAzureサブスクリプションを選択します
 
-|Resource Group
+|リソースグループ
 |例）_iotws_ +
 本演習で利用するリソースグループを選択します。
 
-|Location
+|場所
 |東日本
 
-|Hosting environment
-|Cloud
+|ホスティング環境
+|クラウド
 
-|Streaming units
+ストリーミングユニット
 |3 （デフォルト)
 
 |===
 
-. [Create]をクリックします。
+. [作成]をクリックします。
 
 
 ### タスク2: Azure Stream Analyticsの入力リソースの設定
@@ -49,61 +49,61 @@
 
 . Azure Portal画面で本演習で利用するリソースグループ(例. _iotws_)の中からIoT Hubを選択して概要画面を表示します。
 
-. IoT HubのメニューのSettingsから[Build-in endpoints] を選択します。
+. IoT Hubの左側のメニューの設定から[組み込みのエンドポイント] を選択します。
 
 . コンシューマーグループの入力フィールドに `asa` と入力し、リターンを入力します。
 +
 ※自動保存が終わるまで待ちます。
 
-. Azure Portal画面で本演習で利用するリソースグループの中からStream Analyticsを選択します。
+. Azureポータル画面で本演習で利用するリソースグループの中からStream Analyticsを選択します。
 
-. Stream AnalyticsのメニューからのJob topologyから[Inputs] を選択します。
+. Stream Analyticsの左側のメニューのジョブトポロジから[入力] を選択します。
 
-. 右側のPaneで[+Add stream input]をクリックし、プルダウンメニューから[IoT Hub]を選択します。
+. 右側のPaneで[+ストリーム入力のp追加]をクリックし、プルダウンメニューから[IoT Hub]を選択します。
 
 . パラメータを入力して、入力ソースを登録します。
 +
-.設定値を項目
+.設定項目と設定値
 [cols="2*", options="header"]
 |===
 |設定項目
 |設定値
 
-|Input alias
+|入力のエリアス
 |iothub +
 ※この値はStream Analyticsのクエリを記述する際に利用します
 
 |IoT Hubの選択方法
-|Select IoT Hub from your subscription
+|サブスクリプションからIoT Hubを選択する
 
-|Subscription
+|サブスクリプション
 |本演習で利用するAzureサブスクリプションを選択します
 
 |IoT Hub
 |例）_iothub1234_ +
 本演習で利用するIoT Hubを選択します。
 
-|Endpoints
-|Messaging
+|エンドポイント
+|メッセージング
 
-|Shared access policy name
+|共有アクセスポリシー名
 |iothubowner
 
-|Comsumer group
+|コンシューマーグループ
 |asa
 
-|Event serialization format
+|イベントシリアル化形式
 |JSON
 
-|Encoding
+|エンコード
 |UTF-8
 
-|Event compression type
-|None
+|イベントの圧縮タイプ
+|なし
 
 |===
 
-. [Save]をクリックします。
+. [保存]をクリックします。
 
 
 ### タスク3: Azure Stream Analyticsの出力ソース設定(Blob)
@@ -116,64 +116,105 @@
 
 . 検索フィールドに `storage account` と入力し、リターンを入力します。
 
-. 検索結果の一覧から[Storage account]を選択して、[Create]をクリックします。
+. 検索結果の一覧から[ストレージアカウント]を選択して、[作成]をクリックします。
 
 . パラメータを入力して Storage Account を作成します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|設定項目
+|設定値
+
+|サブスクリプション
+|本演習で利用するサブスクリプション
+
+|リソースグループ
+|例）_iotws_
+
+|ストレージアカウント名
+|例）_iotwsstorage_
+
+|場所
+|東日本
+
+|パフォーマンス
+|Standard
+
+|アカウントの種類
+|StorageV2（汎用 v2）　（デフォルトのまま）
+
+|レプリケーション
+|読み取りアクセス地理冗長ストレージ(RA-GRS)
+
+|アクセス層（既定）
+|ホット
+
+|===
+
+. [確認および作成]をクリックして、検証画面を表示します。
+
+. 検証画面で内容を確認し、[作成]をクリックします。
 
 . Azure Portal画面で本演習で利用するリソースグループの中から Stream Analyticsを選択します。
 
 . Stream AnalyticsのメニューのJob topologyの中から[Outputs]を選択します。
 
-. 右側のPaneで[+Add]をクリックし、プルダウンメニューから[Blob Storage]を選択します。
+. 右側のPaneで[+追加]をクリックし、プルダウンメニューから[Blobストレージ]を選択します。
 
 . パラメータを入力し、出力リソースを登録します。
 +
-.設定値を項目
+.設定項目と設定値
 [cols="2*", options="header"]
 |===
 |設定項目
 |設定値
 
-|Output alias
+|出力エリアス
 |blob
 
-|Blobストレージの設定方式
-|Select Blob storage from your subscriptions
+|（Blobストレージの選択方法）
+|サブスクリプションからBlob Storageを選択する
 
-|Subscription
+|サブスクリプション
 |本演習で利用するAzureサブスクリプションを選択
 
-|Srtorage Account
-|本タスクの前半で作成したストレージアカウントを選択
+|ストレージアカウント
+|例）_iotwsstorage_ +
+本タスクの前半で作成したストレージアカウントを選択
 
-|Container
-|Create new
+|コンテナ
+|新規作成
 
 |（コンテナ名）
 |rawdata
 
-|Path pattern
+|パスパターン
 |{date} +
 ※Path patternを指定しないばいな、Blob containerにフラットにファイルが生成されます。
 
-|Date format
+|日付の形式
 |YYYY-MM-DD
 
-|Event serialization fformat
+|時刻の形式
+|（入力不可）
+
+|イベントシリアルか形式
 |JSON
 
-|Encoding
+|エンコード
 |UTF-8
 
-|format
-|Line separated
+|フォーマット
+|改行区切り
 
 |===
 
-. [Save]をクリックします。
+. [保存]をクリックします。
 
 #### タスク4: Blobストレージへの出力
-. Azure Stream AnalyticsのメニューのJob topologyの中から[Query]を選択します。
+. Azure Stream Analyticsの左側のメニューの *ジョブトポロジ* の[クエリ]をクリックします。
 
 . 右側のPaneでクエリを編集します。
 +
@@ -186,11 +227,11 @@ FROM
     iothub
 ```
 
-. [Save]をクリックしてクエリを保存します。
+. [保存]をクリックしてクエリを保存します。
 
-. Stream Analyticsのメニューの[Overview]をクリックします。
+. Stream Analyticsのメニューの[概要]をクリックします。
 
-.  右側のPaneから[> Start]をクリックし、表示されたダイアログでJob output start timeが[Now]になっていることを確認し、[Start]をクリックします。
+.  右側のPaneから[> 開始]をクリックし、表示されたダイアログでJob output start timeが[現在]になっていることを確認し、[開始]をクリックします。
 
 . Azure Portal画面で本演習で利用するIoT Deviceの仮想マシンを選択し、右側のPaneの[Connect]をクリックします。
 
@@ -224,43 +265,43 @@ python SimulatedDevice.py
 
 . Azure Portal画面で本演習で利用するリソースグループの中からStream Analyticsを選択します。
 
-. Stream AnalyticsのメニューのJob topologyから[Outputs] を選択します。
+. Stream Analyticsの左側のメニューの *ジョブトポロジ* から[出力] を選択します。
 
-. 右側のPaneで[+Add]をクリックし、プルダウンメニューから[Azure Function]を選択します。
+. 右側のPaneで[+追加]をクリックし、プルダウンメニューから[Azure関数]を選択します。
 
 . パラメータを入力して、入力ソースを登録します。
 +
-.設定値を項目
+.設定項目と設定値
 [cols="2*", options="header"]
 |===
 |設定項目
 |設定値
 
-|Output alias
+|出力エリアス
 |slack
 
 |IoT Hubの選択方法
-|Select IoT Hub from your subscription
+|サブスクリプションからAzure関数を選択する
 
-|Subscription
+|サブスクリプション
 |本演習で利用するAzureサブスクリプションを選択します
 
 |Functio app
 |例）_slackfunc1234_ +
 Slackにメッセージを送信するFunctionを選択します
 
-|Function
+|関数
 |HttpTriggerSlack
 
-|Max Batch Size
+|最大バッチサイズ
 |（空白）
 
-|Max barch count
+|最大バッチカウント
 |（空白）
 
 |===
 +
-[Save]をクリックします。
+[保存]をクリックします。
 
 ### タスク6: Azure Functionへの出力
 
@@ -268,7 +309,7 @@ Slackにメッセージを送信するFunctionを選択します
 
 . Azureポータル画面で本演習で利用するAzure Stream Analyticsを選択します。
 
-. Azure Stream AnalyticsのメニューのJob topologyの[Query]をクリックします。
+. Azure Stream Analyticsの左側のメニューの *ジョブトポロジ* の[クエリ]をクリックします。
 
 . 右側のPaneでクエリを編集し、先ほどのクエリの先頭に次のクエリを付け足します。
 +
@@ -301,7 +342,7 @@ SELECT
         SpikeAndDipScore,
         IsSpikeAndDipAnomaly
 INTO
-    slackfunc
+    slack
 FROM
     AnomalyDetectionStepResult
 WHERE
@@ -376,23 +417,23 @@ AnomaryDetection_SpikeAndDip([値], [信頼度], [履歴サイズ],[モード])
 
 このタスクでは、IoT Deviceから送信されたテレメトリデータをStream Analyticsでクエリ処理し、温度の急上昇、急降下があった場合にSlackにメッセージが送信されていることを確認します。
 
-. Azure Portal画面で本演習で利用するStream Analyticsを選択します。
+. Azure ポータルl画面で本演習で利用するStream Analyticsを選択します。
 +
-* 左側のメニューで[Resource groups]をクリック
+* 左側のメニューで[リソースグループ]をクリック
 * リソースグループ一覧でリソースグループ（例. _iotws_）をクリック
 * 一覧からStream Analytics(例. _asa_)をクリック
 
-. 画面上部の[>Start]をクリックして、ストリーミング処理を開始します。
+. 画面上部の[>開始]をクリックして、ストリーミング処理を開始します。
 
 . Azure Portal画面で本演習で利用するIoT Device用の仮想マシンを選択します。
 +
-* 左側のメニューで[Resource groups]をクリック
+* 左側のメニューで[リソースグループ]をクリック
 * リソースグループ一覧でリソースグループ（例. _iotws_）をクリック
 * 一覧からIoT Device用の仮想まちんをクリック
 
-. 右側のPane上部の[Connect]をクリックしてダイアログを表示し、SSHコマンドの文字列をコピーします。
+. 右側のPane上部の[接続]をクリックしてダイアログを表示し、SSHコマンドの文字列をコピーします。
 
-. Azure Portal画面上部の[>_]をクリックし、Cloud Shellを実行します。
+. Azureポータル画面上部の[>_]をクリックし、Cloud Shellを実行します。
 
 . Cloud ShellのターミナルにSSHコマンドをペースとし、IoT DeviceにSSHでログインします。
 

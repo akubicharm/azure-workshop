@@ -61,11 +61,23 @@ image::images/devops_import.png[]
 ### タスク3: Azure Functionアプリケーションの編集
 . Slackのワークスペースの左側のメニューで[App]をクリックします。
 
-. Incoming Webhookをクリックします。
+. アプリ一覧画面の検索フィールドに `Incoming webhook` と入力しします。
 
-. Incoming Webhook設定ダイアログの[設定]をクリックします。
+. 検索結果の一覧からIncoming Webhookの[インストール]をクリックします。
++
+image::images/slack_webhook_install.png[]
+
+. Incoming Webhook設定ダイアログの[設定を追加]をクリックします。
++
+image::images/slack_webhook_addconfig.png[]
+
+. 設定画面でメッセージを送信するチャンネルを選択し、[Incoming Webhookインテグレーションの追加]をクリックします。
++
+image::images/slack_webhook_addchannel.png[]
 
 . Webhook URLをコピーします。
++
+image::images/slack_webhook_copyurl.png[]
 
 . Azure DevOpsのポータルに戻り、左側のメニューでReposメニューの[Files]をクリックします。
 
@@ -83,115 +95,115 @@ image::images/devops_import.png[]
 
 . Azureポータル画面に戻ります。
 
-. 左側のメニューで[+ Create a resource]をクリックします。
+. 左側のメニューで[+ リソースの作成]をクリックします。
 
 . 検索フィールドに `function app` と入力して、リターンを入力します。
 
-. 検索結果の一覧から[Function App]を選択し、[Create]をクリックします。
+. 検索結果の一覧から[Function App]を選択し、[作成]をクリックします。
 
 . Function App作成用のパラメータを入力します。
 +
-.設定値と項目
+.設定項目と設定値
 [cols="2*", options="header"]
 |===
 
-|項目
+|設定項目
 |設定値
 
-|App Name
+|アプリ名
 |例）_func1234_　+
 URLが一意となる文字列
 
-|Subscription
+|サブスクリプション
 |本演習で利用するサブスクリプション
 
-|Resource Group
-|Create Networking
+|リソースグループ
+|新規作成
 
 |OS
 |Windows
 
-|Hosting Plan
-|Consumption Plan
+|ホスティングプラン
+|従量課金プラン
 
-|Location
-|Japan East
+|場所
+|東日本
 
-|Runtime Stack
-|.Networking
+|ランタイムスタック
+|.NET
 
 |Storage
-|Create Networking
+|新規作成
 
 |===
 
-. [Create]をクリックして、Function Appを作成します。
+. [作成]をクリックして、Function Appを作成します。
 +
 デプロイが完了するまで待ちます。
 
 . Azureポータル画面の左側のメニューで[Function Apps]をクリックし、表示されたFunction Apps一覧から作成したFunction App（例. _func1234_）をクリックします。
 
-. 右側のPane上部の[Platform features]をクリックします。
+. 右側のPane上部の[プラットフォーム機能]をクリックしてメニューを表示し、[デプロイセンター]をクリックします。
 +
 image://images/func_deploymentcenter.png[]
 
-. Deployment Centerウィザードの"1. SOURCE CONTROL"で、[Azure Repos]を選択し[Continue]をクリックします。
+. Deployment Centerウィザードの"1. ソース管理"で、[Azure Repos]を選択し[続行]をクリックします。
 
-. Deployment Centerウィザードの"2. BUILD PROVIDER"で[Azure Pipelines]を選択し、[Continue]をクリックします。
+. Deployment Centerウィザードの"2. ビルドプロバイダー"で[Azure Pipelines]を選択し、[続行]をクリックします。
 
-. Deployment Centerウィザードの"3. CONFIGURE"でパラメータを入力し[Continue]をクリックします。
+. Deployment Centerウィザードの"3. 構成"でパラメータを入力し[続行]をクリックします。
 +
-.設定値と項目
+.設定項目と設定値
 [cols="2*", options="header"]
 |===
 
-|項目
+|設定項目
 |設定値
 
 |Azure DevOps Organization
 |（Azure DevOpsを利用するユーザ名）
 
-|Project
+|プロジェクト
 |iotws
 
-|Repository
-|iotfunc
+|リポジトリ
+|funcCallSlack
 
-|Branch
+|ブランチ
 |master
 
 |Function App type
 |Script Function App
 
-|Working Directory
+|作業ディレクトリ
 |app
 
 |===
 
-. Deployment Centerウィザード"4. DEPLOY TO STAGING"でパラメータを入力し[Continue]をクリックします。
+. Deployment Centerウィザード"4. ステージングにデプロイする"でパラメータを入力し[続行]をクリックします。
 +
-.設定値と項目
+.設定項目と設定値
 [cols="2*", options="header"]
 |===
 
 |項目
 |設定値
 
-|Enable Deployment Slot
-|No
+|デプロイスロットを有効にする
+|いいえ
 
 |===
 
-. Deployment Centerウィザード"5. SUMMARY"でないようを確認し[Finish]をクリックします。
+. Deployment Centerウィザード"5. 概要"でないようを確認し[完了]をクリックします。
 
 . Azure DepOpsポータルで、ビルド・デプロイが始まっていることを確認し、完了するまで待ちます。
 
 
 ### タスク5: Azure Functionの動作確認
 
-このタスクでは、作成したFunctionの動作確認をAzure Portal画面で行います。
+このタスクでは、作成したFunctionの動作確認をAzureポータル画面で行います。
 
-. Azure Portal画面の左側のメニューから[Function Apps]を選択します。
+. Azureポータル画面の左側のメニューから[Function Apps]を選択します。
 
 . Function Apps一覧から作成したFunction App -> Function(HttpTriggerSlack)を選択します。
 
