@@ -1,4 +1,5 @@
-# Azure IoT ハンズオン - クラウドからリアルタイムな異常検知
+
+## Azure IoT ハンズオン - クラウドからリアルタイムな異常検知
 
 ## 目的
 Azure IoTと関連するサービスを利用して、テレメトリデータの異常検知と通知を行うアプリケーションの開発を体験していきます。
@@ -7,8 +8,12 @@ Azure IoTと関連するサービスを利用して、テレメトリデータ�
 
 image::images/anomaly_detection_on_the_cloud.png[]
 
+IoT Deviceのアプリケーションは、Azure IoT Device SDK(Python)を利用したサンプルプログラムを、Azure Function Appは C#Scriptを利用したサンプルプログラムを利用します。
+Azure DevOpsのリポジトリの編集機能を利用して、アプリケーションの編集、Azure DevOpsのパイプラインを利用したAzure Function Appのデプロイを行います。
+
 ## 対象
-Azure IoTを利用したサービスの設計や開発に興味のある人
+Azure IoTを利用したサービスの設計や開発に興味のある人。
+
 
 ## 利用するサービス
 
@@ -17,6 +22,11 @@ Azure IoTを利用したサービスの設計や開発に興味のある人
 * Azure Function Apps
 * Azure DevOps
 * Linux VM
+
+
+## 実習に必要な環境
+* AzureのSubscription
+* Azureポータル、Azure DevOpsポータルが利用可能なブラウザ
 
 ## 目次
 
