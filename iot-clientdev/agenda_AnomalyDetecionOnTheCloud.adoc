@@ -8,7 +8,7 @@ Azure IoTと関連するサービスを利用して、テレメトリデータ�
 image::images/anomaly_detection_on_the_cloud.png[]
 
 ## 対象
-アプリケーション開発経験のある人
+Azure IoTを利用したサービスの設計や開発に興味のある人
 
 ## 利用するサービス
 
