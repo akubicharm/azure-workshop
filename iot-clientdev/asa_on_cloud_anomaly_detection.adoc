@@ -1,5 +1,5 @@
-## 演習: Stream Analyticsでの異常検知
 
+## 演習: Stream Analyticsでの異常検知
 
 ### タスク1: Azure Stream Analyticsの作成
 

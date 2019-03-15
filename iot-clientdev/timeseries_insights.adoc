@@ -1,3 +1,4 @@
+
 ## 演習: Time Series Insightsによるデータの可視化
 
 この演習では、IoT Hubで受信したデータをTime Series Insightsで表示します。
@@ -11,7 +12,17 @@ https://docs.microsoft.com/ja-jp/azure/time-series-insights/time-series-insights
 
 Time Series Insights は時系列データを念頭に設計されたデータベースです。ほぼリアルタイムでのデータ探索が可能です。またTime Series Insights REST API を使用して新しいカスタム ソリューションを作成することもできます。既定のリテンション期間は31日間となっており、最大400日のデータ リテンション期間を構成できます。
 
-### タスク1：Time Series Insightsの作成
+### タスク1: IoT Hubにコンシューマーグループの作成
+
+このタスクでは、IoT HubにTimeseries Insights用のコンシューマーグループを追加します。
+
+. Azureポータル画面で本演習で利用するIoT Hubを選択します。
+
+. IoT Hubの左側のメニューの設定にある[組み込みエンドポイント]をクリックします。
+
+. コンシューマーグループに `tsi` と入力し、自動保存されるまで待ちます。
+
+### タスク2：Time Series Insightsの作成
 
 このタスクでは、Azure上にTime Series Insightsを作成します。
 
@@ -34,7 +45,7 @@ Time Series Insights は時系列データを念頭に設計されたデータ�
 |設定値
 
 |環境名
-|例）_tsi_　（任意の文字列）
+|例）_iotwstsi_　（任意の文字列）
 
 |サブスクリプション
 |本演習で利用するAzureサブスクリプション
@@ -55,6 +66,69 @@ Time Series Insights は時系列データを念頭に設計されたデータ�
 |===
 
 . [次へ: イベントソース>>]をクリックして、イベントソースのパラメータを入力します。
++
+.イベントソースの設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|イベントソースを作成しますか?
+|いいえ
+
+|===
+
+. [確認と作成]をクリックします。
+
+. 内容を確認して[作成]をクリックして Timeseries Insightsを作成します。
+
+. Azureポータル画面で本演習で利用するリソースグループ（例. _iotws_）から、作成したTimeseries Insightsを選択します。
+
+. Timeseries Insigitsの左側のメニューから[イベントソース]を選択します。
+
+. 画面上部の[＋追加]をクリックします。
+
+. 新しいイベントソースのダイアログでパラメータを入力します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|イベントソース名
+|例）_iothub_
+
+|ソース
+|IoT Hub
+
+|インポートオプション
+|使用可能なサブスクリプションからIoT Hubを使用してください
+
+|サブスクリプション
+|本演習で利用するサブスクリプション
+
+|IoT Hub名
+|本演習で利用する IoT iothub
+
+|IoT Hubポリシー名
+|iothubowner
+
+|IoT Hubコンシューマーグループ
+|tsi
+
+|イベントシリアル化形式
+|JSON
+
+|タイムスタンプのプロパティ名
+|（空白）
+
+|===
+
+. [作成]をクリックして、イベントソースを追加します。
+
+
+
 +
 .イベントソースの設定項目と設定値
 [cols="2*", options="header"]

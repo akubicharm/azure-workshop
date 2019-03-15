@@ -1,3 +1,4 @@
+
 ## 演習: Azure Functionを利用したSlackへのメッセージ送信
 
 ここではAzure Stream Analyticsのアウトプットとして利用するSlackにメッセージを送信するAzure Function Appを作成します。
