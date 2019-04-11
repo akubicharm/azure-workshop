@@ -195,7 +195,7 @@ image://images/func_deploymentcenter.png[]
 
 |===
 
-. Deployment Centerウィザード"5. 概要"でないようを確認し[完了]をクリックします。
+. Deployment Centerウィザード"5. 概要"で内容を確認し[完了]をクリックします。
 
 . Azure DepOpsポータルで、ビルド・デプロイが始まっていることを確認し、完了するまで待ちます。
 
@@ -208,11 +208,11 @@ image://images/func_deploymentcenter.png[]
 
 . Function Apps一覧から作成したFunction App -> Function(HttpTriggerSlack)を選択します。
 
-. 右側の縦長のタブメニューの[Test]をクリックします。
+. 右側の縦長のタブメニューの[テスト]をクリックします。
 +
 image::images/func_testtab.png[]
 
-. Request bodyのテキストエリアにPOSTするリクエストを記載し、画面右下の[>Run]をクリックします。
+. Request bodyのテキストエリアにPOSTするリクエストを記載し、画面右下の[>実行]をクリックします。
 +
 ```
 [

@@ -9,7 +9,7 @@
 
 . 検索フィールドに "stream analytics" と入力し、リターンを入力します。
 
-. 検索結果の一覧から [Stream Analytics Job] を選択し、[Create]をクリックします。
+. 検索結果の一覧から [Stream Analytics Job] を選択し、[作成]をクリックします。
 
 . パラメータを入力して Stream Analyticsを作成します。
 +
@@ -35,7 +35,7 @@
 |ホスティング環境
 |クラウド
 
-ストリーミングユニット
+|ストリーミングユニット
 |3 （デフォルト)
 
 |===
@@ -57,9 +57,9 @@
 
 . Azureポータル画面で本演習で利用するリソースグループの中からStream Analyticsを選択します。
 
-. Stream Analyticsの左側のメニューのジョブトポロジから[入力] を選択します。
+. Stream Analyticsの左側のメニューのジョブトポロジのセクションから[入力] を選択します。
 
-. 右側のPaneで[+ストリーム入力のp追加]をクリックし、プルダウンメニューから[IoT Hub]を選択します。
+. 右側のPaneで[+ストリーム入力の追加]をクリックし、プルダウンメニューから[IoT Hub]を選択します。
 
 . パラメータを入力して、入力ソースを登録します。
 +
@@ -110,7 +110,7 @@
 
 本タスクでは、Azure Stream Analyticsの出力ソースとして Blob Storageを設定します。
 
-. Azure Portal画面で本演習で利用するリソースグループ（例. _iotws_）を選択します。
+. Azureポータル画面で本演習で利用するリソースグループ（例. _iotws_）を選択します。
 
 . 画面上部の[+追加]をクリックします。
 
@@ -159,7 +159,7 @@
 
 . Azure Portal画面で本演習で利用するリソースグループの中から Stream Analyticsを選択します。
 
-. Stream AnalyticsのメニューのJob topologyの中から[Outputs]を選択します。
+. Stream Analyticsのメニューのジョブトポロジの中から[出力]を選択します。
 
 . 右側のPaneで[+追加]をクリックし、プルダウンメニューから[Blobストレージ]を選択します。
 
@@ -191,14 +191,14 @@
 |rawdata
 
 |パスパターン
-|{date} +
+|{date}/{time} +
 ※Path patternを指定しないばいな、Blob containerにフラットにファイルが生成されます。
 
 |日付の形式
 |YYYY-MM-DD
 
 |時刻の形式
-|（入力不可）
+|HH
 
 |イベントシリアルか形式
 |JSON
@@ -251,9 +251,9 @@ python SimulatedDevice.py
 
 . 右側のPaneで[Blob]をクリックします。
 
-. 表示された一覧の[rawdata]->[日付フォルダー]->[ファイル名]をクリックします。
+. 表示された一覧の[rawdata]->[日付フォルダー]->[時刻フォルダー]->[ファイル名]をクリックします。
 
-. 画面上部の[Edit blob]をクリックしてファイルにテレメトリデータが出力されていることを確認します。
+. 画面上部の[Blobの編集]をクリックしてファイルにテレメトリデータが出力されていることを確認します。
 
 . Azure Portal画面で本演習で利用するAzure Stream Analyticsを選択し、右側のPaneで[Stop]をクリックします。
 
@@ -429,7 +429,7 @@ AnomaryDetection_SpikeAndDip([値], [信頼度], [履歴サイズ],[モード])
 +
 * 左側のメニューで[リソースグループ]をクリック
 * リソースグループ一覧でリソースグループ（例. _iotws_）をクリック
-* 一覧からIoT Device用の仮想まちんをクリック
+* 一覧からIoT Device用の仮想マシンをクリック
 
 . 右側のPane上部の[接続]をクリックしてダイアログを表示し、SSHコマンドの文字列をコピーします。
 
@@ -440,7 +440,7 @@ AnomaryDetection_SpikeAndDip([値], [信頼度], [履歴サイズ],[モード])
 . IoT Deviceのサンプルプルグラムのディレクトリに移動し、プログラムを実行します。
 +
 ```
-cd iotdevice_python/iot-hub/Quickstarts/simulated-device-2
+cd azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
 
 python SimulatedDevice.py
 ```
