@@ -1,0 +1,456 @@
+
+## 演習: Stream Analyticsでの異常検知
+
+### タスク1: Azure Stream Analyticsの作成
+
+このタスクでは、Azure Stream Analyticsを作成します。
+
+. Azureポータル画面で本演習で利用するリソースグループを表示し、右Pane上部の[+追加]をクリックします。
+
+. 検索フィールドに "stream analytics" と入力し、リターンを入力します。
+
+. 検索結果の一覧から [Stream Analytics Job] を選択し、[作成]をクリックします。
+
+. パラメータを入力して Stream Analyticsを作成します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|ジョブ名
+|asa
+
+|サブスクリプション
+|本演習で利用するAzureサブスクリプションを選択します
+
+|リソースグループ
+|例）_iotws_ +
+本演習で利用するリソースグループを選択します。
+
+|場所
+|例）_東日本_ +
+※ 任意のリージョンが選択可能です。
+
+|ホスティング環境
+|クラウド
+
+|ストリーミングユニット
+|3 （デフォルト)
+
+|===
+
+. [作成]をクリックします。
+
+
+### タスク2: Azure Stream Analyticsの入力リソースの設定
+
+本タスクでは、Azure Stream Analyticsのストリームデータの入力ソースを設定します。
+
+. Azureポータル画面で本演習で利用するリソースグループ(例. _iotws_)の中からIoT Hubを選択して概要画面を表示します。
+
+. IoT Hubの左Paneメニューの設定セクションの[組み込みのエンドポイント] をクリックします。
+
+. コンシューマーグループの入力フィールドに `asa` と入力し、リターンを入力します。
++
+※自動保存が終わるまで待ちます。フォーカスを変更すると保存が始まります。
+
+. Azureポータル画面で本演習で利用するリソースグループの中からStream Analyticsを選択します。
+
+. Stream Analyticsの左Paneのメニューのジョブトポロジのセクションの[入力] をクリックします。
+
+. 右Pane上部の[+ストリーム入力の追加]をクリックし、プルダウンメニューから[IoT Hub]を選択します。
+
+. パラメータを入力して、入力ソースを登録します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|入力のエイリアス
+|iothub +
+※この値はStream Analyticsのクエリを記述する際に利用します
+
+|IoT Hubの選択方法
+|サブスクリプションからIoT Hubを選択する
+
+|サブスクリプション
+|本演習で利用するAzureサブスクリプションを選択します
+
+|IoT Hub
+|例）_iothub1234_ +
+本演習で利用するIoT Hubを選択します。
+
+|エンドポイント
+|メッセージング
+
+|共有アクセスポリシー名
+|iothubowner
+
+|*コンシューマーグループ*
+|*asa*
+
+
+|イベントシリアル化形式
+|JSON
+
+|エンコード
+|UTF-8
+
+|イベントの圧縮タイプ
+|なし
+
+|===
+
+. [保存]をクリックします。
+
+
+### タスク3: Azure Stream Analyticsの出力ソース設定(Blob)
+
+本タスクでは、Azure Stream Analyticsの出力ソースとして Blob Storageを設定します。
+
+
+#### タスク3-1: ストレージアカウントの作成
+
+すでに、ストレージアカウントが作成されている場合は、このタスクはスキップします。
+
+. Azureポータル画面で本演習で利用するリソースグループ（例. _iotws_）を選択します。
+
+. 右Pane上部の[+追加]をクリックします。
+
+. 検索フィールドに `storage account` と入力し、リターンを入力します。
+
+. 検索結果の一覧から[ストレージアカウント]を選択して、[作成]をクリックします。
+
+. パラメータを入力して Storage Account を作成します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|設定項目
+|設定値
+
+|サブスクリプション
+|本演習で利用するサブスクリプション
+
+|リソースグループ
+|例）_iotws_
+
+|ストレージアカウント名
+|例）_iotwsstorage_　+
+※ 任意の文字列
+
+|場所
+|例）_東日本_ +
+※ 任意のリージョンが選択可能です。
+
+|パフォーマンス
+|Standard
+
+|アカウントの種類
+|StorageV2（汎用 v2）　（デフォルトのまま）
+
+|レプリケーション
+|読み取りアクセス地理冗長ストレージ(RA-GRS)
+
+|アクセス層（既定）
+|ホット
+
+|===
+
+. [確認および作成]をクリックして、検証画面を表示します。
+
+. 検証画面で内容を確認し、[作成]をクリックします。
+
+
+#### タスク3-2: Stream Anayticsの出力設定
+
+. Azure Portal画面で本演習で利用するリソースグループの中から Stream Analyticsを選択します。
+
+. Stream Analyticsの左Paneのメニューのジョブトポロジのセクションから[出力]を選択します。
+
+. 右Paneの上部で[+追加]をクリックし、プルダウンメニューから[Blobストレージ]を選択します。
+
+. パラメータを入力し、出力リソースを登録します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|出力エリアス
+|blob
+
+|（Blobストレージの選択方法）
+|サブスクリプションからBlob Storageを選択する
+
+|サブスクリプション
+|本演習で利用するAzureサブスクリプションを選択
+
+|ストレージアカウント
+|例）_iotwsstorage_ +
+本タスクの前半で作成したストレージアカウントを選択
+
+|コンテナ
+|新規作成
+
+|（コンテナ名）
+|rawdata
+
+|パスパターン
+|{date}/{time} +
+※Path patternを指定しない場合は、Blob containerにフラットにファイルが生成されます。
+
+|日付の形式
+|YYYY-MM-DD
+
+|時刻の形式
+|HH
+
+|イベントシリアルか形式
+|JSON
+
+|エンコード
+|UTF-8
+
+|フォーマット
+|改行区切り
+
+|===
+
+. [保存]をクリックします。
+
+### タスク4: Blobストレージへの出力
+. Azure Stream Analyticsの左Paneのメニューで、ジョブトポロジのセクションの[クエリ]をクリックします。
+
+. 右側のPaneでクエリを編集します。
++
+```
+SELECT
+    *
+INTO
+    blob
+FROM
+    iothub
+```
+
+. [保存]をクリックしてクエリを保存します。
+
+. Stream Analyticsの左Paneのメニューの[概要]をクリックします。
+
+.  右側のPaneから[> 開始]をクリックし、表示されたダイアログでジョブ出力の開始時間が[現在]になっていることを確認し、[開始]をクリックします。
+
+. Azureポータル画面で本演習で利用するIoTデバイス用の仮想マシンを選択し、右Pane上部の[接続]をクリックします。
+
+. 表示されたダイアログで[SSH]のタブを選択し、SSHのログインコマンドをコピーします。
+
+. Azure Portalのクラウドシェルを起動し、SSHのログインコマンドをペースとして、Ioでデバイスの仮想マシンにSSHでログインします。
++
+パスワード: `#myadmin1234`
+
+. IoTデバイスのサンプルアプリケーションを実行します。
++
+```
+cd azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
+
+python SimulatedDevice.py
+```
+
+. Azureポータル画面で本演習で利用するStorage Accountを選択します。
+
+. 右側のPaneで[Blob]をクリックします。
+
+. 表示された一覧の[rawdata]->[日付フォルダー]->[時刻フォルダー]->[ファイル名]をクリックします。
+
+. 画面上部の[Blobの編集]をクリックしてファイルにテレメトリデータが出力されていることを確認します。
+
+. Azureポータル画面で本演習で利用するAzure Stream Analyticsを選択し、右側のPaneで[Stop]をクリックします。
+
+
+
+### タスク5: Stream Analyticsの出力ソースの設定(Azure Function)
+
+本タスクでは、Azure Stream Analyticsの出力ソースを設定します。
+
+. Azure Portal画面で本演習で利用するリソースグループの中からStream Analyticsを選択します。
+
+. Stream Analyticsの左Paneのメニューのジョブトポロジのセクションの[出力] をクリックします。
+
+. 右側のPaneで[+追加]をクリックし、プルダウンメニューから[Azure関数]を選択します。
+
+. パラメータを入力して、入力ソースを登録します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|出力エリアス
+|slack
+
+|IoT Hubの選択方法
+|サブスクリプションからAzure関数を選択する
+
+|サブスクリプション
+|本演習で利用するAzureサブスクリプションを選択します
+
+|Functio app
+|例）_slackfunc1234_ +
+Slackにメッセージを送信するFunctionを選択します
+
+|関数
+|HttpTriggerSlack
+
+|最大バッチサイズ
+|（空白）
+
+|最大バッチカウント
+|（空白）
+
+|===
++
+[保存]をクリックします。
+
+### タスク6: Azure Functionへの出力
+
+本タスクでは、Azure Stream Analytisの異常検知の組み込み関数を利用し、突発的な値の変化があった時に、Slackにメッセージを送信する設定をします。
+
+. Azureポータル画面で本演習で利用するAzure Stream Analyticsを選択します。
+
+. Azure Stream Analyticsの左Paneのメニューのジョブトポロジのセクションの[クエリ]をクリックします。
+
+. 右Paneでクエリを編集し、先ほどのクエリの先頭に次のクエリを貼り付け、[保存]をクリックします。
++
+```
+WITH
+AnomalyDetectionStep AS
+(
+    SELECT
+        EVENTENQUEUEDUTCTIME AS time,
+        CAST(temperature AS float) AS temp,
+        AnomalyDetection_SpikeAndDip(CAST(temperature AS float), 95, 120, 'spikesanddips')
+            OVER(LIMIT DURATION(second, 120)) AS SpikeAndDipScores
+    FROM iothub
+),
+AnomalyDetectionStepResult AS
+(
+    SELECT
+        time,
+        temp,
+        CAST(GetRecordPropertyValue(SpikeAndDipScores, 'Score') AS float) AS
+        SpikeAndDipScore,
+        CAST(GetRecordPropertyValue(SpikeAndDipScores, 'IsAnomaly') AS bigint) AS
+        IsSpikeAndDipAnomaly
+    FROM
+        AnomalyDetectionStep
+)
+SELECT
+        time,
+        temp,
+        SpikeAndDipScore,
+        IsSpikeAndDipAnomaly
+INTO
+    slack
+FROM
+    AnomalyDetectionStepResult
+WHERE
+    IsSpikeAndDipAnomaly = 1
+
+SELECT
+  *
+INTO
+  blob
+FROM
+  iothub
+```
+
+[NOTE]
+====
+**WITH句**
+
+クエリの結果を一時的に名前付きのオブジェクトとして保持します。
+
+```
+WITH [結果セット名] AS [クエリ]
+```
+
+**AnomalyDetection_SpikeAndDip関数**
+
+値の急上昇と急降下を検出し、異常の有無のスコアを返します。
+
+
+```
+AnomaryDetection_SpikeAndDip([値], [信頼度], [履歴サイズ],[モード])
+```
+
+[cols="2*", options="header"]
+|===
+|パラメータ
+|説明
+
+|値
+|異常検知の対象となる値
+
+|期待値
+|検証結果の信頼度を1〜100の間で指定。信頼度が低いほど検知される可能性が高くなる。
+
+|履歴サイズ
+|モデルの学習に利用するイベントの数　+
+
+|モード
+|モードは3種類{spikesanddips, spikes, dips} +
+モードの指定により、Spikes（急上昇)、Dips(急降下)の両方またはいずれかを検知。
+
+|===
+
+[cols="2*", options="header"]
+|===
+|返り値
+|説明
+
+|IsAnomaly
+|異常の有無を0か1で返します +
+0 : 異常あり +
+1 : 異常なし
+
+|Score
+|異常が発生している可能性の指標。低い値の場合、可能性が低いことを意味する
+
+|===
+
+
+====
+
+## タスク7: テレメトリデータの処理
+
+このタスクでは、IoTデバイスから送信されたテレメトリデータをStream Analyticsでクエリ処理し、温度の急上昇、急降下があった場合にSlackにメッセージが送信されていることを確認します。
+
+. Azure ポータル画面で本演習で利用するリソースグループを選択します。
+
+. 本演習で利用するStream Analyticsを選択します。
+
+. 画面上部の[>開始]をクリックして、ストリーミング処理を開始します。
+
+. Azureポータル画面で本演習で利用するIoTデバイス用の仮想マシンを選択します。
+
+. 右側のPane上部の[接続]をクリックしてダイアログを表示し、SSHコマンドの文字列をコピーします。
+
+. Azureポータル画面上部の[>_]をクリックし、Cloud Shellを実行します。
+
+. Cloud ShellのターミナルにSSHコマンドをペースとし、IoTデバイス用の仮想マシンにSSHでログインします。
+
+. IoTデバイスのサンプルプルグラムのディレクトリに移動し、プログラムを実行します。
++
+```
+cd azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
+
+python SimulatedDevice.py
+```
+
+. WebブラウザーでSlackのワークスペースを開き、温度異常のメッセージを確認します。
