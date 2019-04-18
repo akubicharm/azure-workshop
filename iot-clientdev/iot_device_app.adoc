@@ -385,3 +385,104 @@ python SimulatedDevice.py
 . IoT Hub の概要ページでメッセージ数を受信していることを、メッセージ数をみて確認します。
 
 . CloudShellで `Ctrl-C` を入力し、アプリケーションを停止します。
+
+
+### （オプション）タスク5:　デバイスのダイレクトメソッドの呼び出し
+
+このタスクでは、クラウドからデバイスのメソッドを呼び出します。
+ダイレクトメソッドが呼ばれると、IoTHubClient.set_device_method_callbackで指定されたコールバックメソッドが呼び出されます。
+
+https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-python-python-c2d#send-a-cloud-to-device-message
+
+. サンプルアプリケーションを実行します。
++
+#CloudShell#
++
+```
+python SimulatedDevice.py
+```
+
+. Azureポータル画面で本演習で利用するIoT Hubを選択します。
+
+. IoT Hubの左Paneのエクスプローラーセクションの[IoT Device]をクリックします。
+
+. 右Paneのデバイス一覧でIoTデバイス（例. _iotdevice_)を選択します。
+
+. 右Pane上部の[</>ダイレクトメソッド]をクリックします。
+
+. パラメータを入力して、ダイレクトメソッドを呼び出します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|設定項目
+|設定値
+
+|メソッド名
+|device_method_callback
+
+|ペイロード
+|JSON形式の文字列 +
+`{"msg": "Hello My Device"}`
+
+|===
+
+. 右Pane上部の[メソッドの呼び出し]をクリックします。
+
+. IoT Hubのターミナルにメッセージが表示されていることを確認します。
++
+```
+Method callback called with:
+methodName = device_method_callback
+payload = {"Msg":"hello"}
+```
+
+### (オプション)タスク6: デバイスへメッセージのメッセージ送信
+
+このタスクでは、クラウドからデバイスにメッセージを送信します。
+メッセージを受信すると、IoTHubClient.set_message_callback()で指定されたコールバックメソッドが呼ばれます。
+
+https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-python-python-c2d#receive-messages-in-the-simulated-device-app
+
+. マニュアルの記載にしたがってSimulatedDevice.pyを編集します。
+
+. サンプルアプリケーションを実行します。
++
+#CloudShell#
++
+```
+python SimulatedDevice.py
+```
+
+. Azureポータル画面で本演習で利用するIoT Hubを選択します。
+
+. IoT Hubの左Paneのエクスプローラーセクションの[IoT Device]をクリックします。
+
+. 右Paneのデバイス一覧でIoTデバイス（例. _iotdevice_)を選択します。
+
+. 右Pane上部の[デバイスへメッセージ]をクリックします。
+
+. パラメータを入力して、メッセージを送信します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|設定項目
+|設定値
+
+|メッセージ本文
+|任意の文字列
+
+|===
+
+. 右Pane上部の [メッセージの送信] をクリックしてメッセージを送信します。
+
+. IoT Hubのターミナルにメッセージが表示されていることを確認します。
++
+```
+Data: <<<Hello My Client>>> & Size=15
+Properties: {}
+Total calls received: 1
+```
