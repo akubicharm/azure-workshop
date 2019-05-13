@@ -3,13 +3,11 @@
 
 ## 目的
 Azure IoTと関連するサービスを利用して、テレメトリデータの異常検知と通知を行うアプリケーションの開発を体験していきます。
-
-このワークショップでは、Azure Function Appを利用して外部サービスとの連携など、現実的な利用に即した仕組みを構築します。
+このハンズオンでは、リーフデバイス → IoT Edge → Azure IoT Hub の連携を実現していきます。
 
 image::images/anomaly_detection_on_the_edge.png[図]
 
-IoT Deviceのアプリケーションは、Azure IoT Device SDK(Python)を利用したサンプルプログラムを、Azure Function Appは C#Scriptを利用したサンプルプログラムを利用します。
-Azure DevOpsのリポジトリの編集機能を利用して、アプリケーションの編集、Azure DevOpsのパイプラインを利用したAzure Function Appのデプロイを行います。
+IoT Deviceのアプリケーションは、Azure IoT Device SDK(Python)を利用したサンプルプログラムを利用します。
 
 ## 対象
 Azure IoTを利用したサービスの設計や開発に興味のある人。
@@ -20,14 +18,14 @@ Azure IoTを利用したサービスの設計や開発に興味のある人。
 * Azure IoT Hub
 * Azure IoT Edge
 * Azure Stream Analytics on Edge
-* Azure Function Apps
-* Azure DevOps
+* Azure Timeseries Insights
+* Azure Blob Storage
 * Linux VM
 
 
 ## 実習に必要な環境
 * AzureのSubscription
-* Azureポータル、Azure DevOpsポータルが利用可能なブラウザ
+* Azureポータルが利用可能なブラウザ
 
 ## 目次
 
@@ -43,10 +41,6 @@ IoT HubのデプロイおよびIoT Deviceでのサンプルアプリケーショ
 +
 IoTデバイスから送信されたテレメトリデータの可視化を行います。
 
-. Function Appの作成 link:function_send_msg_to_slack.adoc[]
-+
-温度の急上昇や急降下があった場合にリアルタイムにSlackにメッセージを送信するためのAzure Function Appを作成します。このFunctionは、Azure Stream Analyticsでのストリーム処理から呼び出されます。
-
 . Azure Stream Analytics on Edgeでの異常検知の処理 link:iot_edge_deploy.adoc[]
 +
-Azure Stream Analyticsの異常検知の機能利用して、温度の急上昇と急降下を検知してリアルタイムに通知する仕組みを実装します。
+Azure Stream Analyticsの異常検知の機能利用して、温度の急上昇と急降下を検知してIoT に通知する仕組みを実装します。
