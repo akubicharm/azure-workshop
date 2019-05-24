@@ -4,11 +4,9 @@ import iotc
 import time
 import os
 from random import randint
-from enum import Enum
 import threading
 import json
 import cv2
-import tkinter
 
 
 class SimDeviceModel:
@@ -115,10 +113,7 @@ class IoTClientHandler(object):
     def sendPersonCount(self):
         # cap = cv2.VideoCapture(0)
         cap = cv2.VideoCapture('face-demographics-walking.mp4')
-        #cascade_path = "/usr/local/share/OpenCV/haarcascades/haarcascade_frontalface_alt.xml"
         cascade_path = "haarcascade_frontalface_alt.xml"
-        # cap = cv2.VideoCapture('car-detection.mp4')
-        # cascade_path = "cars.xml"
         cascade = cv2.CascadeClassifier(cascade_path)
 
         color = (255, 255, 255)
