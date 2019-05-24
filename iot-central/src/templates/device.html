@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>file input click() demo</title>
+    <script>
+        var isMaint = false;
+        function setMaintenance(data)
+        {
+            console.log("setMaintenance: " + data)
+            // check status changed
+            if (isMaint != data) {
+                isMaint = data;
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData();
+                formData.append("ismaintenance", data);
+                //for (name in data) {
+                //    formData.append(name, data[ name ]);
+                //}
+                xhr.open('POST', '/maintenance')
+                xhr.send(formData);
+            }
+        }
+
+        function sendTelemetry(data)
+        {
+            console.log("sendTelemetry: " + data)
+            var xhr = new XMLHttpRequest();
+            var formData = new FormData();
+            formData.append("temperature", data);
+            xhr.open('POST', "telemetry")
+            xhr.send(formData)
+        }
+
+
+        function sleep(msec)
+        {
+            return new Promise(function (resolve)
+            {
+                setTimeout(function ()
+                {
+                    resolve()
+                }, msec);
+            })
+        }
+
+        async function getFanspeed()
+        {
+            console.log("getFanSpeed")
+            while (true) {
+                await sleep(2000);
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', "fanspeed")
+                xhr.send()
+            }
+        }
+
+        window.onload = getFanspeed()
+    </script>
+</head>
+
+<body>
+    <div>
+        <input type="radio" name="ismaintenance" value="ismaintenance" onclick="setMaintenance(true)">メンテナンス中</input>
+        <input type="radio" name="ismaintenance" value="ismaintenance" onclick="setMaintenance(false)"
+            checked>稼働中</input>
+    </div>
+    <div id='fanspeed'><label>FanSpeed: </label>{{fanspeed}}</div>
+    <div id='tempslider'><label>Temperature: </label>
+        <input type="range" value="1" min="-50" max="50" step="1"
+            oninput="document.getElementById('temperature').value=this.value" onchange="sendTelemetry(this.value)">
+    </div>
+    <output id=" temperature"></output>
+</body>

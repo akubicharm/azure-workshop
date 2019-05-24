@@ -1,0 +1,30 @@
+# IoT Central ワークショップシナリオ
+
+
+## 構成図
+```
+             +-------------+
+Operator --- | IoT Central | --- Mail
+             |             |     Function --- [EventHub] --- [ASA] --- [Function] --- [SLACK or Notify]
+Device   --- |             |     Webhook
+             +-------------+     LogicApp, AzureMonitor, Flow
+```
+
+## ユースケース
+* Operator は、設定で Fan Speed を変更する
+* Operator は、温度の閾値のプロパティを設定する
+* Device は、ロケーションを送信する sendProperty()
+* Device は、テレメトリデータを送信する sendTelemetry()
+* Device は、メンテナンスモードの on/off を status として、IoT Central に送信する sendStatus()
+* IoT Central は、温度の閾値を超えた場合のルールにしたがってアクションを起こす
+
+
+## アプリケーション
+
+### Device のシミュレーションプログラム
+* シミュレーションしたテレメトリデータをIoT Centralに送信する
+* 温度は、Fan speed にしたがって温度が変化する
+* 温度は、時々DIPする。（時々、マイナスに反転する）
+* 設定値の変更で Fan speed を変更する
+
+### Function
