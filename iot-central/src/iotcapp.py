@@ -166,8 +166,8 @@ def main():
     handler = IoTClientHandler()
     handler.connect()
 
-    # telemetryThread = threading.Thread(target=handler.send)
-    # telemetryThread.start()
+    telemetryThread = threading.Thread(target=handler.send)
+    telemetryThread.start()
 
     handler.sendPersonCount()
 
