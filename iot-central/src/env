@@ -1,0 +1,5 @@
+export DEVICE_ID=dev01
+export SCOPE_ID=0ne00058A7C
+export DEVICE_KEY='RHkTn2g0ZDjgq5VTh3WDFFfIIKEEWJfgOlI1zz8+8QM='
+
+export FLASK_APP=app.py

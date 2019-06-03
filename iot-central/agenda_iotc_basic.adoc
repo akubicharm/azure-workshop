@@ -1,0 +1,28 @@
+# Azure IoT Central Basic
+
+
+## 目的
+Azure IoTのSaaSサービスであるAzure IoT Centralの特徴と使い方を体験します。
+
+## 対象
+IoT をどのように活用できるかを、これから検討していく方
+Azure IoT を利用した、テレメトリデータの可視化などに興味のある方
+
+## 利用するサービス
+* Azure IoT Central
+* Linux VM
+
+## 実習に必要な環境
+* Azure ポータルが利用可能なブラウザ
+
+## 目次
+
+. IoT Centralのデプロイ  link:iotc_deploy.adoc[]
+
+. デバイスのセットアップ  link:iotc_connect_device.adoc[]
+
+. IoT Centralの利用  link:iotc_exploring_ui.adoc[]
+
+. IoT CentralのGUIのカスタマイズ  link:iotc_customize_ui.adoc[]
+
+. 他サービスとの連携  link:iotc_demo.adoc[]

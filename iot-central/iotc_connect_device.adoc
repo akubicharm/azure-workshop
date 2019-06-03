@@ -1,0 +1,213 @@
+## 演習: IoT Centralへのデバイス
+
+この演習では、IoT Centralに接続するデバイスを準備し、IoT Centralに接続します。
+
+### タスク1: デバイスの準備（仮想マシン）
+
+このタスクでは、IoT Centralに接続するデバイスを準備し、サンプルプログラムの実行環境を整備します。
+
+. Azureポータル画面にアクセスします
+
+. 左Pane上部の[+ リソースの作成]をクリックします
+
+. "Marketplaceを検索"の入力フィールドで[`ubuntu`]と入力しリターンキーを押下します
+
+. 検索結果の一覧から[Ubuntu Server 16.04 LTS]を選択します
+
+. 仮想マシンの作成ウィザードで、必要なパラメータを入力し仮想マシンを作成します
+
+. 仮想マシンの作成 - 基本
++
+.基本の設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+2+|プロジェクトの詳細
+
+|サブスクリプション
+|本演習で利用するサブスクリプションを選択
+
+|リソースグループ
+|本演習で利用するリソースグループを選択。リソースグループがない場合は[新規作成]をクリックして、リソースグループを作成
+
+2+|インスタンスの詳細
+
+|仮想マシン名
+|dev01
+
+|地域
+|適宜選択（例：東日本）
+
+|可用性オプション
+|（デフォルトのまま）
+
+|イメージ
+|Ubuntu Server 16.04 LTS（デフォルトのまま）
+
+|サイズ
+|standard D2s v3（デフォルトのまま）
+
+2+|管理者アカウント
+
+|認証の種類
+|パスワード
+
+|ユーザー名
+|myadmin
+
+|パスワード、パスワードの確認
+|#myadmin1234
+
+|===
+
+. [次:ディスク>]をクリックします
+
+. 仮想マシンの作成 - ディスク
++
+.基本の設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+2+|ディスクのオプション
+
+|OSディスクの種類
+|Standard SSD
+
+|===
+
+. [次:ネットワーク>] をクリックします
+
+. 仮想マシンの作成 - ネットワーク
++
+.基本の設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|パブリック受信ポート
+|選択したポートを許可
+
+|受信ポートを選択
+|SSH(22), RDP(3389)を選択
+
+|===
+
+.　[確認および作成] をクリックします
+
+. [作成] をクリックして、仮想マシンを作成します
+
+
+### タスク2: IoT Centralにデバイスを登録します。
+
+. 本演習用にデプロイしたIoT Centralのポータル画面にアクセスします。
+
+. IoT Centralポータル画面の左Paneの[デバイスエクスプローラ]をクリックします
+
+. 右Paneのテンプレート一覧から[Raspberry Pi(1.0.0)]をクリックします
+
+. 右Paneの右上の [+]プルダウンメニューの[実際]をクリックします
+
+. 新しいデバイスの作成画面でパラメータを入力し[作成]をクリックします
++
+.基本の設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|デバイスID
+|（一意のデバイス名）
+
+|デバイス名
+|（デバイスIDから自動生成）
+
+|===
+
+
+### タスク3: デバイスの接続情報の確認
+
+. IoT Centralポータル画面の左Paneの[デバイスエクスプローラ]をクリックします
+
+. 右Paneのテンプレート一覧の[Raspberry Pi(1.0.0)]をクリックし、表示されたデバイス一覧から追加したデバイスをクリックします
+
+. 右Paneの右上の[接続]をクリックし、デバイス接続情報を確認します
++
+デバイス接続で利用するのは、スコープID、デバイスID、資格情報-Shared Access Signature(SAS)の主キーです。
+
+
+### タスク4: デバイスでサンプルプログラムの準備
+
+このタスクでは、デバイス上でサンプルプログラムをダウロードして実行します。
+
+. パッケージをインストールします
++
+```
+sudo apt -y update
+sudo apt -y install python-pip
+sudo apt -y install xfce4
+sudo apt-get install xrdp
+sudo systemctl enable xrdp
+sudo apt -y install xrdp
+sudo systemctl enable xrdp
+```
+. デスクトップ環境の構成をします
++
+```
+echo xfce4-session >~/.xsession
+sudo service xrdp restart
+```
+
+. IoT Centralのクライアント用のPythonライブラリをインストールします
++
+```
+pip install iotc
+```
+
+. サンプルプログラムをダウンロードします
++
+```
+wget https://raw.githubusercontent.com/Azure/iot-central-firmware/master/RaspberryPi/app.py
+```
+
+. サンプルプログラムを編集します
++
+編集前
++
+```
+ 8 deviceId = "DEVICE_ID"
+ 9 scopeId = "SCOPE_ID"
+10 deviceKey = "PRIMARY/SECONDARY device KEY"
+11
+12 iotc = iotc.Device(scopeId, deviceKey, deviceId, IOTConnectType.IOTC_CONNECT_SYMM_KEY)
+```
++
+編集後
++
+```
+ 8 deviceId = "dev01"
+ 9 scopeId = "0ne00057EA0"
+10 deviceKey = "QwgEEPmzZTd4XEQi64MHx3CDmFvXorfnkQNQmWsB4p0="
+11
+12 iotc = iotc.Device(scopeId, deviceKey, deviceId, IOTConnectType.IOTC_CONNECT_SYMM_KEY)
+```
+
+### タスク5: サンプルプログラムの実行
+
+このタスクでは、サンプルプログラムを実行してテレメトリデータをIoT Centralに送信され、IoT Centralで可視化されていることを確認します。
+
+. サンプルアプリケーションの実行
++
+```
+python app.py
+```
+
+. ブラウザで本演習用の IoT Central にアクセスします
+
+. 左Paneでデバイスエクスプローラをクリックします
+
+. 右Paneのテンプレート一覧からRaspberry Piを選択し、デバイス一覧の対象となるデバイスをクリックします
