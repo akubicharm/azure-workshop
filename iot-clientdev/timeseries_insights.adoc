@@ -30,6 +30,8 @@ Time Series Insights は時系列データを念頭に設計されたデータ�
 . 本演習で利用するリソースグループ（例. _iotws_）を選択します。
 
 . 右Pane上部の[+追加]をクリックします。
++
+image::images/azure_add_resource.png[]
 
 . 検索フィールドで `Time Series Insights` と入力しリターンを入力します。
 

@@ -8,6 +8,8 @@
 . Azureポータル画面で本演習で利用するリソースグループ（例. _iotws_）を選択します。
 
 . Azureポータル画面右Paneの上部の[+追加]をクリックします。
++
+image::images/azure_add_resource.png[]
 
 . 検索フィールドに `IoT Hub` と入力し、検索結果の一覧から[IoT Hub]を選択します。
 
@@ -78,7 +80,7 @@
 
 . Azureポータル画面で本演習で利用するIoT Hubを選択します。
 
-. IoT Hubの左Panのメニューのエクスプローラーのセクションの[IoTデバイス]をクリックします。
+. IoT Hubの左Paneのメニューのエクスプローラーのセクションの[IoTデバイス]をクリックします。
 
 . 右Pane上部の[+追加]をクリックします。
 +
@@ -117,6 +119,8 @@ image::images/iothub_addiotdevice.png[]
 
 . デバイス一覧に追加したデバイスが表示されていることを確認します。
 +
+※表示されない場合は右Pane上部の[最新の情報に更新]をクリックしてください。
++
 image::images/iothub_iotdevice_list.png[]
 
 ### タスク2: IoT Device用仮想マシンの準備
@@ -129,7 +133,7 @@ image::images/iothub_iotdevice_list.png[]
 
 . 右Pane上部の[+追加]をクリックし検索ウィンドウで `ubuntu` と入力しリターンキーを押し、検索結果の一覧から[Ubuntu Server 18.04 LTS]を選択します。
 +
-image::images/ubuntu_server_18.04_lts.png[]
+image::images/ubuntu_server_16.04_lts.png[]
 
 . [作成]をクリックします。
 

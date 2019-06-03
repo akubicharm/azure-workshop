@@ -19,51 +19,14 @@
 . プロジェクト名を入力し[次へ]をクリックします。（チャンネル名）
 +
 例）_workshop_
++
+この名称が、Slack にメッセージを送信する対象のチャンネル名になります。
 
 . チームメンバーは追加せず[後で]をクリックします。
 
 . [Slackでチャンネルを表示する]をクリックします。
 
 
-### タスク2: Functionアプリケーションのソースコードのインポート
-
-
-このタスクでは、サンプルアプリケーションを各自のAzure DevOpsのソースコードリポジトリにインポートします。
-
-. Azure DevOpsのポータル画面の左PaneでMy Organizationから本演習で利用する組織を選択します。
-+
-image::images/devops_org.png[]
-
-. 左Paneのメニューで[Repos]をクリックします。
-
-. リポジトリのプルダウンメニューから[Import repository]を選択します。
-+
-image::images/devops_import.png[]
-
-. Import a Git repositoryのダイアログでパラメータを入力し、リポジトリをインポートします。
-+
-.設定値と項目
-[cols="2*", options="header"]
-|===
-
-|設定値
-|項目
-
-|Source type
-|Git
-
-|Clond URL
-|https://github.com/akubicharm/AzureFunction-callSlack
-
-|name
-|AzureFunction-callSlack
-
-|===
-
-. [import]をクリックして、リポジトリをインポートします。
-
-
-### タスク3: Azure Functionアプリケーションの編集
 . Slackのワークスペースの左側のメニューで[App]をクリックします。
 
 . アプリ一覧画面の検索フィールドに `Incoming webhook` と入力しします。
@@ -84,18 +47,8 @@ image::images/slack_webhook_addchannel.png[]
 +
 image::images/slack_webhook_copyurl.png[]
 
-. Azure DevOpsのポータルに戻り、左PaneのメニューでReposメニューの[Files]をクリックします。
+### タスク2: Azure Function Appの作成
 
-. `app/HttpTriggerSlack/run.csx` をクリックしてソースコードを表示します。
-
-. 左Paneの上部の[Edit]をクリックして編集を開始します。
-
-. WEBHOOK_URL（26行目あたり）の定義をSlackのWebhook URLに変更します。
-
-. [Commit]をクリックして変更を保存します。
-
-
-### タスク4: Azure Function Appの作成
 このタスクではAzure Function Appとして、Slackにメッセージを送信するアプリケーションを作成します。
 
 . Azureポータル画面で本演習で利用するリソースグループ（例. _iotws_）を選択します。
@@ -148,6 +101,152 @@ image::images/slack_webhook_copyurl.png[]
 . [作成]をクリックして、Function Appを作成します。
 +
 デプロイが完了するまで待ちます。
+
+
+### タスク3: Functionアプリケーションのソースコードのインポート
+
+このタスクでは、サンプルアプリケーションを各自のAzure DevOpsのソースコードリポジトリにインポートします。
+
+. Azure DevOpsのポータル画面の左PaneでMy Organizationから本演習で利用する組織を選択します。
++
+image::images/devops_org.png[]
+
+. 左Paneのメニューで[Repos]をクリックします。
+
+. リポジトリのプルダウンメニューから[Import repository]を選択します。
++
+image::images/devops_import.png[]
+
+. Import a Git repositoryのダイアログでパラメータを入力し、リポジトリをインポートします。
++
+.設定値と項目
+[cols="2*", options="header"]
+|===
+
+|設定値
+|項目
+
+|Source type
+|Git
+
+|Clond URL
+|https://github.com/akubicharm/AzureFunction-callSlack
+
+|name
+|AzureFunction-callSlack
+
+|===
+
+. [import]をクリックして、リポジトリをインポートします。
+
+
+### タスク4: Azure Functionアプリケーションの編集
+
+. Azure DevOpsのポータルの左PaneのメニューでReposメニューの[Files]をクリックします。
+
+. `HttpTriggerSlack/run.csx` をクリックしてソースコードを表示します。
+
+. 左Paneの上部の[Edit]をクリックして編集を開始します。
+
+. WEBHOOK_URL（26行目あたり）の定義をSlackのWebhook URLに変更します。
+
+. [Commit]をクリックして変更を保存します。
+
+
+### タスク5: Azure DevOpsのリリースパイプラインの作成
+
+このタスクでは、Azure DevOpsのリリースパイプラインを作成して、Azure Functionにアプリケーションをデプロイします。
+
+. Azure DevOpsのポータルの左PaneのメニューでPipelineメニューの[Releases]をクリックします。
+
+. [New pipelines]をクリックしてパイプラインの作成を開始します。
+
+. Select a Templateダイアログで[Deploy a Function app to Azure Function]をクリックします。
++
+image::images/devops_select_templates.png[]
+
+. PipelineのダイアログでArtifactをクリックして、Add an Artifactのダイアログを表示します。
+
+. Add an Artifactのダイアログでパラメータを入力して、Artifactを追加します。
++
+image::images/devops_add_artifact.png[]
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|設定項目
+|設定値
+
+|Source Type
+|Azure Repository
+
+|Project
+|本ワークショップ用に作成したAzure DevOpsのプロジェクト
++例）__iotws__
+
+|Source(repository)
+|AzureFunction-callSlack
+
+|Default branch
+|master
+
+|Default version
+|Latest fron the default branch (デフォルトのまま）
+
+|Shallow fetch depth
+|（空白のまま）
+
+|Source alias
+|_AzureFunction-callSlack（デフォルトのまま）
+
+|===
+
+. [Add]をクリックします。
+
+. Stage1の[1 job, 1 task]のリンクをクリックしてJob, Taskの編集を開始します。
++
+image::images/devops_edit_jobtask.png[]
+
+. Stage1を編集します。
++
+image::images/devops_edit_stage1.png[]
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|設定項目
+|設定値
+
+|Stage Name
+|Stage 1
+
+|Azure Subscription
+|本演習で利用するサブスクリプション
+
+|App type
+|Function App on Windows
+
+|App Service name
+|前のタスクで作成したFunctionの名称
+
+|===
+
+. Deploy Azure Function App をクリックします。
+
+. Package or folder の入力フィールドの右の[...]をクリックしてダイアログを表示します。
+
+. Select a file or folder のダイアログで[Azure Function callSlack]を選択し[OK]をクリックします。
++
+image::images/devops_edit_deployfunc.png[]
+
+. 画面上部の[save]をクリックし、表示されたダイアログで[OK]をクリックします。
+
+. 画面上部の[Cleate release]をクリックしてリリースパイプラインを実行します。
+
+
+////
 
 . Azureポータル画面で、本演習で利用するリソースグループを選択します。
 
@@ -223,9 +322,9 @@ image:./images/devops_deploy.png[]
 +
 ビルドデプロイ完了すると、Stageに緑色のチェックになります。
 image:./images/devops_deployed.png[]
+////
 
-
-### タスク5: Azure Functionの動作確認
+### タスク6: Azure Functionの動作確認
 
 このタスクでは、作成したFunctionの動作確認をAzureポータル画面で行います。
 
