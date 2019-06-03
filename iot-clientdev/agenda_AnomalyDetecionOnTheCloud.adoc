@@ -30,22 +30,22 @@ Azure IoTを利用したサービスの設計や開発に興味のある人。
 
 ## 目次
 
-. Azure環境の準備 link:prepare_azure.adoc[]
+. link:prepare_azure.adoc[Azure環境の準備]
 +
 本演習で利用するAzureのリソースグループの作成、Azure DevOpsのユーザ登録などを行います。
 
-. IoT Deviceアプリケーションの開発 link:iot_device_app.adoc[]
+. link:iot_device_app.adoc[IoT Deviceアプリケーションの開発]
 +
 IoT HubのデプロイおよびIoT DeviceでのサンプルアプリケーションとIoT Hubの接続を行います。
 
-. Timeseries Insightsでの可視化 link:timeseries_insights.adoc[]
+. link:timeseries_insights.adoc[Timeseries Insightsでの可視化]
 +
 IoTデバイスから送信されたテレメトリデータの可視化を行います。
 
-. Function Appの作成 link:function_send_msg_to_slack.adoc[]
+. link:function_send_msg_to_slack.adoc[Function Appの作成]
 +
 温度の急上昇や急降下があった場合にリアルタイムにSlackにメッセージを送信するためのAzure Function Appを作成します。このFunctionは、Azure Stream Analyticsでのストリーム処理から呼び出されます。
 
-. Azure Stream Analyticsでの異常検知の処理 link:asa_on_cloud_anomaly_detection.adoc[]
+. link:asa_on_cloud_anomaly_detection.adoc[Azure Stream Analyticsでの異常検知の処理]
 +
 Azure Stream Analyticsの異常検知の機能利用して、温度の急上昇と急降下を検知してリアルタイムに通知する仕組みを実装します。
