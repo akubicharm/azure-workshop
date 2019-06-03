@@ -250,12 +250,16 @@ sudo -i
 #CloudShell#
 +
 ```
+cat << EOF > inst.sh
 apt -y update
 apt -y upgrade
 apt -y install libboost-all-dev
 apt -y install libcurl4-nss-dev
 apt -y install libcurl4-openssl-dev
 apt -y install python-pip unzip
+EOF
+
+sh inst.sh
 ```
 
 . myadminユーザに戻ります。
