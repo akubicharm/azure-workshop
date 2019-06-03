@@ -6,7 +6,7 @@
 
 ### タスク1: slackのワークスペースを作成する
 
-このタスクでは、Function Appからメッセージを送信するSlackのワークスペースを作成します。
+このタスクでは、Function Appからのメッセージ送信先となるSlackのワークスペースを作成します。
 
 . `https://slack.com/intl/ja-jp/create` にアクセスして、メールアドレスを入力してSlackのワークスペースを作成します。
 
@@ -49,7 +49,7 @@ image::images/slack_webhook_copyurl.png[]
 
 ### タスク2: Azure Function Appの作成
 
-このタスクではAzure Function Appとして、Slackにメッセージを送信するアプリケーションを作成します。
+このタスクでは、Slackにメッセージを送信するAzure Function Appを作成します。
 
 . Azureポータル画面で本演習で利用するリソースグループ（例. _iotws_）を選択します。
 
