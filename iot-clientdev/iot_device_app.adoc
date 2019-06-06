@@ -239,7 +239,7 @@ image::images/iothub_iotdevice_ssh.png[]
 
 . sudo コマンドで root ユーザにスイッチします。
 +
-#CloudShell#
+*CloudShell*
 +
 ```
 sudo -i
@@ -247,7 +247,9 @@ sudo -i
 
 . Azure IoT SDKの準備をします。
 +
-#CloudShell#
+aptコマンドを何回も実行するので、コマンドを実行するためのシェルスクリプト(inst.sh)を作成後、シェルスクリプトを実行します。
++
+*CloudShell*
 +
 ```
 cat << EOF > inst.sh
@@ -264,7 +266,7 @@ sh inst.sh
 
 . myadminユーザに戻ります。
 +
-#CloudShell#
+*CloudShell*
 +
 ```
 exit
@@ -364,7 +366,7 @@ CONNECTION_STRING = "HostName=iotwshub1234.azure-devices.net;DeviceId=iotdevice;
 +
 ※Azure DevOpsの画面右上の[Clone]をクリックして、git cloneするURLをコピーすることができます。
 +
-#CloudShell#
+*CloudShell*
 +
 ```
 git clone https://dev.azure.com/[YOUR_NAME]/[YOUR_REPO_NANE]/_git/iotdevice_python
@@ -375,7 +377,7 @@ image::images/devops_gitclone.png[]
 
 . サンプルアプリケーションのディレクトリに移動し IoT Hub Device SDKをインストールします。
 +
-#CloudShell#
+*CloudShell*
 +
 ```
 cd azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
@@ -384,7 +386,7 @@ pip install azure-iothub-device-client
 
 . サンプルアプリケーションを実行します。
 +
-#CloudShell#
+*CloudShell*
 +
 ```
 python SimulatedDevice.py
@@ -404,7 +406,7 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-python-python-c2d#send-a-
 
 . サンプルアプリケーションを実行します。
 +
-#CloudShell#
+*CloudShell*
 +
 ```
 python SimulatedDevice.py
@@ -457,7 +459,7 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-python-python-c2d#receive
 
 . サンプルアプリケーションを実行します。
 +
-#CloudShell#
+*CloudShell*
 +
 ```
 python SimulatedDevice.py
