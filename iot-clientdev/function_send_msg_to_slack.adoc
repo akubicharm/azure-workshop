@@ -239,7 +239,7 @@ image::images/devops_edit_stage1.png[]
 
 . Select a file or folder のダイアログで[Azure Function callSlack]を選択し[OK]をクリックします。
 +
-image::images/devops_edit_deployfunc.png[]
+image::images/devops_edit_deployfunc.png[]
 
 . 画面上部の[save]をクリックし、表示されたダイアログで[OK]をクリックします。
 

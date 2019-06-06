@@ -391,6 +391,8 @@ pip install azure-iothub-device-client
 ```
 python SimulatedDevice.py
 ```
++
+※エラーが発生して、Azure DevOpsでソースコードを変更した際は、`git pull` を実行してファイルを更新します。
 
 . IoT Hub の概要ページでメッセージ数を受信していることを、メッセージ数をみて確認します。
 
