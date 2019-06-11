@@ -1,6 +1,8 @@
 
 ## 演習：IoT Device サンプルアプリケーションの実行
 
+AzureにIoT Hubと仮想マシン（IoTデバイスとして利用）をデプロイし、IoTデバイスからIoT Hubへの接続を設定していきます。
+
 ### タスク1: IoT Hubの作成
 
 このタスクでは、本演習で利用するリソースグループにIoT Hubを作成しデバイスを登録します。
@@ -131,7 +133,7 @@ image::images/iothub_iotdevice_list.png[]
 
 . Azureポータル画面で本演習で利用するリソースグループ （例. _iotws_） を選択します。
 
-. 右Pane上部の[+追加]をクリックし検索ウィンドウで `ubuntu` と入力しリターンキーを押し、検索結果の一覧から[Ubuntu Server 18.04 LTS]を選択します。
+. 右Pane上部の[+追加]をクリックし検索ウィンドウで `ubuntu` と入力しリターンキーを押し、検索結果の一覧から[Ubuntu Server 16.04 LTS]を選択します。
 +
 image::images/ubuntu_server_16.04_lts.png[]
 
@@ -362,7 +364,7 @@ CONNECTION_STRING = "HostName=iotwshub1234.azure-devices.net;DeviceId=iotdevice;
 
 . Azureポータル画面のCloudShellに戻り、IoTデバイスの仮想マシンにSSHでログインします。
 
-. 先ほど編集したサンプルアプリケーションを `git clone` コマンドでIoTデバイスの仮想マシンにクローンします。
+. 先ほど編集したサンプルアプリケーションを `git clone` コマンドでIoTデバイスの仮想マシンにダウンロードします。
 +
 ※Azure DevOpsの画面右上の[Clone]をクリックして、git cloneするURLをコピーすることができます。
 +
@@ -380,7 +382,7 @@ image::images/devops_gitclone.png[]
 *CloudShell*
 +
 ```
-cd azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
+cd ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
 pip install azure-iothub-device-client
 ```
 
