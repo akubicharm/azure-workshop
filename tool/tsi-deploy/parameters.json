@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "consumerGroupName": {
+            "value": ""
+        },
+        "eventHubNamespaceName": {
+            "value": ""
+        },
+        "eventHubName": {
+            "value": ""
+        },
+        "environmentName": {
+            "value": "tsi"
+        },
+        "environmentSkuName": {
+            "value": "S1"
+        },
+        "environmentSkuCapacity": {
+            "value": 1
+        },
+        "environmentKind": {
+            "value": "Standard"
+        },
+        "environmentTimeSeriesIdProperties": {
+            "value": []
+        },
+        "eventSourceName": {
+            "value": ""
+        },
+        "eventSourceTimestampPropertyName": {
+            "value": ""
+        },
+        "keyName": {
+            "value": ""
+        },
+        "sharedAccessKey": {
+            "value": ""
+        },
+        "location": {
+            "value": "eastus"
+        },
+        "iotHubName": {
+            "value": ""
+        },
+        "storageAccountName": {
+            "value": ""
+        },
+        "storageAccountSkuName": {
+            "value": "Standard_LRS"
+        },
+        "accessPolicyReaderObjectId": {
+            "value": ""
+        }
+    }
+}
