@@ -134,6 +134,77 @@ image::images/azure_add_resource.png[]
 . [作成]をクリックして、イベントソースを追加します。
 
 
+#### タスク1 のワークアラウンド
+
+[NOTE]
+====
+Azureポータル画面で[作成]をクリックしても何もおきない場合は、以下の方法でコマンドラインでデプロイしてください。
+====
+
+. ファイルをダウンロード
++
+```
+wget https://github.com/akubicharm/azure-workshop/raw/master/tool/tsi-deploy/tsideploy.zip
+```
+
+. ファイルを展開
++
+```
+unzip tsideploy.unzip
+```
+
+. サブスクリプションの確認
++
+```
+az account show
+```
++
+出力結果の id がサブスクリプションID
++
+出力結果の例）
++
+====
+```
+{
+  "environmentName": "AzureCloud",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "isDefault": true,
+  "name": "Microsoft Azure XXX プラン",
+  "state": "Enabled",
+  "tenantId": "00000000-0000-0000-0000-000000000000",
+  "user": {
+    "name": "yournanme@example.com",
+    "type": "user"
+  }
+}
+````
+====
+
+. env ファイルの編集
++ SUBS に上記で確認したサブスクリプションIDと、RNAMEに本演習で利用するリソースグループ名を設定します。
+
+. 環境変数のセット
++
+```
+. ./env
+echo $SUBS
+echo $RNAME
+```
++
+設定したサブスクリプションIDとリソースグループ名が出力されていればOKです。
+
+. デプロイスクリプトの実行
++
+```
+./deploy.sh -i $SUBS -g $RNAME -n $DNAME -l $LOC
+```
++
+スクリプトの実行結果の最後に次のコメントが出力されていることを確認します。
++
+```
+Template has been successfully deployed
+```
+
 ////
 TSIのウィザード中で設定する場合。
 +
