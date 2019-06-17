@@ -1,0 +1,109 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "dataRetentionTime": {
+            "type": "string",
+            "defaultValue": "P30D"
+        },
+        "eventHubNamespaceName": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "eventHubName": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "consumerGroupName": {
+            "type": "string"
+        },
+        "environmentName": {
+            "type": "string"
+        },
+        "environmentSkuName": {
+            "type": "string",
+            "allowedValues": [
+                "S1",
+                "S2",
+                "L1"
+            ]
+        },
+        "environmentKind": {
+            "type": "string"
+        },
+        "environmentSkuCapacity": {
+            "type": "int"
+        },
+        "eventSourceName": {
+            "type": "string"
+        },
+        "eventSourceTimestampPropertyName": {
+            "type": "string"
+        },
+        "environmentTimeSeriesIdProperties": {
+            "type": "array"
+        },
+        "iotHubName": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "keyName": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "sharedAccessKey": {
+            "type": "string",
+            "defaultValue": ""
+        },
+        "location": {
+            "type": "string"
+        },
+        "storageAccountName": {
+            "type": "string"
+        },
+        "storageAccountSkuName": {
+            "type": "string"
+        },
+        "accessPolicyReaderObjectId": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "eventHubResourceId": "[if(empty(parameters('eventHubName')), '', resourceId('Microsoft.EventHub/Namespaces/EventHub', parameters('eventHubNamespaceName'), parameters('eventHubName')))]",
+        "iotHubResourceId": "[if(empty(parameters('iotHubName')), '', resourceId('Microsoft.Devices/IotHubs', parameters('iotHubName')))]"
+    },
+    "resources": [
+        {
+            "apiVersion": "2018-08-15-preview",
+            "name": "[parameters('environmentName')]",
+            "location": "[parameters('location')]",
+            "type": "Microsoft.TimeSeriesInsights/environments",
+            "kind": "[parameters('environmentKind')]",
+            "sku": {
+                "name": "[parameters('environmentSkuName')]",
+                "capacity": "[parameters('environmentSkuCapacity')]"
+            },
+            "properties": {
+                "dataRetentionTime": "[parameters('dataRetentionTime')]"
+            },
+            "resources": [],
+            "dependsOn": []
+        },
+        {
+            "condition": "[not(empty(parameters('accessPolicyReaderObjectId')))]",
+            "apiVersion": "2018-08-15-preview",
+            "name": "[concat(parameters('environmentName'), '/', 'ownerAccessPolicy')]",
+            "type": "Microsoft.TimeSeriesInsights/environments/accesspolicies",
+            "properties": {
+                "principalObjectId": "[parameters('accessPolicyReaderObjectId')]",
+                "roles": [
+                    "Reader",
+                    "Contributor"
+                ]
+            },
+            "dependsOn": [
+                "[concat('Microsoft.TimeSeriesInsights/environments/', parameters('environmentName'))]"
+            ]
+        }
+    ]
+}

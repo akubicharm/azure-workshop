@@ -1,0 +1,4 @@
+export SUBS=
+export RNAME=iotws
+export DNAME=tsi
+export LOC=westcentralus
