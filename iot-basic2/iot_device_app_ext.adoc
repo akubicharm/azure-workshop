@@ -10,9 +10,9 @@ image::images/generic-cert-chain-of-trust.png[]
 
 ### タスク1: 証明書の作成の準備
 
-https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md　のツールを利用して、X.509の証明書を作成しIoT Hubに登録します。
+link:https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md[] のツールを利用して、X.509の証明書を作成しIoT Hubに登録します。
 
-. ブラウザで https://shell.azure.com にアクセスしてCloud Shellを開始します。
+. ブラウザで link:https://shell.azure.com[] にアクセスしてCloud Shellを開始します。
 
 . azure-iot-sdk-c のリポジトリをクローンします。
 +
@@ -60,10 +60,15 @@ certsディレクトリとprivateディレクトリに証明書と鍵が作成�
 ** azure-iot-test-only.root.ca.key.pem
 
 . Cloud Shell の上部のメニューでファイルダウンロード/アップロードアイコンをクリックし、プルダウンメニューでダウンロードをクリックします。
++
+image::images/cloudshell_download_button.png[]
 
 . ファイルダウンロードダイアログにルート証明書のファイルパスを入力し、[ダウンロード]をクリックします。
 +
 ファイルパス: work/certs/azure-iot-test-only.root.ca.cert.pem
++
+image::images/cloudshell_download_dialog.png[]
+
 
 . Azureポータル画面で本演習で利用するIoT Hubを選択します。
 
@@ -94,6 +99,8 @@ certsディレクトリとprivateディレクトリに証明書と鍵が作成�
 . IoT Hubの証明書の管理画面で、アップロードしたルート証明書をクリックします。
 
 . 証明書の詳細ダイアログの下の方の確認コードフィールド下の[確認コードを生成します]をクリックします。
++
+image::images/register_rootCA.png[]
 
 . 確認コードフィールドの右側のファイルアイコンをクリックして、確認コードをコピーします。
 
@@ -215,7 +222,6 @@ IoT Hubのクライアントに設定するオプションは次の通りです�
 . SSH でデバイス用の仮想マシンにログインします。
 
 . サンプルプログラムを準備します。
-
 
 .. サンプルプログラムをクローンしていない場合
 +

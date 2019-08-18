@@ -6,7 +6,7 @@ Azure IoTと関連するサービスを利用して、テレメトリデータ�
 
 このワークショップでは、Azure Function Appを利用して外部サービスとの連携など、現実的な利用に即した仕組みを構築します。
 
-image::images/anomaly_detection_on_the_cloud.png[]
+image::images/iot-basic2.png[]
 
 IoT Deviceのアプリケーションは、Azure IoT Device SDK(Python)を利用したサンプルプログラムを、Azure Function Appは C#Scriptを利用したサンプルプログラムを利用します。
 Azure DevOpsのリポジトリの編集機能を利用して、アプリケーションの編集、Azure DevOpsのパイプラインを利用したAzure Function Appのデプロイを行います。
@@ -21,10 +21,10 @@ Azure IoTを利用したサービスの設計や開発に興味のある人。
 * link:https://azure.microsoft.com/ja-jp/services/iot-hub/[Azure IoT Hub]
 * link:https://azure.microsoft.com/ja-jp/services/stream-analytics/[Azure Stream Analytics]
 * link:https://azure.microsoft.com/ja-jp/services/functions/[Azure Function Apps]
-* link:https://azure.microsoft.com/ja-jp/services/devops/[Azure DevOps]
 * link:https://azure.microsoft.com/ja-jp/services/virtual-machines/[Linux VM]
+* link:https://azure.microsoft.com/ja-jp/services/monitor/[Azure Monitor]
 * link:https://code.visualstudio.com/[Visual Studio Code]
-* link:https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit [VSCode Azure IoT Toolkit]
+* link:https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit[VSCode Azure IoT Toolkit]
 
 
 
@@ -33,7 +33,7 @@ Azure IoTを利用したサービスの設計や開発に興味のある人。
 * Azureポータルが利用可能なブラウザ
 * SSHのクライアントまたはAzureのCloudShell
 
-image::images/anomaly_detection_on_the_cloud_env.png[]
+image::images/iot-basic2-env.png[]
 
 ## 目次
 
@@ -52,6 +52,10 @@ Visual Studio Codeを利用して、デバイスからIoT Hubに送信された�
 . link:asa.adoc[Stream Analyticsの利用]
 +
 Stream Analyticsを利用して、受信したテレメトリデータをBlobへ保存、他のサービスと連携します。
+
+. link:module_twin.adoc[モジュールツインの利用]
++
+一つのデバイスで実行されるモジュールごとに異なるIDで IoT Hubに接続します。
 
 . link:iot_device_app_ext.adoc[IoTデバイスの証明書認証]
 +

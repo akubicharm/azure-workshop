@@ -1,4 +1,4 @@
-link:agena.adoc[目次]
+link:agenda.adoc[目次]
 
 ## 演習:Azure環境の準備
 

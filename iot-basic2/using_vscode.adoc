@@ -20,7 +20,11 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-device-management-iot-too
 
 ### タスク3: Azure IoT Hub にアクセス
 
-. VSCodeのエクルプローラービューで、左下の[Azure IoT Hub]メニューをクリックし、右側の[...]をクリックします。
+. VSCodeのエクスプローラービューで、左下の[Azure IoT Hub]メニューをクリックし、右側の[...]をクリックします。
++
+プルダウンメニューで、[IoT Hubを選択]をクリックします。
++
+image::images/vscode_select_iothub.png[]
 
 . サブスクリプションの一覧から本演習で利用するサブスクリプションを選択します。
 
@@ -28,11 +32,13 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-device-management-iot-too
 
 ### タスク4: ビルトインエンドポイントのへのDevice-to-Cloudメッセージをモニター
 
-. VSCodeのエクルプローラービューで、左下の[Azure IoT Hub]メニューをクリックし、右側の[...]をクリックします。
+. VSCodeのエクスプローラービューで、左下の[Azure IoT Hub]メニューをクリックし、右側の[...]をクリックします。
 
 . [ビルトインエンドポイントモニターを開始]をクリックします。
++
+image::images/vscode_start_monitor.png[]
 
-. IoTデバイス用の仮想マシンにSSHでログインします。
+. ブラウザで https://shell.azure.com にアクセスし、IoTデバイス用の仮想マシンにSSHでログインします。
 
 . サンプルプログラムのディレクトリに移動します
 +
@@ -48,8 +54,11 @@ python SimulatedDevice.py
 
 . VSCode でメッセージをモニターします。
 
-. VSCodeのエクルプローラービューで、左下の[Azure IoT Hub]メニューをクリックし、右側の[...]をクリックします。
+. VSCodeのエクスプローラービューで、左下の[Azure IoT Hub]メニューをクリックし、右側の[...]をクリックします。
 
 . [ビルトインエンドポイントモニターを終了]をクリックしてモニターを終了します。
++
+image::images/vscode_stop_monitor.png[]
+
 
 link:agenda.adoc[目次]

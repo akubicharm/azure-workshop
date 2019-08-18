@@ -1,4 +1,4 @@
-link:agenda.doc[目次]
+link:agenda.adoc[目次]
 
 ## 演習：IoT Device サンプルアプリケーションの実行
 
@@ -232,7 +232,7 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/quickstart-send-telemetry-python
 +
 image::images/iothub_iotdevice_ssh.png[]
 
-. クラウドシェルをBashモードで実行します
+. ブラウザで https://shell.azure.com にアクセスし、Coud ShellをBashモードで実行します
 
 . コピーした文字列をクラウドシェルのBashターミナルに貼り付けて、仮想マシンにSSHでログインします。
 
@@ -295,10 +295,10 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-python
 +
 image::images/iothub_iotdevice_connstr.png[]
 
-. Cloud Shellでクローンしたリポジトリのサンプロプログラムのディレクトリに移動します。
+. デバイス用仮想マシンにクローンしたリポジトリのサンプロプログラムをコピーします。
 +
 ```
-cd ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
+cp ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2/SimulatedDevice.py .
 ```
 
 . エディタでSimulatedDevice.pyを編集します。
@@ -327,19 +327,20 @@ CONNECTION_STRING = "HostName=iotwshub1234.azure-devices.net;DeviceId=iotdevice;
 . IoT Hub Device SDKをインストールします。
 +
 ```
-cd ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
+cd ~
 pip install azure-iothub-device-client
 ```
 
 . サンプルアプリケーションを実行します。
 +
 ```
+cd ~
 python SimulatedDevice.py
 ```
 
 . IoT Hub の概要ページでメッセージ数を受信していることを、メッセージ数をみて確認します。
 
-. CloudShellで `Ctrl-C` を入力し、アプリケーションを停止します。
+. SimulatedDevice.pyを実行中のターミナルで　`Ctrl-C` を入力し、アプリケーションを停止します。
 
 
 ### （オプション）タスク5:　デバイスのダイレクトメソッドの呼び出し
@@ -351,8 +352,7 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-python-python-c2d#send-a-
 
 . サンプルアプリケーションを実行します。
 +
-*CloudShell*
-+
+SSHでログインしたデバイス用の仮想マシンで
 ```
 python SimulatedDevice.py
 ```
@@ -443,4 +443,4 @@ Total calls received: 1
 ```
 
 
-link:agenda.doc[目次]
+link:agenda.adoc[目次]
