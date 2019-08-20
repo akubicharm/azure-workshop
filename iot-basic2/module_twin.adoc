@@ -2,7 +2,7 @@ link:agenda.adoc[目次]
 
 ## 演習: モジュールツインの利用
 
-### タスク1: デバイスとモジュールの灯篭
+### タスク1: デバイスとモジュールの登録
 
 このタスクでは、Azure IoT Hubにデバイスとモジュールを登録します。
 
@@ -95,6 +95,8 @@ image::images/iothub_add_module_id.png[]
 +
 azure-iot-samples-python をクローンします。
 +
+*デバイスVM*
++
 ```
 git clone https://github.com/Azure-Samples/azure-iot-samples-python
 ```
@@ -102,6 +104,8 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-python
 .. サンプルプログラムをクローン済みの場合
 +
 サンプルプログラムをコピーします。
++
+*デバイスVM*
 +
 ```
 cd ~
@@ -115,6 +119,8 @@ cp ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2/SimulatedDe
 . 接続文字列をコピーします。
 
 . 仮想マシンのエディタで Module.py を編集します。
++
+*デバイスVM*
 +
 ```
 nano DeviceModule.py
@@ -138,6 +144,8 @@ CONNECTION_STRING = "HostName=iothub1234.azure-devices.net;DeviceId=devM;ModuleI
 . 編集が終わったら、Ctrl-X を入力後、上書き確認で Y を入力します。
 
 . サンプルアプリケーションを実行します。
++
+*デバイスVM*
 +
 ```
 python DeviceModule.py
