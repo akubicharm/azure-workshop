@@ -232,9 +232,15 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/quickstart-send-telemetry-python
 +
 image::images/iothub_iotdevice_ssh.png[]
 
-. ブラウザで https://shell.azure.com にアクセスし、Coud ShellをBashモードで実行します
+. ブラウザで https://shell.azure.com にアクセスし、Cloud ShellをBashモードで実行します
 
 . コピーした文字列をクラウドシェルのBashターミナルに貼り付けて、仮想マシンにSSHでログインします。
++
+*Cloud Shell*
++
+```
+ssh myadmin@aaa.bbb.ccc.ddd
+```
 
 . "Are you sure you want to continue connecting (yes/no)?" と表示されるたら、`yes` を入力しリターンを入力します。
 
@@ -242,7 +248,7 @@ image::images/iothub_iotdevice_ssh.png[]
 
 . sudo コマンドで root ユーザにスイッチします。
 +
-*CloudShell*
+*デバイスVM*
 +
 ```
 sudo -i
@@ -252,7 +258,7 @@ sudo -i
 +
 aptコマンドを何回も実行するので、コマンドを実行するためのシェルスクリプト(inst.sh)を作成後、シェルスクリプトを実行します。
 +
-*CloudShell*
+*デバイスVM*
 +
 ```
 cat << EOF > inst.sh
@@ -269,7 +275,7 @@ sh inst.sh
 
 . myadminユーザに戻ります。
 +
-*CloudShell*
+*デバイスVM*
 +
 ```
 exit
@@ -282,6 +288,8 @@ exit
 . 作成した仮想マシンに SSH でログインします。
 
 . サンプルプログラム　azure-iot-samples-python をクローンします。
++
+*デバイスVM*
 +
 ```
 git clone https://github.com/Azure-Samples/azure-iot-samples-python
@@ -297,11 +305,15 @@ image::images/iothub_iotdevice_connstr.png[]
 
 . デバイス用仮想マシンにクローンしたリポジトリのサンプロプログラムをコピーします。
 +
+*デバイスVM*
++
 ```
 cp ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2/SimulatedDevice.py .
 ```
 
 . エディタでSimulatedDevice.pyを編集します。
++
+*デバイスVM*
 +
 ```
 nano SimulatedDevice.py
@@ -326,12 +338,16 @@ CONNECTION_STRING = "HostName=iotwshub1234.azure-devices.net;DeviceId=iotdevice;
 
 . IoT Hub Device SDKをインストールします。
 +
+*デバイスVM*
++
 ```
 cd ~
 pip install azure-iothub-device-client
 ```
 
 . サンプルアプリケーションを実行します。
++
+*デバイスVM*
 +
 ```
 cd ~
@@ -352,7 +368,8 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-python-python-c2d#send-a-
 
 . サンプルアプリケーションを実行します。
 +
-SSHでログインしたデバイス用の仮想マシンで
+*デバイスVM*
++
 ```
 python SimulatedDevice.py
 ```
@@ -404,7 +421,7 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-python-python-c2d#receive
 
 . サンプルアプリケーションを実行します。
 +
-*CloudShell*
+*デバイスVM*
 +
 ```
 python SimulatedDevice.py
