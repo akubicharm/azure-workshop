@@ -9,8 +9,8 @@ link:agenda.adoc[目次]
 このタスクではAzureを操作するためにWebブラウザでAzureポータル画面にアクセスします。
 
 . ブラウザでAzureポータル画面にアクセスします。
-
-  https://portal.azure.com
++
+link:https://portal.azure.com[]
 
 . ログイン画面に取得いただいたマイクロソフトアカウントの[メールアドレス]と[パスワード]を入力して、[サインイン]ボタンをクリックします。
 
