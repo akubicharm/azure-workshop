@@ -250,11 +250,13 @@ FROM
 
 . 表示されたダイアログで[SSH]のタブを選択し、SSHのログインコマンドをコピーします。
 
-. ブラウザで https://shell.azure.com にアクセスし、SSHのログインコマンドをペースとして、Ioでデバイスの仮想マシンにSSHでログインします。
+. ブラウザで https://shell.azure.com にアクセスし、SSHのログインコマンドをペースとして、IoTデバイスの仮想マシンにSSHでログインします。
 +
 パスワード: `#myadmin1234`
 
 . IoTデバイスのサンプルアプリケーションを実行します。
++
+*デバイスVM*
 +
 ```
 cd azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
@@ -271,36 +273,5 @@ python SimulatedDevice.py
 . 画面上部の[Blobの編集]をクリックしてファイルにテレメトリデータが出力されていることを確認します。
 
 . Azureポータル画面で本演習で利用するAzure Stream Analyticsを選択し、右側のPaneで[Stop]をクリックします。
-
-====
-
-### タスク5: テレメトリデータの処理
-
-このタスクでは、IoTデバイスから送信されたテレメトリデータをStream Analyticsでクエリ処理し、温度の急上昇、急降下があった場合にSlackにメッセージが送信されていることを確認します。
-
-. Azure ポータル画面で本演習で利用するリソースグループを選択します。
-
-. 本演習で利用するStream Analyticsを選択します。
-
-. 画面上部の[>開始]をクリックして、ストリーミング処理を開始します。
-
-. Azureポータル画面で本演習で利用するIoTデバイス用の仮想マシンを選択します。
-
-. 右側のPane上部の[接続]をクリックしてダイアログを表示し、SSHコマンドの文字列をコピーします。
-
-. Azureポータル画面上部の[>_]をクリックし、Cloud Shellを実行します。
-
-. Cloud ShellのターミナルにSSHコマンドをペースとし、IoTデバイス用の仮想マシンにSSHでログインします。
-
-. IoTデバイスのサンプルプルグラムのディレクトリに移動し、プログラムを実行します。
-+
-```
-cd azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
-
-python SimulatedDevice.py
-```
-
-. WebブラウザーでSlackのワークスペースを開き、温度異常のメッセージを確認します。
-
 
 link:agenda.adoc[目次]
