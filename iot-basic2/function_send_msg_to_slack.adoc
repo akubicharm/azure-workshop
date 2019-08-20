@@ -4,6 +4,7 @@ link:agenda.adoc[目次]
 
 ここではAzure Stream Analyticsのアウトプットとして利用するSlackにメッセージを送信するAzure Function Appを作成します。
 
+前の演習でアラートルールが有効になっている場合は、link:monitor_and_alert.adoc[Azure Monitorの利用] のタスク3の手順に従って、アラートを無効化します。
 
 ### タスク1: slackのワークスペースを作成する
 
@@ -266,39 +267,26 @@ Slackにメッセージを送信するFunctionを選択します
 . 右Paneでクエリを編集し、先ほどのクエリの先頭に次のクエリを貼り付け、[保存]をクリックします。
 +
 ```
-WITH
-AnomalyDetectionStep AS
+WITH AnomalyDetectionStep AS
 (
     SELECT
         EVENTENQUEUEDUTCTIME AS time,
         CAST(temperature AS float) AS temp,
-        AnomalyDetection_SpikeAndDip(CAST(temperature AS float), 95, 120, 'spikesanddips')
+        AnomalyDetection_SpikeAndDip(CAST(temperature AS float), 99, 120, 'spikesanddips')
             OVER(LIMIT DURATION(second, 120)) AS SpikeAndDipScores
     FROM iothub
-),
-AnomalyDetectionStepResult AS
-(
-    SELECT
-        time,
-        temp,
-        CAST(GetRecordPropertyValue(SpikeAndDipScores, 'Score') AS float) AS
-        SpikeAndDipScore,
-        CAST(GetRecordPropertyValue(SpikeAndDipScores, 'IsAnomaly') AS bigint) AS
-        IsSpikeAndDipAnomaly
-    FROM
-        AnomalyDetectionStep
 )
 SELECT
-        time,
-        temp,
-        SpikeAndDipScore,
-        IsSpikeAndDipAnomaly
-INTO
-    slack
-FROM
-    AnomalyDetectionStepResult
-WHERE
-    IsSpikeAndDipAnomaly = 1
+    time,
+    temp,
+    CAST(GetRecordPropertyValue(SpikeAndDipScores, 'Score') AS float) AS
+    SpikeAndDipScore,
+    CAST(GetRecordPropertyValue(SpikeAndDipScores, 'IsAnomaly') AS bigint) AS
+    IsSpikeAndDipAnomaly
+INTO slack
+FROM AnomalyDetectionStep
+HAVING
+    CAST(GetRecordPropertyValue(SpikeAndDipScores, 'IsAnomaly') AS bigint)=1
 
 SELECT
   *
