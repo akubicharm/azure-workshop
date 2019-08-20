@@ -238,6 +238,15 @@ IoT Hubのクライアントに設定するオプションは次の通りです�
 
 . SSH でデバイス用の仮想マシンにログインします。
 
+. ダウンロードしたファイルを展開します。
++
+*デバイスVM*
++
+```
+cd ~
+unzip /tmp/files.zip
+```
+
 . サンプルプログラムを準備します。
 
 .. サンプルプログラムをクローンしていない場合
@@ -276,10 +285,10 @@ CONNECTION_STRING = "HostName=satohub.azure-devices.net;DeviceId=mydevice;x509=t
 タスク3で作成した証明書ファイルをAzure IoT Hubに接続するための証明書、デバイス認証をするための証明書とキーとして指定します。
 +
 ```
-TRUSTED_ROOT_CA_CERTIFICATE_PATH = "/home/myadmin/work/certs/new-device-full-chain.cert.pem"
-TRUSTED_DEVICE_CA_CERTIFICATE_PATH = "/home/myadmin/work/certs/new-device.cert.pem"
+TRUSTED_ROOT_CA_CERTIFICATE_PATH = "/home/myadmin/certs/new-device-full-chain.cert.pem"
+TRUSTED_DEVICE_CA_CERTIFICATE_PATH = "/home/myadmin/certs/new-device.cert.pem"
 
-TRUSTED_DEVICE_CA_KEY_PATH = "/home/myadmin/work/private/new-device.key.pem"
+TRUSTED_DEVICE_CA_KEY_PATH = "/home/myadmin/private/new-device.key.pem"
 ```
 +
 証明書をIoT Clientに設定します。
