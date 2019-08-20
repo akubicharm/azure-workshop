@@ -1,0 +1,367 @@
+link:agenda.adoc[目次]
+
+## 演習: Azure Functionを利用したSlackへのメッセージ送信
+
+ここではAzure Stream Analyticsのアウトプットとして利用するSlackにメッセージを送信するAzure Function Appを作成します。
+
+
+### タスク1: slackのワークスペースを作成する
+
+このタスクでは、Function Appからのメッセージ送信先となるSlackのワークスペースを作成します。
+
+. `https://slack.com/intl/ja-jp/create` にアクセスして、メールアドレスを入力してSlackのワークスペースを作成します。
+
+. 登録したメールアドレスに送られてきた確認コード(6桁)を入力します。
+
+. 社名またはチーム名を入力し[次へ]をクリックします
++
+例）_iotws_
+
+. プロジェクト名を入力し[次へ]をクリックします。（チャンネル名）
++
+例）_workshop_
++
+この名称が、Slack にメッセージを送信する対象のチャンネル名になります。
+
+. チームメンバーは追加せず[後で]をクリックします。
+
+. [Slackでチャンネルを表示する]をクリックします。
+
+
+. Slackのワークスペースの左側のメニューで[App]をクリックします。
+
+. アプリ一覧画面の検索フィールドに `Incoming webhook` と入力しします。
+
+. 検索結果の一覧からIncoming Webhookの[インストール]をクリックします。
++
+image::images/slack_webhook_install.png[]
+
+. Incoming Webhook設定ダイアログの[設定を追加]をクリックします。
++
+image::images/slack_webhook_addconfig.png[]
+
+. 設定画面でメッセージを送信するチャンネルを選択し、[Incoming Webhookインテグレーションの追加]をクリックします。
++
+image::images/slack_webhook_addchannel.png[]
+
+. Webhook URLをコピーします。
++
+image::images/slack_webhook_copyurl.png[]
+
+### タスク2: Azure Function Appの作成
+
+このタスクでは、Slackにメッセージを送信するAzure Function Appを作成します。
+
+
+[NOTE]
+====
+Azureポータル内のエディタでFunctionsのアプリケーションを開発するため、ここではOSにWindowsを選択します。
+OSにLinuxを選択した場合は、Azure DevOpsのパイプラインを利用したデプロイや、ソースコードリポジトリを指定したデプロイ、また、Visual Studio Codeからのデプロイなども可能です。
+====
+
+. Azureポータル画面で本演習で利用するリソースグループ（例. _iotws_）を選択します。
+
+. Azureポータル画面の右Pane上部の[+追加]をクリックします。
+
+. 検索フィールドに `function app` と入力して、リターンを入力します。
+
+. 検索結果の一覧から[Function App]を選択し、[作成]をクリックします。
+
+. Function App作成用のパラメータを入力します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+
+|設定項目
+|設定値
+
+|アプリ名
+|例）_func1234_ +
+※ URLが一意となる文字列
+
+|サブスクリプション
+|本演習で利用するサブスクリプション
+
+|リソースグループ
+|既存のものを使用 +
+本演習で利用するリソースグループを選択 （例. _iotws_）
+
+|OS
+|Windows
+
+|ホスティングプラン
+|従量課金プラン
+
+|場所
+|（例. _東日本_） +
+※任意のリージョンが選択可能です。
+
+|ランタイムスタック
+|.NET Core
+
+|Storage
+|新規作成 +
+※ わかりやすい名称にします
+
+|===
+
+. [作成]をクリックして、Function Appを作成します。
++
+デプロイが完了するまで待ちます。
+
+
+### タスク3: Functionの作成
+
+このタスクでは、Azure PortalのFunctionのエディタを利用してFunctionのアプリケーションを作成します。
+
+. Azureポータル画面で、前のタスクで作成したFunction Appを選択します。
+
+.. リソースグループを選択->リソース一覧から作成したFunctionを選択
++
+または
++
+.. Azureポータル画面の左PaneでApp Serviceを選択->App Service一覧からFunctionを選択
+
+. Function App詳細画面の左Paneの関数の右側の[+]をクリックします。
++
+image::images/func_add.png[]
+
+. 右Paneの開発環境の一覧から[ポータル内]をクリックし、画面下部の[続行]をクリックします。
+
+. 右Paneの関数の作成の一覧から[webhook + API]をクリックし、画面下部の[作成]をクリックします。
+
+. 右Paneにrun.csxのエディタが表示されるので、元の内容は全て消去し以下のプログラムをコピーして貼り付けます。
++
+```
+#r "Newtonsoft.Json"
+
+using System.Net;
+using System.Text;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Primitives;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public static async Task<IActionResult> Run(HttpRequest req, ILogger log)
+{
+    log.LogInformation("C# HTTP trigger function processed a request.");
+    string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+    log.LogInformation("Input Data: " + requestBody);
+
+    var arr = JArray.Parse(requestBody);
+    var slack_text = "温度異常発生::";
+    foreach (var item in arr) {
+        slack_text += item["time"] + " " + item["temp"] + ",";
+    }
+
+    log.LogInformation("Msg to Slack: " + slack_text);
+
+    var wc = new WebClient();
+
+    var WEBHOOK_URL =
+"https://hooks.slack.com/services/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"; //incoming hookのURL
+    var data = JsonConvert.SerializeObject(new
+    {
+        text = slack_text,
+        icon_emoji = ":ghost:", //アイコンを動的に変更する
+        username = "テストBot",  //名前を動的に変更する
+        link_names = "1"  //メンションを有効にする
+    });
+    log.LogInformation("json=" + data);
+    wc.Headers.Add(HttpRequestHeader.ContentType, "application/json;charset=UTF-8");
+    wc.Encoding = Encoding.UTF8;
+    wc.UploadString(WEBHOOK_URL, data);
+
+    return (ActionResult)new OkObjectResult($"Hello");
+}
+```
+
+. 右Pane上部の[保存]をクリックします。
+
+### タスク4: Azure Functionの動作確認
+
+このタスクでは、作成したFunctionの動作確認をAzureポータル画面で行います。
+
+. Azureポータル画面で本演習で利用するリソースグループを選択します。
+
+. 作成したFunction Appを選択します。
+
+. 左Paneで[関数 -> HttpTrigger1]をクリックします。
+
+. 右端の縦長のタブメニューの[テスト]をクリックします。
++
+image::images/func_testtab.png[]
+
+. Request bodyのテキストエリアにPOSTするリクエストを記載し、画面右下の[>実行]をクリックします。
++
+```
+[
+    {
+        "time": "2019-03-13T11:14",
+        "temp": 30
+    }
+]
+```
++
+image::images/func_run.png[]
+
+. ブラウザでSlacちゃチャンネルを表示して、メッセージが送信されていることを確認します。
++
+image::images/slack_msg.png[]
+
+
+### タスク5: Stream Analyticsの出力ソースの設定(Azure Function)
+
+本タスクでは、Azure Stream Analyticsの出力ソースを設定します。
+
+. Azure Portal画面で本演習で利用するリソースグループの中からStream Analyticsを選択します。
+
+. Stream Analyticsの左Paneのメニューのジョブトポロジのセクションの[出力] をクリックします。
+
+. 右側のPaneで[+追加]をクリックし、プルダウンメニューから[Azure関数]を選択します。
+
+. パラメータを入力して、入力ソースを登録します。
++
+.設定項目と設定値
+[cols="2*", options="header"]
+|===
+|設定項目
+|設定値
+
+|出力エリアス
+|slack
+
+|IoT Hubの選択方法
+|サブスクリプションからAzure関数を選択する
+
+|サブスクリプション
+|本演習で利用するAzureサブスクリプションを選択します
+
+|Functio app
+|例）_slackfunc1234_ +
+Slackにメッセージを送信するFunctionを選択します
+
+|関数
+|HttpTrigger1
+
+|最大バッチサイズ
+|（空白）
+
+|最大バッチカウント
+|（空白）
+
+|===
++
+[保存]をクリックします。
+
+### タスク6: Azure Functionへの出力
+
+本タスクでは、Azure Stream Analytisの異常検知の組み込み関数を利用し、突発的な値の変化があった時に、Slackにメッセージを送信する設定をします。
+
+. Azureポータル画面で本演習で利用するAzure Stream Analyticsを選択します。
+
+. Azure Stream Analyticsの左Paneのメニューのジョブトポロジのセクションの[クエリ]をクリックします。
+
+. 右Paneでクエリを編集し、先ほどのクエリの先頭に次のクエリを貼り付け、[保存]をクリックします。
++
+```
+WITH
+AnomalyDetectionStep AS
+(
+    SELECT
+        EVENTENQUEUEDUTCTIME AS time,
+        CAST(temperature AS float) AS temp,
+        AnomalyDetection_SpikeAndDip(CAST(temperature AS float), 95, 120, 'spikesanddips')
+            OVER(LIMIT DURATION(second, 120)) AS SpikeAndDipScores
+    FROM iothub
+),
+AnomalyDetectionStepResult AS
+(
+    SELECT
+        time,
+        temp,
+        CAST(GetRecordPropertyValue(SpikeAndDipScores, 'Score') AS float) AS
+        SpikeAndDipScore,
+        CAST(GetRecordPropertyValue(SpikeAndDipScores, 'IsAnomaly') AS bigint) AS
+        IsSpikeAndDipAnomaly
+    FROM
+        AnomalyDetectionStep
+)
+SELECT
+        time,
+        temp,
+        SpikeAndDipScore,
+        IsSpikeAndDipAnomaly
+INTO
+    slack
+FROM
+    AnomalyDetectionStepResult
+WHERE
+    IsSpikeAndDipAnomaly = 1
+
+SELECT
+  *
+INTO
+  blob
+FROM
+  iothub
+```
+
+[NOTE]
+====
+**WITH句**
+
+クエリの結果を一時的に名前付きのオブジェクトとして保持します。
+
+```
+WITH [結果セット名] AS [クエリ]
+```
+
+**AnomalyDetection_SpikeAndDip関数**
+
+値の急上昇と急降下を検出し、異常の有無のスコアを返します。
+
+
+```
+AnomaryDetection_SpikeAndDip([値], [信頼度], [履歴サイズ],[モード])
+```
+
+[cols="2*", options="header"]
+|===
+|パラメータ
+|説明
+
+|値
+|異常検知の対象となる値
+
+|期待値
+|検証結果の信頼度を1〜100の間で指定。信頼度が低いほど検知される可能性が高くなる。
+
+|履歴サイズ
+|モデルの学習に利用するイベントの数　+
+
+|モード
+|モードは3種類{spikesanddips, spikes, dips} +
+モードの指定により、Spikes（急上昇)、Dips(急降下)の両方またはいずれかを検知。
+
+|===
+
+[cols="2*", options="header"]
+|===
+|返り値
+|説明
+
+|IsAnomaly
+|異常の有無を0か1で返します +
+0 : 異常なし +
+1 : 異常あり
+
+|Score
+|異常が発生している可能性の指標。低い値の場合、可能性が低いことを意味する
+
+|===
+
+
+
+link:agenda.adoc[目次]
