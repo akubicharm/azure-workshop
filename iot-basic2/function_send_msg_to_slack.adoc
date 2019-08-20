@@ -362,6 +362,8 @@ AnomaryDetection_SpikeAndDip([値], [信頼度], [履歴サイズ],[モード])
 
 |===
 
+====
+
 
 
 link:agenda.adoc[目次]
