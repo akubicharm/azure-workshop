@@ -16,11 +16,15 @@ link:https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/C
 
 . azure-iot-sdk-c のリポジトリをクローンします。
 +
+*Cloud Shell*
++
 ```
 git clone https://github.com/Azure/azure-iot-sdk-c
 ```
 
 . 作業用ディレクトリを作成して、移動します。
++
+*Cloud Shell*
 +
 ```
 mkdir work
@@ -29,12 +33,16 @@ cd work
 
 . 必要なファイルをコピーします。
 +
+*Cloud Shell*
++
 ```
 cp ~/azure-iot-sdk-c/tools/CACertificates/*.cnf .
 cp ~/azure-iot-sdk-c/tools/CACertificates/*.sh .
 ```
 
 . shell スクリプトに実行権限を付与します。
++
+*Cloud Shell*
 +
 ```
 chmod 700 certGen.sh
@@ -43,6 +51,8 @@ chmod 700 certGen.sh
 ### タスク2:証明書の作成とIoT Hubへの登録
 
 . ルート証明書と証明書チェーンを作成します。
++
+*Cloud Shell*
 +
 ```
 ./certGen.sh create_root_and_intermediate
@@ -69,7 +79,6 @@ image::images/cloudshell_download_button.png[]
 +
 image::images/cloudshell_download_dialog.png[]
 
-
 . Azureポータル画面で本演習で利用するIoT Hubを選択します。
 
 . 左Paneの設定セクションで[証明書]をクリックします。
@@ -85,7 +94,7 @@ image::images/cloudshell_download_dialog.png[]
 |設定値
 
 |証明書の名前
-|任意の文字列
+|任意の文字列 (例. _mycert_)
 
 | .pem または .cer の証明書ファイル
 |ファイルアイコンをクリックして、ダウンロードしたルート証明書を指定します。
@@ -105,6 +114,8 @@ image::images/register_rootCA.png[]
 . 確認コードフィールドの右側のファイルアイコンをクリックして、確認コードをコピーします。
 
 . Cloud Shellでルート証明書を確認用のCertファイルを作成します。
++
+*Cloud Shell*
 +
 ```
 ./certGen.sh create_verification_certificate [コピーした確認コード]
@@ -133,6 +144,8 @@ image::images/register_rootCA.png[]
 +
 ※ *mydevice* は、IoT Hubに登録するデバイス名です。デバイス名が異なる場合は読み替えてください。
 +
+*Cloud Shell*
++
 ```
 ./certGen.sh create_device_certificate mydevice
 ```
@@ -141,11 +154,15 @@ certs ディレクトリに new-device* というファイルが作成されま�
 
 . Cloud Shellでデバイスの認証に利用するチェーン証明書を作成します。
 +
+*Cloud Shell*
++
 ```
 cd ./certs && cat new-device.cert.pem azure-iot-test-only.intermediate.cert.pem azure-iot-test-only.root.ca.cert.pem > new-device-full-chain.cert.pem
 ```
 
 . デバイスで利用する証明書ファイルをアーカイブにまとめて、デバイス用仮想マシンにコピーします。
++
+*Cloud Shell*
 +
 ```
 cd ~/work
@@ -227,6 +244,8 @@ IoT Hubのクライアントに設定するオプションは次の通りです�
 +
 azure-iot-samples-python をクローンします。
 +
+*デバイスVM*
++
 ```
 git clone https://github.com/Azure-Samples/azure-iot-samples-python
 ```
@@ -234,6 +253,8 @@ git clone https://github.com/Azure-Samples/azure-iot-samples-python
 .. サンプルプログラムをクローン済みの場合
 +
 サンプルプログラムをコピーします。
++
+*デバイスVM*
 +
 ```
 cd ~
@@ -311,8 +332,10 @@ def iothub_client_init():
 
 ### タスク6: X509認証のクライアントを実行
 
-プログラムの変更が完了したら、プログラムを実行します。
-
+. プログラムの変更が完了したら、プログラムを実行します。
++
+*デバイスVM*
++
 ```
 python X509Device.py
 ```
