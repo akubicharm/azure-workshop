@@ -217,6 +217,15 @@ link:agenda.adoc[目次]
 |フォーマット
 |改行区切り
 
+|最小行数
+|（空白）
+
+|最大時間
+|（空白）
+
+|認証モード
+|接続文字列
+
 |===
 
 . [保存]をクリックします。
@@ -254,8 +263,7 @@ FROM
 *デバイスVM*
 +
 ```
-cd azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
-
+cd ~
 python SimulatedDevice.py
 ```
 

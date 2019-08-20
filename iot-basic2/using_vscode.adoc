@@ -17,8 +17,11 @@ https://docs.microsoft.com/ja-jp/azure/iot-hub/iot-hub-device-management-iot-too
 
 . https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools にアクセスして、Azure IoT Toolkit のプラグインをVSCodeにインストールします。
 
-
 ### タスク3: Azure IoT Hub にアクセス
+
+. VSCodeのメニューで [View->Command Palett..] をクリックします。
+
+. [>Azure: Sing in] を選択して、Azureにログインします。
 
 . VSCodeのエクスプローラービューで、左下の[Azure IoT Hub]メニューをクリックし、右側の[...]をクリックします。
 +
@@ -40,13 +43,10 @@ image::images/vscode_start_monitor.png[]
 
 . ブラウザで https://shell.azure.com にアクセスし、IoTデバイス用の仮想マシンにSSHでログインします。
 
-. サンプルプログラムのディレクトリに移動します
-+
-*デバイスVM*
-+
-```
-cd ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
-```
+[Note]
+====
+コネクションが切れてしまった場合は、再接続してください。
+====
 
 . サンプルプログラムを実行します。
 +

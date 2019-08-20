@@ -274,12 +274,14 @@ cp ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2/SimulatedDe
 +
 接続文字列の定義は、SASトークンの場合と異なり、IoT Hubのホスト名、デバイスID、x509認証であることをキーとバリューで設定します。
 +
+書式は `HostName=[利用するIoTHub名].azure-devices.net;DeviceId=mydevice;x509=true`
++
 ```
 # String containing Hostname, Device Id in the format:
 # "HostName=<host_name>;DeviceId=<device_id>;x509=true"
 
 # Path to the trusted root CA certificate
-CONNECTION_STRING = "HostName=satohub.azure-devices.net;DeviceId=mydevice;x509=true"
+CONNECTION_STRING = "HostName=[利用するIoTHub名].azure-devices.net;DeviceId=mydevice;x509=true"
 ```
 +
 タスク3で作成した証明書ファイルをAzure IoT Hubに接続するための証明書、デバイス認証をするための証明書とキーとして指定します。

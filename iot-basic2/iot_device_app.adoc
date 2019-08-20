@@ -16,7 +16,7 @@ image::images/azure_add_resource.png[]
 
 . 検索フィールドに `IoT Hub` と入力し、検索結果の一覧から[IoT Hub]を選択します。
 
-. IoT Hub作が画面の[作成]をクリックします。
+. IoT Hub画面の[作成]をクリックします。
 
 . ウィザードで必要なパラメータを入力していきます。
 +
@@ -85,7 +85,7 @@ image::images/azure_add_resource.png[]
 
 . IoT Hubの左Paneのメニューのエクスプローラーのセクションの[IoTデバイス]をクリックします。
 
-. 右Pane上部の[+追加]をクリックします。
+. 右Pane上部の[+新規作成]をクリックします。
 +
 image::images/iothub_addiotdevice.png[]
 
@@ -130,11 +130,13 @@ image::images/iothub_iotdevice_list.png[]
 
 このタスクでは、IoTデバイスとして利用する仮想マシンを作成します。本演習では、Ubuntu 16.04 を利用します。
 
-※Pythonから利用するライブラリのバージョンの関係で、16.04を利用します。
+※Python のIoT Hub Device SDKのサポート対象である16.04を利用します。
 
 . Azureポータル画面で本演習で利用するリソースグループ （例. _iotws_） を選択します。
 
-. 右Pane上部の[+追加]をクリックし検索ウィンドウで `ubuntu` と入力しリターンキーを押し、検索結果の一覧から[Ubuntu Server 16.04 LTS]を選択します。
+. 右Pane上部の[+追加]をクリックし検索ウィンドウで `ubuntu` と入力しリターンキーを押し、検索結果の一覧から[Ubuntu Server]を選択します。
+
+. Ubuntu Serverの作成画面のソフトウェアプランの選択で[ubuntu server 16.04 LTS]を選択します。
 +
 image::images/ubuntu_server_16.04_lts.png[]
 
@@ -308,6 +310,7 @@ image::images/iothub_iotdevice_connstr.png[]
 *デバイスVM*
 +
 ```
+cd ~
 cp ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2/SimulatedDevice.py .
 ```
 

@@ -10,7 +10,7 @@ link:agenda.adoc[目次]
 
 . IoT Hubの左Paneのメニューのエクスプローラーセクションの[IoTデバイス]をクリックします。
 
-. 右Pane上部の[+追加]をクリックします。
+. 右Pane上部の[+新規作成]をクリックします。
 +
 image::images/iothub_addiotdevice.png[]
 
@@ -49,7 +49,7 @@ image::images/iothub_addiotdevice.png[]
 +
 ※表示されない場合は右Pane上部の[最新の情報に更新]をクリックしてください。
 +
-image::images/iothub_iotdevice_list.png[]
+image::images/iothub_add_devM.png[]
 
 . デバイス一覧から、作成したデバイスを選択します。
 
@@ -150,5 +150,7 @@ CONNECTION_STRING = "HostName=iothub1234.azure-devices.net;DeviceId=devM;ModuleI
 ```
 python DeviceModule.py
 ```
+
+. VScodeのエンドポイントのモニターで、送信されているメッセージを確認します。
 
 link:agenda.adoc[目次]

@@ -13,6 +13,8 @@ Azure IoT Hubのメトリックの可視化と、メトリクスに基づくア�
 
 . 右Paneの上部にある[過去24時間]をクリックして、プルダウンメニューで時間の範囲を変更します。
 +
+image::./images/monitor_duration.png[]
++
 .設定項目と設定値
 [cols="2*", options="header"]
 |===
@@ -29,6 +31,8 @@ Azure IoT Hubのメトリックの可視化と、メトリクスに基づくア�
 . [適用]をクリックします。
 
 . 右Paneの楕円の枠で囲まれたプルダウンメニューで[メトリック]と[集計]を選択します。
++
+image::./images/monitor_metric.png[]
 +
 .設定項目と設定値
 [cols="2*", options="header"]
@@ -92,7 +96,7 @@ Azure IoT Hubのメトリックの可視化と、メトリクスに基づくア�
 
 . ルールの作成画面の条件エリアの[追加]をクリックします。
 
-.. シグナルロジックの構成画面で、シグナル萌衣の一覧から[Telemetry messages sent]をクリックします。
+.. シグナルロジックの構成画面で、シグナル名の一覧から[Telemetry messages sent]をクリックします。
 
 .. アラートの設定をします。
 +
@@ -201,11 +205,15 @@ From のアドレスは "Microsoft Azure <azure-noreply@microsoft.com>" です�
 
 . サンプルプログラムのディレクトリに移動します
 +
+*デバイスVM*
++
 ```
 cd ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
 ```
 
 . サンプルプログラムを実行します。
++
+*デバイスVM*
 +
 ```
 python SimulatedDevice.py
