@@ -58,10 +58,10 @@ image::./images/monitor_metric.png[]
 |設定値
 
 |メトリック
-|Telemetry messages sent （送信済みテレメトリメッセージ）
+|[Total number of messages used](使用されているメッセージの合計数)
 
 |集計
-|合計
+|平均
 |===
 
 . 右Pane上部のグレーの矩形の中から[ダッシュボードにピン留]をクリックします。
