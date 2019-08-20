@@ -42,11 +42,15 @@ image::images/vscode_start_monitor.png[]
 
 . サンプルプログラムのディレクトリに移動します
 +
+*デバイスVM*
++
 ```
 cd ~/azure-iot-samples-python/iot-hub/Quickstarts/simulated-device-2
 ```
 
 . サンプルプログラムを実行します。
++
+*デバイスVM*
 +
 ```
 python SimulatedDevice.py
