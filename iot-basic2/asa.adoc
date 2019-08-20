@@ -109,12 +109,7 @@ link:agenda.adoc[目次]
 . [保存]をクリックします。
 
 
-### タスク3: Azure Stream Analyticsの出力ソース設定(Blob)
-
-本タスクでは、Azure Stream Analyticsの出力ソースとして Blob Storageを設定します。
-
-
-#### タスク3-1: ストレージアカウントの作成
+#### タスク3: ストレージアカウントの作成
 
 すでに、ストレージアカウントが作成されている場合は、このタスクはスキップします。
 
@@ -168,7 +163,7 @@ link:agenda.adoc[目次]
 . 検証画面で内容を確認し、[作成]をクリックします。
 
 
-#### タスク3-2: Stream Anayticsの出力設定
+#### タスク4: Stream Anayticsの出力設定(Blob)
 
 . Azure Portal画面で本演習で利用するリソースグループの中から Stream Analyticsを選択します。
 
