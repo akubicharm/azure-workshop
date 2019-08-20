@@ -126,7 +126,7 @@ image::images/iothub_addiotdevice.png[]
 +
 image::images/iothub_iotdevice_list.png[]
 
-### タスク2: IoT Device用仮想マシンの準備
+### タスク3: IoT Device用仮想マシンの準備
 
 このタスクでは、IoTデバイスとして利用する仮想マシンを作成します。本演習では、Ubuntu 16.04 を利用します。
 
@@ -214,7 +214,7 @@ image::images/ubuntu_server_16.04_lts.png[]
 
 . レビューが完了したら[作成]をクリックして仮想マシンを作成します。
 
-### タスク3: IoTデバイスの環境設定
+### タスク4: IoTデバイスの環境設定
 
 このタスクでは作成した仮想マシンに IoT Device SDKなどの設定をします。
 
@@ -275,7 +275,7 @@ sh inst.sh
 exit
 ```
 
-### タスク4: サンプルアプリケーションの準備
+### タスク5: サンプルアプリケーションの準備
 
 . ブラウザで https://shell.azure.com にアクセスしてCloud Shellを開始します。
 
