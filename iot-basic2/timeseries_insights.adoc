@@ -146,17 +146,23 @@ Azureポータル画面で[作成]をクリックしても何もおきない場�
 
 . ファイルをダウンロード
 +
+*Cloud shell*
++
 ```
 wget https://github.com/akubicharm/azure-workshop/raw/master/tool/tsi-deploy/tsideploy.zip
 ```
 
 . ファイルを展開
 +
+*Cloud shell*
++
 ```
 unzip tsideploy.unzip
 ```
 
 . サブスクリプションの確認
++
+*Cloud shell*
 +
 ```
 az account show
@@ -186,6 +192,8 @@ az account show
 . env ファイルの編集
 + SUBS に上記で確認したサブスクリプションIDと、RNAMEに本演習で利用するリソースグループ名を設定します。
 +
+*Cloud shell*
++
 ```
 nano env
 ```
@@ -193,6 +201,8 @@ nano env
 必要な内容を記載したら、`Ctrl-o` で内容を保存、`Ctrl-x` でエディタを終了します。
 
 . 環境変数のセット
++
+*Cloud shell*
 +
 ```
 . ./env
@@ -204,6 +214,8 @@ echo $RNAME
 
 . デプロイスクリプトの実行
 +
+*Cloud shell*
++
 ```
 ./deploy.sh -i $SUBS -g $RNAME -n $DNAME -l $LOC
 ```
@@ -213,48 +225,6 @@ echo $RNAME
 ```
 Template has been successfully deployed
 ```
-
-////
-TSIのウィザード中で設定する場合。
-+
-.イベントソースの設定項目と設定値
-[cols="2*", options="header"]
-|===
-|設定項目
-|設定値
-
-|イベントソースを作成しますか?
-|はい
-
-|名前
-|iothub
-
-|ソースの種類
-|IoT Hub
-
-|ハブを選択
-|Select existing
-
-|サブスクリプション
-|本演習で利用するAzureサブスクリプションを選択
-
-|IoT Hub name
-|（本演習で利用するIoT Hubを選択）
-
-|IoTハブアクセスポリシー名
-|iothubowner
-
-|IoTハブコンシューマーグループ
-|tsi +
-※[新規]をクリックして入力フィールドを有効にして、コンシューマーグループの名称を入力
-
-|プロパティ名
-|（空白）
-
-|===
-
-. [確認と作成]をクリックして内容を確認し、[Create]をクリックします。
-////
 
 ### タスク 3：Time Series Insightsでのデータ表示とカスタマイズ
 
